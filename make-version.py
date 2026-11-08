@@ -10,7 +10,7 @@ log = json.loads(re.search(r"/\*CHANGELOG\*/const CHANGELOG=(.*?);/\*END\*/", ht
 cur = next(c for c in log if c['v'] == ver)
 (root / 'version.json').write_text(json.dumps({'version': ver, 'date': cur.get('date', ''), 'notes': cur['notes']}, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
 sw = root / 'sw.js'
-sw.write_text(re.sub(r"const CACHE='[^']*'", f"const CACHE='ice-dip-log-{ver}'", sw.read_text(encoding='utf-8')), encoding='utf-8')
+sw.write_text(re.sub(r"const CACHE='[^']*'", f"const CACHE='ice-bath-log-{ver}'", sw.read_text(encoding='utf-8')), encoding='utf-8')
 md = '# Changelog\n\n' + ''.join(f"## v{c['v']} ({c.get('date','')})\n" + ''.join(f'- {n}\n' for n in c['notes']) + '\n' for c in log)
 (root / 'CHANGELOG.md').write_text(md, encoding='utf-8')
 print('version', ver, 'written')

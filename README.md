@@ -1,4 +1,4 @@
-# Ice Dip Log
+# Ice Bath Log
 
 A small installable web app for cold-water swimming clubs: current water and air temperature for your own spot, a daily dip suggestion, a timed dip recorder (walk-to-water countdown, in-water timer, **voice stop** so you don't need to touch the wet screen), per-person statistics and an optional shared Google Sheet.
 
