@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.5 (2026-11-08)
+- New app icon (lake at dawn). It is also shown in the top bar and in About when no club logo is set.
+
 ## v1.4 (2026-11-08)
 - Settings › Test connection: calls every data source from your phone and shows the exact answer or error.
 - Settings › Install app on this phone.

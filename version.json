@@ -1,8 +1,7 @@
 {
-  "version": "1.4",
+  "version": "1.5",
   "date": "2026-11-08",
   "notes": [
-    "Settings › Test connection: calls every data source from your phone and shows the exact answer or error.",
-    "Settings › Install app on this phone."
+    "New app icon (lake at dawn). It is also shown in the top bar and in About when no club logo is set."
   ]
 }
