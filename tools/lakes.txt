@@ -1,5 +1,0 @@
-# Lakes whose water temperature the hourly GitHub job publishes for the app.
-# One per line: <alplakes lake key> <model>. Add a line for your lake.
-# Available keys: zurich geneva lugano biel murten greifensee hallwil ageri joux stmoritz garda caldonazzo annecy bourget (delft3d-flow)
-#                 neuchatel lucerne zug (mitgcm)
-zurich delft3d-flow

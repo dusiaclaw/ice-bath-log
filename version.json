@@ -1,7 +1,7 @@
 {
-  "version": "1.8",
+  "version": "1.9",
   "date": "2026-11-08",
   "notes": [
-    "Fixed: on the dip wrap-up screen the feeling icons no longer push the page out of the window."
+    "Water temperature now works for every lake of the Alplakes service, not only Lake Zurich: the hourly data job publishes all lakes and the app picks the ones near your swimming spot. Lakes outside the service can still be used with hand-entered temperatures."
   ]
 }

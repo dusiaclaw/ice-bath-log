@@ -96,8 +96,8 @@ pre{background:var(--field);border-radius:10px;padding:10px;font-size:11px;overf
 <script>
 'use strict';
 const APP_NAME='Ice Bath Log';
-const APP_VERSION='1.8';
-/*CHANGELOG*/const CHANGELOG=[{"v":"1.8","date":"2026-11-08","notes":["Fixed: on the dip wrap-up screen the feeling icons no longer push the page out of the window."]},{"v":"1.7","date":"2026-11-08","notes":["Privacy: Test connection no longer contains a built-in example location; without a saved spot it tests the middle of Lake Zurich."]},{"v":"1.6","date":"2026-11-08","notes":["Water temperature fixed: phones may not read the lake service directly, so an hourly job in the GitHub repo now publishes the lake temperatures and the app reads them from there. Spots saved as \"lake not listed\" are linked to their lake again."]},{"v":"1.5","date":"2026-11-08","notes":["New app icon (lake at dawn). It is also shown in the top bar and in About when no club logo is set."]},{"v":"1.4","date":"2026-11-08","notes":["Settings › Test connection: calls every data source from your phone and shows the exact answer or error.","Settings › Install app on this phone."]},{"v":"1.3","date":"2026-11-08","notes":["Water temperature: the lake model is now linked reliably (the app uses the nearest model point and tells you how far it is); a spot saved without a lake is repaired automatically; measuring stations without temperature data are no longer used."]},{"v":"1.2","date":"2026-11-08","notes":["Swimming spot: a map with a draggable pin (or tap the map) to place your exact spot; weather and lake data follow the pin."]},{"v":"1.1","date":"2026-11-08","notes":["Top bar shows the app name with its version; burger menu stays at the top right."]},{"v":"1.0","date":"2026-11-08","notes":["First release: water and air temperature for your own swimming spot, daily dip suggestions, timed dips with a walk-to-water countdown and voice stop, standing or swimming per person, photos, statistics, optional shared Google Sheet.","First-time setup for club name, logo, city and lake, and members.","Themes, light/dark mode, icon style, backups, license and changelog in Settings. Update pop-up when a new version is available."]}];/*END*/
+const APP_VERSION='1.9';
+/*CHANGELOG*/const CHANGELOG=[{"v":"1.9","date":"2026-11-08","notes":["Water temperature now works for every lake of the Alplakes service, not only Lake Zurich: the hourly data job publishes all lakes and the app picks the ones near your swimming spot. Lakes outside the service can still be used with hand-entered temperatures."]},{"v":"1.8","date":"2026-11-08","notes":["Fixed: on the dip wrap-up screen the feeling icons no longer push the page out of the window."]},{"v":"1.7","date":"2026-11-08","notes":["Privacy: Test connection no longer contains a built-in example location; without a saved spot it tests the middle of Lake Zurich."]},{"v":"1.6","date":"2026-11-08","notes":["Water temperature fixed: phones may not read the lake service directly, so an hourly job in the GitHub repo now publishes the lake temperatures and the app reads them from there. Spots saved as \"lake not listed\" are linked to their lake again."]},{"v":"1.5","date":"2026-11-08","notes":["New app icon (lake at dawn). It is also shown in the top bar and in About when no club logo is set."]},{"v":"1.4","date":"2026-11-08","notes":["Settings › Test connection: calls every data source from your phone and shows the exact answer or error.","Settings › Install app on this phone."]},{"v":"1.3","date":"2026-11-08","notes":["Water temperature: the lake model is now linked reliably (the app uses the nearest model point and tells you how far it is); a spot saved without a lake is repaired automatically; measuring stations without temperature data are no longer used."]},{"v":"1.2","date":"2026-11-08","notes":["Swimming spot: a map with a draggable pin (or tap the map) to place your exact spot; weather and lake data follow the pin."]},{"v":"1.1","date":"2026-11-08","notes":["Top bar shows the app name with its version; burger menu stays at the top right."]},{"v":"1.0","date":"2026-11-08","notes":["First release: water and air temperature for your own swimming spot, daily dip suggestions, timed dips with a walk-to-water countdown and voice stop, standing or swimming per person, photos, statistics, optional shared Google Sheet.","First-time setup for club name, logo, city and lake, and members.","Themes, light/dark mode, icon style, backups, license and changelog in Settings. Update pop-up when a new version is available."]}];/*END*/
 const ICONS=/*ICONS*/{"home": "<path d=\"M5 12l-2 0l9 -9l9 9l-2 0\" /> <path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\" /> <path d=\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\" />", "snowflake": "<path d=\"M10 4l2 1l2 -1\" /> <path d=\"M12 2v6.5l3 1.72\" /> <path d=\"M17.928 6.268l.134 2.232l1.866 1.232\" /> <path d=\"M20.66 7l-5.629 3.25l.01 3.458\" /> <path d=\"M19.928 14.268l-1.866 1.232l-.134 2.232\" /> <path d=\"M20.66 17l-5.629 -3.25l-2.99 1.738\" /> <path d=\"M14 20l-2 -1l-2 1\" /> <path d=\"M12 22v-6.5l-3 -1.72\" /> <path d=\"M6.072 17.732l-.134 -2.232l-1.866 -1.232\" /> <path d=\"M3.34 17l5.629 -3.25l-.01 -3.458\" /> <path d=\"M4.072 9.732l1.866 -1.232l.134 -2.232\" /> <path d=\"M3.34 7l5.629 3.25l2.99 -1.738\" />", "chart-bar": "<path d=\"M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -6\" /> <path d=\"M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -10\" /> <path d=\"M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -14\" /> <path d=\"M4 20h14\" />", "history": "<path d=\"M12 8l0 4l2 2\" /> <path d=\"M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5\" />", "settings": "<path d=\"M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065\" /> <path d=\"M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" />", "menu-2": "<path d=\"M4 6l16 0\" /> <path d=\"M4 12l16 0\" /> <path d=\"M4 18l16 0\" />", "x": "<path d=\"M18 6l-12 12\" /> <path d=\"M6 6l12 12\" />", "arrow-left": "<path d=\"M5 12l14 0\" /> <path d=\"M5 12l6 6\" /> <path d=\"M5 12l6 -6\" />", "check": "<path d=\"M5 12l5 5l10 -10\" />", "plus": "<path d=\"M12 5l0 14\" /> <path d=\"M5 12l14 0\" />", "trash": "<path d=\"M4 7l16 0\" /> <path d=\"M10 11l0 6\" /> <path d=\"M14 11l0 6\" /> <path d=\"M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12\" /> <path d=\"M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3\" />", "refresh": "<path d=\"M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4\" /> <path d=\"M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4\" />", "users": "<path d=\"M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0\" /> <path d=\"M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2\" /> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\" /> <path d=\"M21 21v-2a4 4 0 0 0 -3 -3.85\" />", "palette": "<path d=\"M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25\" /> <path d=\"M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" /> <path d=\"M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" /> <path d=\"M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" />", "cloud-upload": "<path d=\"M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1\" /> <path d=\"M9 15l3 -3l3 3\" /> <path d=\"M12 12l0 9\" />", "photo": "<path d=\"M15 8h.01\" /> <path d=\"M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12\" /> <path d=\"M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5\" /> <path d=\"M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3\" />", "camera": "<path d=\"M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2\" /> <path d=\"M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" />", "microphone": "<path d=\"M9 5a3 3 0 0 1 3 -3a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3a3 3 0 0 1 -3 -3l0 -5\" /> <path d=\"M5 10a7 7 0 0 0 14 0\" /> <path d=\"M8 21l8 0\" /> <path d=\"M12 17l0 4\" />", "info-circle": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\" /> <path d=\"M12 9h.01\" /> <path d=\"M11 12h1v4h1\" />", "file-text": "<path d=\"M14 3v4a1 1 0 0 0 1 1h4\" /> <path d=\"M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2\" /> <path d=\"M9 9l1 0\" /> <path d=\"M9 13l6 0\" /> <path d=\"M9 17l6 0\" />", "list-details": "<path d=\"M13 5h8\" /> <path d=\"M13 9h5\" /> <path d=\"M13 15h8\" /> <path d=\"M13 19h5\" /> <path d=\"M3 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4\" /> <path d=\"M3 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4\" />", "device-floppy": "<path d=\"M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2\" /> <path d=\"M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0\" /> <path d=\"M14 4l0 4l-6 0l0 -4\" />", "download": "<path d=\"M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2\" /> <path d=\"M7 11l5 5l5 -5\" /> <path d=\"M12 4l0 12\" />", "upload": "<path d=\"M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2\" /> <path d=\"M7 9l5 -5l5 5\" /> <path d=\"M12 4l0 12\" />", "thermometer": "<path d=\"M19 5a2.828 2.828 0 0 1 0 4l-8 8h-4v-4l8 -8a2.828 2.828 0 0 1 4 0\" /> <path d=\"M16 7l-1.5 -1.5\" /> <path d=\"M13 10l-1.5 -1.5\" /> <path d=\"M10 13l-1.5 -1.5\" /> <path d=\"M7 17l-3 3\" />", "wind": "<path d=\"M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24\" /> <path d=\"M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24\" /> <path d=\"M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24\" />", "map-pin": "<path d=\"M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" /> <path d=\"M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0\" />", "search": "<path d=\"M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0\" /> <path d=\"M21 21l-6 -6\" />", "user": "<path d=\"M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0\" /> <path d=\"M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2\" />", "flame": "<path d=\"M12 10.941c2.333 -3.308 .167 -7.823 -1 -8.941c0 3.395 -2.235 5.299 -3.667 6.706c-1.43 1.408 -2.333 3.294 -2.333 5.588c0 3.704 3.134 6.706 7 6.706c3.866 0 7 -3.002 7 -6.706c0 -1.712 -1.232 -4.403 -2.333 -5.588c-2.084 3.353 -3.257 3.353 -4.667 2.235\" />", "scale": "<path d=\"M7 20l10 0\" /> <path d=\"M6 6l6 -1l6 1\" /> <path d=\"M12 3l0 17\" /> <path d=\"M9 12l-3 -6l-3 6a3 3 0 0 0 6 0\" /> <path d=\"M21 12l-3 -6l-3 6a3 3 0 0 0 6 0\" />", "world": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\" /> <path d=\"M3.6 9h16.8\" /> <path d=\"M3.6 15h16.8\" /> <path d=\"M11.5 3a17 17 0 0 0 0 18\" /> <path d=\"M12.5 3a17 17 0 0 1 0 18\" />", "help-circle": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\" /> <path d=\"M12 16v.01\" /> <path d=\"M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483\" />"}/*ENDICONS*/;
 const EMO={home:'🏠',snowflake:'❄️','chart-bar':'📊',history:'🕘',settings:'⚙️','menu-2':'☰',x:'✕','arrow-left':'←',check:'✓',plus:'＋',trash:'🗑',refresh:'⟳',users:'👥',palette:'🎨','cloud-upload':'☁️',photo:'🖼️',camera:'📷',microphone:'🎙️','info-circle':'ℹ️','file-text':'📄','list-details':'📋','device-floppy':'💾',download:'⬇️',upload:'⬆️',thermometer:'🌡️',wind:'💨','map-pin':'📍',search:'🔍',user:'👤',flame:'🔥',scale:'⚖️',world:'🌍','help-circle':'❓'};
 
@@ -150,7 +150,7 @@ const confirmD=(title,msg,yes='OK',no='Cancel',danger=false)=>dlg({title,body:`<
 const infoD=(title,body)=>dlg({title,body,actions:[{label:'OK',v:1,cls:'pri'}]});
 
 /* ====== places & lakes ====== */
-const LAKES=[
+let LAKES=[
  {name:'Lake Zurich',keys:['zurich'],model:'delft3d-flow',lat:47.27,lng:8.69},
  {name:'Lake Geneva',keys:['geneva'],model:'delft3d-flow',lat:46.45,lng:6.55},
  {name:'Lake Lugano',keys:['lugano'],model:'delft3d-flow',lat:46.0,lng:8.97},
@@ -168,6 +168,8 @@ const LAKES=[
  {name:'Lake Caldonazzo',keys:['caldonazzo'],model:'delft3d-flow',lat:46.01,lng:11.24},
  {name:'Lake Annecy',keys:['annecy'],model:'delft3d-flow',lat:45.86,lng:6.17},
  {name:'Lake Bourget',keys:['bourget'],model:'delft3d-flow',lat:45.73,lng:5.86}];
+/* distance (km) from a point to a lake: 0 inside its bounding box (when the data feed supplied one) */
+function dl(l,lat,lng){if(l.bbox){const la=Math.min(Math.max(lat,l.bbox[0]),l.bbox[2]),ln=Math.min(Math.max(lng,l.bbox[1]),l.bbox[3]);return km(lat,lng,la,ln)}return km(lat,lng,l.lat,l.lng)}
 function parseAlp(j){
   const raw=j.variables.temperature.data.map(x=>Array.isArray(x)?x.flat(Infinity)[0]:x);
   const ts=j.time.map(t=>+new Date(/Z|[+-]\d\d:?\d\d$/.test(t)?t:t+'Z'));
@@ -175,23 +177,37 @@ function parseAlp(j){
 }
 /* Browsers may not read the Alplakes API (no CORS). An hourly GitHub job publishes
    whole-lake surface grids to the repo's "data" branch; raw.githubusercontent.com allows browser reads. */
-const RELAY_URL=(()=>{const m=location.hostname.match(/^([^.]+)\.github\.io$/),repo=location.pathname.split('/').filter(Boolean)[0];
-  return `https://raw.githubusercontent.com/${m?m[1]:'dusiaclaw'}/${m&&repo?repo:'ice-bath-log'}/data/water.json`})();
-let relay=null,relayAt=0,relayErr='';
-async function getRelay(){
-  if(relay&&Date.now()-relayAt<15*60e3)return relay;
-  try{const r=await fetch(RELAY_URL+'?t='+Math.floor(Date.now()/3e5),{cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);relay=await r.json();relayAt=Date.now();relayErr=''}
-  catch(e){relayErr=e.message||'network error'}
-  return relay;
+const RELAY_BASE=(()=>{const m=location.hostname.match(/^([^.]+)\.github\.io$/),repo=location.pathname.split('/').filter(Boolean)[0];
+  return `https://raw.githubusercontent.com/${m?m[1]:'dusiaclaw'}/${m&&repo?repo:'ice-bath-log'}/data/`})();
+const RELAY_URL=RELAY_BASE+'index.json';
+let relayErr='',relayIdx=null,relayIdxAt=0;const relayLakes={};
+async function relayJson(path){const r=await fetch(RELAY_BASE+path+'?t='+Math.floor(Date.now()/3e5),{cache:'no-store'});if(!r.ok)throw new Error(path+': HTTP '+r.status);return r.json()}
+async function getIndex(){
+  if(relayIdx&&Date.now()-relayIdxAt<15*60e3)return relayIdx;
+  try{relayIdx=await relayJson('index.json');relayIdxAt=Date.now();relayErr=''}catch(e){relayErr=e.message||'network error'}
+  return relayIdx;
+}
+/* lake list = lakes of the data feed (all lakes of the Alplakes service) + built-in fallback */
+async function loadLakes(){
+  const ix=await getIndex();if(!ix||!ix.lakes)return;
+  const feed=ix.lakes.map(l=>({name:l.name,keys:[l.key],model:l.model,lat:l.lat,lng:l.lng,bbox:l.bbox}));
+  const have=new Set(feed.map(l=>l.keys[0]));
+  LAKES=feed.concat(LAKES.filter(l=>!l.keys.some(k=>have.has(k))));
+}
+async function getRelayLake(key){
+  const c=relayLakes[key];if(c&&Date.now()-c.at<15*60e3)return c.d;
+  try{const d=await relayJson('lakes/'+key+'.json');relayLakes[key]={d,at:Date.now()};relayErr='';return d}
+  catch(e){relayErr=e.message||'network error';return null}
 }
 async function relayPoint(lakeKeys,lat,lng){
-  const d=await getRelay();if(!d||!d.lakes)return null;
-  const key=lakeKeys.find(k=>d.lakes[k]);if(!key)return{missing:true};
-  const L=d.lakes[key];let bi=-1,bd=1e9;
+  const ix=await getIndex();if(!ix||!ix.lakes)return null;
+  const ent=ix.lakes.find(l=>lakeKeys.includes(l.key));if(!ent)return{missing:true};
+  const L=await getRelayLake(ent.key);if(!L)return null;
+  let bi=-1,bd=1e9;
   for(let i=0;i<L.lat.length;i++){const dd=km(lat,lng,L.lat[i],L.lng[i]);if(dd<bd){bd=dd;bi=i}}
   if(bi<0)return null;
   const series=L.times.map((t,k)=>({t,v:L.t[k][bi]})).filter(p=>typeof p.v==='number');
-  return{key,series,dist:bd*1000,gl:L.lat[bi],gn:L.lng[bi],updated:d.updated};
+  return{key:ent.key,series,dist:bd*1000,gl:L.lat[bi],gn:L.lng[bi],updated:L.updated};
 }
 let lastAlpErr='';
 async function alpPoint(lake,lat,lng,a,b){
@@ -211,7 +227,7 @@ const tfmt=d=>d.toISOString().slice(0,16).replace(/[-:T]/g,'');
 async function findLakePoint(city,lake){
   const rp=await relayPoint(lake.keys,city.lat,city.lng);
   if(rp&&!rp.missing&&rp.series.length){return rp.dist<=3000?{pt:[rp.gl,rp.gn],key:rp.key,dist:rp.dist/1000}:{far:rp.dist/1000}}
-  if(rp&&rp.missing)lastAlpErr=`${lake.name} is not in the app's data feed yet (add it to tools/lakes.txt in the GitHub repo)`;
+  if(rp&&rp.missing)lastAlpErr=`${lake.name} is not in the app's data feed`;
   const now=Date.now(),a=tfmt(new Date(now-36e5)),b=tfmt(new Date(now+36e5));
   const tries=[[city.lat,city.lng]];for(const f of [.1,.2,.35,.5,.75,1])tries.push([city.lat+(lake.lat-city.lat)*f,city.lng+(lake.lng-city.lng)*f]);
   let best=null;
@@ -259,8 +275,8 @@ const wxIcon=c=>c==null?'·':c===0?'☀️':c<=2?'🌤️':c===3?'☁️':c<=48?
 let loading=false;
 async function healSpot(){
   const sp=S.settings.spot;if(!sp)return;
-  if(!sp.lake&&!sp.manualNone){const n=LAKES.map(l=>({l,d:km(sp.lat,sp.lng,l.lat,l.lng)})).sort((a,b)=>a.d-b.d)[0];
-    if(n&&n.d<60){const f=await findLakePoint({lat:sp.lat,lng:sp.lng},n.l);if(f&&f.pt){sp.lake={name:n.l.name,key:f.key,model:n.l.model};sp.pt=f.pt;sp.dist=f.dist;save()}}}
+  if(!sp.lake&&!sp.manualNone){const n=LAKES.map(l=>({l,d:dl(l,sp.lat,sp.lng)})).sort((a,b)=>a.d-b.d)[0];
+    if(n&&n.d<30){const f=await findLakePoint({lat:sp.lat,lng:sp.lng},n.l);if(f&&f.pt){sp.lake={name:n.l.name,key:f.key,model:n.l.model};sp.pt=f.pt;sp.dist=f.dist;save()}}}
   if(!sp.station||!sp.station.ok){sp.station=await nearestStation(sp.lat,sp.lng);save()}
 }
 async function refreshData(){
@@ -409,7 +425,7 @@ function hoursHtml(wx){const now=Date.now(),b=bestHour();return `<div class="hou
 let SP=null;
 function initSpot(spot){SP={q:spot?spot.city:'',results:null,city:spot?{name:spot.city,region:spot.region,country:spot.country,lat:spot.lat,lng:spot.lng}:null,lake:spot&&spot.lake?LAKES.find(l=>l.name===spot.lake.name):null,none:!!(spot&&!spot.lake),busy:'',msg:spot?'Current setting kept – search again to change it.':'',result:spot||null,err:''}}
 function spotHtml(){
-  const s=SP,lakes=s.city?[...LAKES].map(l=>({...l,d:Math.round(km(s.city.lat,s.city.lng,l.lat,l.lng))})).sort((a,b)=>a.d-b.d):[];
+  const s=SP,lakes=s.city?[...LAKES].map(l=>({...l,d:Math.round(dl(l,s.city.lat,s.city.lng))})).sort((a,b)=>a.d-b.d):[];
   return `<label style="margin-top:0">City or town near your swimming spot</label>
   <div class="row"><input id="sp_q" value="${esc(s.q)}" placeholder="e.g. a town on the lake" style="flex:1" autocomplete="off"><button class="pri" data-a="geo">${ic('search')}</button></div>
   ${s.busy==='geo'?'<div class="sub" style="margin-top:8px">Searching…</div>':''}${s.err?`<div class="warn">${esc(s.err)}</div>`:''}
@@ -417,8 +433,8 @@ function spotHtml(){
   ${s.results&&s.results.length?`<div>${s.results.map((r,i)=>`<button class="pick" data-a="pickcity" data-v="${i}">${ic('map-pin')} <b>${esc(r.name)}</b> <span class="sub">${esc([r.region,r.country].filter(Boolean).join(', '))}</span></button>`).join('')}</div>`:''}
   ${s.city&&!s.results?`<div class="good" style="margin-top:10px">${ic('map-pin')} ${esc(s.city.name)}${s.city.region?', '+esc(s.city.region):''}${s.city.country?', '+esc(s.city.country):''}</div>`:''}
   ${s.city&&!s.results?`<div id="spmap"></div><div class="sub" style="margin-top:6px">${ic('map-pin')} Drag the pin or tap the map to fine-tune your swimming spot (${s.city.lat.toFixed(4)}, ${s.city.lng.toFixed(4)}).</div>`:''}
-  ${s.city?`<label>Lake (water-temperature model)</label>
-   ${lakes.slice(0,6).map((l,i)=>`<button class="pick ${s.lake&&s.lake.name===l.name?'on':''}" data-a="picklake" data-v="${LAKES.indexOf(LAKES.find(x=>x.name===l.name))}">${esc(l.name)} <span class="sub">· ${l.d} km away</span></button>`).join('')}
+  ${s.city?`<label>Lake – the nearest ones with water-temperature data</label>
+   ${lakes.slice(0,5).map((l,i)=>`<button class="pick ${s.lake&&s.lake.name===l.name?'on':''}" data-a="picklake" data-v="${LAKES.indexOf(LAKES.find(x=>x.name===l.name))}">${esc(l.name)} <span class="sub">· ${l.d} km away</span></button>`).join('')}
    <button class="pick ${s.none?'on':''}" data-a="picklake" data-v="-1">My lake is not listed – I will enter temperatures by hand</button>
    ${s.busy==='lake'?'<div class="sub" style="margin-top:8px">Looking for model data near your spot… (can take ~20 s)</div>':''}${s.msg?`<div class="${/found|kept|hand/i.test(s.msg)?'good':'warn'}" style="margin-top:8px">${esc(s.msg)}</div>`:''}`:''}
   <div class="sub" style="margin-top:10px">Water data comes from lake models of the Swiss Alplakes project; a nearby measuring station is added if one exists. Weather is found from the city. Everything can be overridden by hand on the Conditions page.</div>`;
@@ -428,7 +444,7 @@ async function spotGeo(){
   try{SP.results=await geocode(SP.q)}catch{SP.err='Search failed – check your internet connection.';SP.results=null}
   SP.busy='';renderBody();
 }
-async function spotPickCity(i){SP.city=SP.results[i];SP.view=null;SP.results=null;SP.lake=null;SP.none=false;SP.msg='';SP.result=null;renderBody();const near=LAKES.map(l=>({l,d:km(SP.city.lat,SP.city.lng,l.lat,l.lng)})).sort((a,b)=>a.d-b.d)[0];if(near&&near.d<60)spotPickLake(LAKES.indexOf(near.l))}
+async function spotPickCity(i){SP.city=SP.results[i];SP.view=null;SP.results=null;SP.lake=null;SP.none=false;SP.msg='';SP.result=null;renderBody();const near=LAKES.map(l=>({l,d:dl(l,SP.city.lat,SP.city.lng)})).sort((a,b)=>a.d-b.d)[0];if(near&&near.d<30)spotPickLake(LAKES.indexOf(near.l))}
 async function spotPickLake(i){
   const c=SP.city;SP.msg='';
   if(i<0){SP.lake=null;SP.none=true;const st=await nearestStation(c.lat,c.lng);SP.result={city:c.name,region:c.region,country:c.country,lat:c.lat,lng:c.lng,lake:null,pt:null,manualNone:true,station:st};SP.msg='OK – you can enter temperatures by hand'+(st?`; station “${st.name}” (${st.dist} km) will be used too.`:'.');renderBody();return}
@@ -455,8 +471,8 @@ function mountMap(){
 function movePin(lat,lng){
   dirty=true;SP.city={...SP.city,lat,lng};clearTimeout(SP.pinT);
   SP.pinT=setTimeout(()=>{
-    let i=SP.lake?LAKES.indexOf(SP.lake):SP.none?-1:null;
-    if(i===null){const n=LAKES.map((l,k)=>({k,d:km(lat,lng,l.lat,l.lng)})).sort((a,b)=>a.d-b.d)[0];i=n.d<60?n.k:-1}
+    let i=SP.lake?LAKES.findIndex(l=>l.name===SP.lake.name):SP.none?-1:null;
+    if(i===null){const n=LAKES.map((l,k)=>({k,d:dl(l,lat,lng)})).sort((a,b)=>a.d-b.d)[0];i=n&&n.d<30?n.k:-1}
     spotPickLake(i);
   },500);
 }
@@ -817,6 +833,7 @@ if(!S.settings.mig16){const sp=S.settings.spot;if(sp&&sp.manualNone&&!sp.lake)de
 if(!S.settings.setupDone){initWiz();page='setup'}
 render();
 if(S.settings.setupDone){if(!S.cache.fetched||Date.now()-S.cache.fetched>10*60e3)refreshData()}
+loadLakes().then(()=>{if(SP&&SP.city&&(page==='setup'||page==='settings'))renderBody()});
 (async()=>{await whatsNew();checkUpdate()})();
 document.addEventListener('visibilitychange',()=>{if(!document.hidden){if(R&&(R.phase==='prep'||R.phase==='dip')){lock();doTick()}else{checkUpdate();if(S.settings.setupDone&&Date.now()-(S.cache.fetched||0)>10*60e3)refreshData()}}});
 </script>

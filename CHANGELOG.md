@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.9 (2026-11-08)
+- Water temperature now works for every lake of the Alplakes service, not only Lake Zurich: the hourly data job publishes all lakes and the app picks the ones near your swimming spot. Lakes outside the service can still be used with hand-entered temperatures.
+
 ## v1.8 (2026-11-08)
 - Fixed: on the dip wrap-up screen the feeling icons no longer push the page out of the window.
 
