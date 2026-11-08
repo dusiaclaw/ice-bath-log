@@ -22,4 +22,4 @@ Settings › Shared Sheet explains the one-time Apps Script setup. Anyone with t
 Lake temperature: [Alplakes](https://www.alplakes.eawag.ch) (EPFL, Eawag; simulated data). Measuring stations: BAFU via [existenz.ch](https://api.existenz.ch). Weather and place search: [Open-Meteo](https://open-meteo.com).
 
 ## License
-GPL-3.0 – see `LICENSE`. Icons: [Tabler Icons](https://tabler.io/icons) (MIT).
+GPL-3.0 – see `LICENSE`. Icons: [Tabler Icons](https://tabler.io/icons) (MIT). Map: [Leaflet](https://leafletjs.com) (BSD-2, in `lib/`) with © OpenStreetMap contributors.

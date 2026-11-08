@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.2 (2026-11-08)
+- Swimming spot: a map with a draggable pin (or tap the map) to place your exact spot; weather and lake data follow the pin.
+
 ## v1.1 (2026-11-08)
 - Top bar shows the app name with its version; burger menu stays at the top right.
 

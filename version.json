@@ -1,7 +1,7 @@
 {
-  "version": "1.1",
+  "version": "1.2",
   "date": "2026-11-08",
   "notes": [
-    "Top bar shows the app name with its version; burger menu stays at the top right."
+    "Swimming spot: a map with a draggable pin (or tap the map) to place your exact spot; weather and lake data follow the pin."
   ]
 }
