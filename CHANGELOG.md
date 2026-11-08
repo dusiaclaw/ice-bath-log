@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.7 (2026-11-08)
+- Privacy: Test connection no longer contains a built-in example location; without a saved spot it tests the middle of Lake Zurich.
+
 ## v1.6 (2026-11-08)
 - Water temperature fixed: phones may not read the lake service directly, so an hourly job in the GitHub repo now publishes the lake temperatures and the app reads them from there. Spots saved as "lake not listed" are linked to their lake again.
 
