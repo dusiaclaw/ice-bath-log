@@ -1,0 +1,30 @@
+name: Water data
+# Hourly: fetch lake surface temperatures and publish them on the "data" branch,
+# where the app reads them (raw.githubusercontent.com allows browser access).
+on:
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['tools/**', '.github/workflows/water-data.yml']
+permissions:
+  contents: write
+concurrency:
+  group: water-data
+  cancel-in-progress: true
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 tools/fetch_water.py out/water.json
+      - name: Publish to the data branch (single commit, no history)
+        run: |
+          cd out
+          git init -q -b data
+          git config user.name "github-actions[bot]"
+          git config user.email "41898299+github-actions[bot]@users.noreply.github.com"
+          git add water.json
+          git commit -q -m "Water data $(date -u +%FT%TZ)"
+          git push -f "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" data

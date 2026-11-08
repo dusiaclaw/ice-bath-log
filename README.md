@@ -13,6 +13,9 @@ The app asks for your club name (and optional logo), your city and lake, and the
 ## Shared Google Sheet (optional)
 Settings › Shared Sheet explains the one-time Apps Script setup. Anyone with the web-app URL can read and add rows, so share it only inside the club.
 
+## Water data feed
+Browsers are not allowed to read the Alplakes API directly, so `.github/workflows/water-data.yml` runs every hour, fetches the surface-temperature grid of every lake listed in `tools/lakes.txt` and publishes it as `water.json` on the `data` branch. The app reads it from `raw.githubusercontent.com/<owner>/<repo>/data/water.json`. Add a line to `tools/lakes.txt` for your lake. Forks: enable Actions once in the repo's Actions tab.
+
 ## Releasing a new version
 1. Edit `APP_VERSION` and add an entry to `CHANGELOG` in `index.html`.
 2. Run `python3 make-version.py` (writes `version.json`, bumps the cache name in `sw.js`, writes `CHANGELOG.md`).
