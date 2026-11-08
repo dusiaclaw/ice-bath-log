@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en" data-theme="ice" data-mode="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0c1520" id="themecolor">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Ice Dip Log</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+:root{--acc:#2aa6e0;--acc2:#5ad1ff;--onacc:#03202f;--red:#ff4d5e;--ok:#3fcf94;--over:#ffb454;--r:18px}
+[data-theme=forest]{--acc:#2fa36b;--acc2:#5fd39a;--onacc:#03251a}
+[data-theme=sunset]{--acc:#f08a3c;--acc2:#ffb26b;--onacc:#2b1503}
+[data-theme=violet]{--acc:#8b6cf0;--acc2:#b3a0ff;--onacc:#150a3a}
+[data-theme=rose]{--acc:#e0587a;--acc2:#ff8fa8;--onacc:#3a0a17}
+[data-mode=dark]{--bg:#0c1520;--bg2:#13222f;--card:#17293a;--card2:#21394d;--ink:#eaf3fa;--mute:#93aec3;--line:#2a475f;--field:#0f1e2b;--warnbg:#3a2a10;--goodbg:#0f3a2c;color-scheme:dark}
+[data-mode=light]{--bg:#eef3f7;--bg2:#e3ecf2;--card:#fff;--card2:#e8eff5;--ink:#0f2230;--mute:#587186;--line:#cfdce6;--field:#f6f9fb;--warnbg:#fff1d6;--goodbg:#dcf5ea;--acc2:var(--acc);color-scheme:light}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{overscroll-behavior:none}
+h1{font-size:22px;margin:4px 0}h2{font-size:16px;margin:0 0 8px;color:var(--acc2)}p{margin:6px 0}
+.sub{color:var(--mute);font-size:13px}
+svg.ic{width:1.3em;height:1.3em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.25em}
+#top{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;align-items:center;gap:8px;padding:calc(8px + env(safe-area-inset-top)) 10px 8px;background:var(--bg2);border-bottom:1px solid var(--line)}
+#top .t{flex:1;min-width:0}#top .t b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#top .t span{font-size:11px;color:var(--mute)}
+#top img.logo{width:34px;height:34px;border-radius:8px;object-fit:cover}
+#main{max-width:560px;margin:0 auto;padding:calc(66px + env(safe-area-inset-top)) 14px 24px}
+#main.hasbar{padding-bottom:110px}
+#bar{position:fixed;left:0;right:0;bottom:0;z-index:10;display:none;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--bg2);border-top:1px solid var(--line)}
+#bar.show{display:flex}#bar button{flex:1}
+.card{background:var(--card);border-radius:var(--r);padding:14px;margin:12px 0;box-shadow:0 1px 8px #0003}
+.row{display:flex;gap:10px;align-items:center}.sp{justify-content:space-between}.wrap{flex-wrap:wrap}.end{justify-content:flex-end}
+.big{font-size:60px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}.big small{font-size:24px;color:var(--mute);font-weight:500}
+.chip{display:inline-block;padding:6px 12px;border-radius:99px;background:var(--card2);font-size:13px;border:1px solid transparent}
+.chip.on{background:var(--acc);color:var(--onacc);border-color:var(--acc2)}.chip.mute{color:var(--mute)}
+button,.btn{font:inherit;color:var(--ink);background:var(--card2);border:0;border-radius:14px;padding:12px 16px;cursor:pointer}
+button:active{filter:brightness(1.2)}button:disabled{opacity:.5}
+button.icon{padding:8px 10px;background:transparent;font-size:18px}
+.pri{background:var(--acc);color:var(--onacc);font-weight:700}
+.danger{background:var(--red);color:#fff;font-weight:700}
+.ghost{background:transparent;border:1px solid var(--line)}
+.wide{width:100%}.xl{font-size:20px;padding:18px}
+input,select,textarea{font:inherit;color:var(--ink);background:var(--field);border:1px solid var(--line);border-radius:12px;padding:11px;width:100%}
+input[type=checkbox]{width:auto}
+label{display:block;font-size:13px;color:var(--mute);margin:12px 0 4px}label.row{color:var(--ink);font-size:15px}
+.warn{background:var(--warnbg);border-left:4px solid var(--over);padding:8px 10px;border-radius:8px;margin:6px 0;font-size:14px}
+.good{background:var(--goodbg);border-left:4px solid var(--ok);padding:8px 10px;border-radius:8px;margin:6px 0;font-size:14px}
+.hours{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.hr{min-width:58px;text-align:center;background:var(--card2);border-radius:12px;padding:8px 4px;font-size:13px}.hr b{display:block;font-size:16px}.hr.best{outline:2px solid var(--ok)}
+table{width:100%;border-collapse:collapse;font-size:13px}th,td{padding:6px 4px;text-align:right;border-bottom:1px solid var(--line)}th:first-child,td:first-child{text-align:left}th{color:var(--mute);font-weight:500}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:var(--card2);border-radius:14px;padding:10px}.stat b{font-size:22px;display:block}
+.hb{display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 8px;font-weight:600}.hb .ic{font-size:30px;color:var(--acc2)}
+.dip{border-top:1px solid var(--line);padding:10px 0}.dip img{width:64px;height:64px;object-fit:cover;border-radius:10px}
+pre{background:var(--field);border-radius:10px;padding:10px;font-size:11px;overflow:auto;max-height:220px;white-space:pre-wrap}
+.seg{display:flex;background:var(--field);border-radius:12px;overflow:hidden;border:1px solid var(--line)}.seg button{flex:1;border-radius:0;background:none;padding:9px;font-size:14px}.seg button.on{background:var(--acc);color:var(--onacc);font-weight:600}
+.mi{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--card);margin:8px 0;padding:14px;border-radius:14px}.mi .ic{color:var(--acc2);font-size:22px}.mi span{flex:1}
+.pcard{background:var(--card2);border-radius:14px;padding:10px;margin:8px 0}
+.sw{width:44px;height:44px;border-radius:50%;border:3px solid transparent;padding:0}.sw.on{border-color:var(--ink)}
+.logo-lg{width:84px;height:84px;border-radius:18px;object-fit:cover;background:var(--card2)}
+.pick{display:block;width:100%;text-align:left;margin:6px 0;background:var(--card2)}.pick.on{outline:2px solid var(--acc)}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:#000d;color:#fff;padding:10px 16px;border-radius:99px;z-index:60;font-size:14px;max-width:90%}
+#dlg{position:fixed;inset:0;background:#0009;z-index:50;display:none;align-items:flex-end;justify-content:center}#dlg.show{display:flex}
+.sheet{background:var(--bg2);width:100%;max-width:560px;border-radius:22px 22px 0 0;padding:16px 16px calc(16px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto}
+.sheet h2{font-size:18px;color:var(--ink)}.sb{margin:8px 0 14px}.sb ul{padding-left:18px;margin:4px 0}
+#menu{position:fixed;top:calc(56px + env(safe-area-inset-top));right:10px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;z-index:40;display:none;min-width:190px;box-shadow:0 8px 24px #0006;overflow:hidden}#menu.show{display:block}
+#menu button{display:flex;gap:10px;align-items:center;width:100%;background:none;border-radius:0;text-align:left}
+/* recording overlay */
+#rec{--bg:#04182a;--bg2:#0a2a4a;--card:#102a43;--card2:#1d3d5c;--ink:#eaf6ff;--mute:#8fb0c9;--line:#2a475f;--field:#0a1f33;position:fixed;inset:0;background:var(--bg);color:var(--ink);z-index:30;display:none;flex-direction:column}
+#rec.show{display:flex}#rec.prep{background:#0a2a4a}#rec.dip{background:#04182a}#rec.dip.over{background:#2a1a04}
+.rb{flex:1;overflow:auto;padding:calc(14px + env(safe-area-inset-top)) 14px 14px;display:flex;flex-direction:column}
+.rf{padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;background:#0006}.rf button{flex:1}
+.timer{font-size:min(30vw,26vh);font-weight:800;text-align:center;font-variant-numeric:tabular-nums;line-height:1;letter-spacing:-2px}
+.over .timer{color:var(--over)}
+.phase{text-align:center;font-size:22px;font-weight:700;color:var(--acc2);margin-top:6px}.over .phase{color:var(--over)}
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px}
+.stopbtn{height:28vh;font-size:12vw;font-weight:800;margin:0 12px calc(12px + env(safe-area-inset-bottom));border-radius:22px}
+.listen{text-align:center;color:var(--mute);font-size:14px;min-height:20px}
+.step{display:flex;gap:8px;align-items:center}.step button{width:48px;padding:10px}.step b{flex:1;text-align:center;font-size:20px}
+.wzdots{display:flex;gap:6px;justify-content:center;margin:6px 0 10px}.wzdots i{width:26px;height:5px;border-radius:3px;background:var(--card2)}.wzdots i.on{background:var(--acc)}
+</style>
+</head>
+<body>
+<div id="top"></div>
+<div id="menu"></div>
+<div id="main"></div>
+<div id="bar"></div>
+<div id="rec"></div>
+<div id="dlg"></div>
+
+<script>
+'use strict';
+const APP_NAME='Ice Dip Log';
+const APP_VERSION='1.0.0';
+/*CHANGELOG*/const CHANGELOG=[{"v":"1.0.0","date":"2026-11-08","notes":["First release: water and air temperature for your own swimming spot, daily dip suggestions, timed dips with a walk-to-water countdown and voice stop, standing or swimming per person, photos, statistics, optional shared Google Sheet.","First-time setup for club name, logo, city and lake, and members.","Themes, light/dark mode, icon style, backups, license and changelog in Settings. Update pop-up when a new version is available."]}];/*END*/
+const ICONS=/*ICONS*/{"home": "<path d=\"M5 12l-2 0l9 -9l9 9l-2 0\" /> <path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\" /> <path d=\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\" />", "snowflake": "<path d=\"M10 4l2 1l2 -1\" /> <path d=\"M12 2v6.5l3 1.72\" /> <path d=\"M17.928 6.268l.134 2.232l1.866 1.232\" /> <path d=\"M20.66 7l-5.629 3.25l.01 3.458\" /> <path d=\"M19.928 14.268l-1.866 1.232l-.134 2.232\" /> <path d=\"M20.66 17l-5.629 -3.25l-2.99 1.738\" /> <path d=\"M14 20l-2 -1l-2 1\" /> <path d=\"M12 22v-6.5l-3 -1.72\" /> <path d=\"M6.072 17.732l-.134 -2.232l-1.866 -1.232\" /> <path d=\"M3.34 17l5.629 -3.25l-.01 -3.458\" /> <path d=\"M4.072 9.732l1.866 -1.232l.134 -2.232\" /> <path d=\"M3.34 7l5.629 3.25l2.99 -1.738\" />", "chart-bar": "<path d=\"M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -6\" /> <path d=\"M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -10\" /> <path d=\"M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -14\" /> <path d=\"M4 20h14\" />", "history": "<path d=\"M12 8l0 4l2 2\" /> <path d=\"M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5\" />", "settings": "<path d=\"M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065\" /> <path d=\"M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" />", "menu-2": "<path d=\"M4 6l16 0\" /> <path d=\"M4 12l16 0\" /> <path d=\"M4 18l16 0\" />", "x": "<path d=\"M18 6l-12 12\" /> <path d=\"M6 6l12 12\" />", "arrow-left": "<path d=\"M5 12l14 0\" /> <path d=\"M5 12l6 6\" /> <path d=\"M5 12l6 -6\" />", "check": "<path d=\"M5 12l5 5l10 -10\" />", "plus": "<path d=\"M12 5l0 14\" /> <path d=\"M5 12l14 0\" />", "trash": "<path d=\"M4 7l16 0\" /> <path d=\"M10 11l0 6\" /> <path d=\"M14 11l0 6\" /> <path d=\"M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12\" /> <path d=\"M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3\" />", "refresh": "<path d=\"M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4\" /> <path d=\"M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4\" />", "users": "<path d=\"M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0\" /> <path d=\"M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2\" /> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\" /> <path d=\"M21 21v-2a4 4 0 0 0 -3 -3.85\" />", "palette": "<path d=\"M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25\" /> <path d=\"M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" /> <path d=\"M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" /> <path d=\"M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" />", "cloud-upload": "<path d=\"M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1\" /> <path d=\"M9 15l3 -3l3 3\" /> <path d=\"M12 12l0 9\" />", "photo": "<path d=\"M15 8h.01\" /> <path d=\"M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12\" /> <path d=\"M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5\" /> <path d=\"M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3\" />", "camera": "<path d=\"M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2\" /> <path d=\"M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" />", "microphone": "<path d=\"M9 5a3 3 0 0 1 3 -3a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3a3 3 0 0 1 -3 -3l0 -5\" /> <path d=\"M5 10a7 7 0 0 0 14 0\" /> <path d=\"M8 21l8 0\" /> <path d=\"M12 17l0 4\" />", "info-circle": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\" /> <path d=\"M12 9h.01\" /> <path d=\"M11 12h1v4h1\" />", "file-text": "<path d=\"M14 3v4a1 1 0 0 0 1 1h4\" /> <path d=\"M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2\" /> <path d=\"M9 9l1 0\" /> <path d=\"M9 13l6 0\" /> <path d=\"M9 17l6 0\" />", "list-details": "<path d=\"M13 5h8\" /> <path d=\"M13 9h5\" /> <path d=\"M13 15h8\" /> <path d=\"M13 19h5\" /> <path d=\"M3 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4\" /> <path d=\"M3 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4\" />", "device-floppy": "<path d=\"M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2\" /> <path d=\"M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0\" /> <path d=\"M14 4l0 4l-6 0l0 -4\" />", "download": "<path d=\"M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2\" /> <path d=\"M7 11l5 5l5 -5\" /> <path d=\"M12 4l0 12\" />", "upload": "<path d=\"M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2\" /> <path d=\"M7 9l5 -5l5 5\" /> <path d=\"M12 4l0 12\" />", "thermometer": "<path d=\"M19 5a2.828 2.828 0 0 1 0 4l-8 8h-4v-4l8 -8a2.828 2.828 0 0 1 4 0\" /> <path d=\"M16 7l-1.5 -1.5\" /> <path d=\"M13 10l-1.5 -1.5\" /> <path d=\"M10 13l-1.5 -1.5\" /> <path d=\"M7 17l-3 3\" />", "wind": "<path d=\"M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24\" /> <path d=\"M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24\" /> <path d=\"M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24\" />", "map-pin": "<path d=\"M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" /> <path d=\"M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0\" />", "search": "<path d=\"M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0\" /> <path d=\"M21 21l-6 -6\" />", "user": "<path d=\"M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0\" /> <path d=\"M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2\" />", "flame": "<path d=\"M12 10.941c2.333 -3.308 .167 -7.823 -1 -8.941c0 3.395 -2.235 5.299 -3.667 6.706c-1.43 1.408 -2.333 3.294 -2.333 5.588c0 3.704 3.134 6.706 7 6.706c3.866 0 7 -3.002 7 -6.706c0 -1.712 -1.232 -4.403 -2.333 -5.588c-2.084 3.353 -3.257 3.353 -4.667 2.235\" />", "scale": "<path d=\"M7 20l10 0\" /> <path d=\"M6 6l6 -1l6 1\" /> <path d=\"M12 3l0 17\" /> <path d=\"M9 12l-3 -6l-3 6a3 3 0 0 0 6 0\" /> <path d=\"M21 12l-3 -6l-3 6a3 3 0 0 0 6 0\" />", "world": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\" /> <path d=\"M3.6 9h16.8\" /> <path d=\"M3.6 15h16.8\" /> <path d=\"M11.5 3a17 17 0 0 0 0 18\" /> <path d=\"M12.5 3a17 17 0 0 1 0 18\" />", "help-circle": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\" /> <path d=\"M12 16v.01\" /> <path d=\"M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483\" />"}/*ENDICONS*/;
+const EMO={home:'🏠',snowflake:'❄️','chart-bar':'📊',history:'🕘',settings:'⚙️','menu-2':'☰',x:'✕','arrow-left':'←',check:'✓',plus:'＋',trash:'🗑',refresh:'⟳',users:'👥',palette:'🎨','cloud-upload':'☁️',photo:'🖼️',camera:'📷',microphone:'🎙️','info-circle':'ℹ️','file-text':'📄','list-details':'📋','device-floppy':'💾',download:'⬇️',upload:'⬆️',thermometer:'🌡️',wind:'💨','map-pin':'📍',search:'🔍',user:'👤',flame:'🔥',scale:'⚖️',world:'🌍','help-circle':'❓'};
+
+/* ====== helpers ====== */
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const fmt=s=>{s=Math.max(0,Math.round(s));return pad(Math.floor(s/60))+':'+pad(s%60)};
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const num=v=>{v=parseFloat(String(v).replace(',','.'));return isFinite(v)?v:null};
+const parseMS=t=>{t=String(t||'').trim();if(!t)return null;if(t.includes(':')){const[a,b]=t.split(':');return (+a||0)*60+(+b||0)}const n=num(t);return n==null?null:Math.round(n*60)};
+function toast(m,ms=2600){const d=document.createElement('div');d.className='toast';d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),ms)}
+const fmtDate=ts=>new Date(ts).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'2-digit'});
+const fmtTime=ts=>new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+const ago=ts=>{const m=Math.round((Date.now()-ts)/60000);return m<2?'just now':m<90?m+' min ago':m<2880?Math.round(m/60)+' h ago':Math.round(m/1440)+' d ago'};
+const cmpVer=(a,b)=>{const x=String(a).split('.').map(Number),y=String(b).split('.').map(Number);for(let i=0;i<3;i++){if((x[i]||0)!==(y[i]||0))return(x[i]||0)>(y[i]||0)?1:-1}return 0};
+const km=(a,b,c,d)=>{const R=6371,t=x=>x*Math.PI/180,dl=t(c-a),dn=t(d-b),h=Math.sin(dl/2)**2+Math.cos(t(a))*Math.cos(t(c))*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
+const dest=(la,ln,m,b)=>{const R=6371000,t=x=>x*Math.PI/180,d=m/R,B=t(b),p=t(la),l=t(ln);const p2=Math.asin(Math.sin(p)*Math.cos(d)+Math.cos(p)*Math.sin(d)*Math.cos(B));const l2=l+Math.atan2(Math.sin(B)*Math.sin(d)*Math.cos(p),Math.cos(d)-Math.sin(p)*Math.sin(p2));return[p2*180/Math.PI,l2*180/Math.PI]};
+function ic(n,cls=''){if(S.settings.iconStyle==='emoji')return `<span class="ic ${cls}" style="font-style:normal">${EMO[n]||'•'}</span>`;return `<svg class="ic ${cls}" viewBox="0 0 24 24" aria-hidden="true">${ICONS[n]||''}</svg>`}
+
+/* ====== state ====== */
+const LS='ice-dip-log-v1', ACTIVE='ice-dip-log-active';
+const DEF={club:{name:'',logo:''},spot:null,setupDone:false,lastSeen:'',theme:'ice',mode:'auto',iconStyle:'icons',prepSec:60,targetMode:'auto',targetSec:180,keywords:'stop, out, done',lang:'en-US',voice:true,beep:true,sheetUrl:'',lastSync:0,me:'',lastStyle:{}};
+let S=(()=>{try{const j=JSON.parse(localStorage.getItem(LS)||'{}');const st=Object.assign({},DEF,j.settings);st.club=Object.assign({},DEF.club,(j.settings||{}).club);return{members:j.members||[],dips:j.dips||[],club:j.club||[],cache:j.cache||{},manual:j.manual||null,settings:st}}catch{return{members:[],dips:[],club:[],cache:{},manual:null,settings:{...DEF}}}})();
+const save=()=>{try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){toast('Storage full – export a backup!')}};
+const clubName=()=>S.settings.club.name||'My club';
+
+/* photos in IndexedDB */
+const idb=()=>new Promise((res,rej)=>{const r=indexedDB.open('ice-dip-log-photos',1);r.onupgradeneeded=()=>r.result.createObjectStore('p');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+async function photoPut(id,blob){const db=await idb();return new Promise((res,rej)=>{const t=db.transaction('p','readwrite');t.objectStore('p').put(blob,id);t.oncomplete=res;t.onerror=()=>rej(t.error)})}
+async function photoGet(id){const db=await idb();return new Promise(res=>{const q=db.transaction('p').objectStore('p').get(id);q.onsuccess=()=>res(q.result||null);q.onerror=()=>res(null)})}
+async function photoDel(id){const db=await idb();return new Promise(res=>{const t=db.transaction('p','readwrite');t.objectStore('p').delete(id);t.oncomplete=res})}
+function shrink(file,max=1000,type='image/jpeg',q=.72){return new Promise((res,rej)=>{const img=new Image();img.onload=()=>{const k=Math.min(1,max/Math.max(img.width,img.height));const c=document.createElement('canvas');c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext('2d').drawImage(img,0,0,c.width,c.height);c.toBlob(b=>b?res(b):rej(),type,q);URL.revokeObjectURL(img.src)};img.onerror=rej;img.src=URL.createObjectURL(file)})}
+const blobToUrl=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(b)});
+
+/* ====== appearance ====== */
+function applyTheme(){
+  const s=S.settings,dark=matchMedia('(prefers-color-scheme: dark)').matches,mode=s.mode==='auto'?(dark?'dark':'light'):s.mode;
+  document.documentElement.dataset.theme=s.theme;document.documentElement.dataset.mode=mode;
+  $('#themecolor').content=getComputedStyle(document.documentElement).getPropertyValue('--bg2').trim()||'#0c1520';
+}
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(S.settings.mode==='auto')applyTheme()});
+
+/* ====== dialogs ====== */
+function dlg({title,body,actions,close=true}){return new Promise(res=>{const o=$('#dlg');
+  o.innerHTML=`<div class="sheet"><div class="row sp"><h2>${title}</h2>${close?`<button class="icon" data-dx aria-label="Close">${ic('x')}</button>`:''}</div><div class="sb">${body}</div><div class="row end wrap">${actions.map((a,i)=>`<button class="${a.cls||''}" data-di="${i}">${a.label}</button>`).join('')}</div></div>`;
+  o.className='show';const done=v=>{o.className='';o.innerHTML='';o.onclick=null;res(v)};
+  o.onclick=e=>{const b=e.target.closest('[data-di]');if(b)done(actions[+b.dataset.di].v);else if(close&&(e.target.closest('[data-dx]')||e.target===o))done(null)}})}
+const confirmD=(title,msg,yes='OK',no='Cancel',danger=false)=>dlg({title,body:`<p>${msg}</p>`,actions:[{label:no,v:false,cls:'ghost'},{label:yes,v:true,cls:danger?'danger':'pri'}]}).then(v=>v===true);
+const infoD=(title,body)=>dlg({title,body,actions:[{label:'OK',v:1,cls:'pri'}]});
+
+/* ====== places & lakes ====== */
+const LAKES=[
+ {name:'Lake Zurich',keys:['zurich'],model:'delft3d-flow',lat:47.27,lng:8.69},
+ {name:'Lake Geneva',keys:['geneva'],model:'delft3d-flow',lat:46.45,lng:6.55},
+ {name:'Lake Lugano',keys:['lugano'],model:'delft3d-flow',lat:46.0,lng:8.97},
+ {name:'Lake Biel',keys:['biel'],model:'delft3d-flow',lat:47.08,lng:7.17},
+ {name:'Lake Murten',keys:['murten'],model:'delft3d-flow',lat:46.93,lng:7.08},
+ {name:'Lake Neuchâtel',keys:['neuchatel'],model:'mitgcm',lat:46.9,lng:6.85},
+ {name:'Lake Lucerne',keys:['lucerne'],model:'mitgcm',lat:47.0,lng:8.38},
+ {name:'Lake Zug',keys:['zug'],model:'mitgcm',lat:47.13,lng:8.48},
+ {name:'Lake Greifensee',keys:['greifensee'],model:'delft3d-flow',lat:47.35,lng:8.68},
+ {name:'Lake Hallwil',keys:['hallwil'],model:'delft3d-flow',lat:47.28,lng:8.22},
+ {name:'Lake Ägeri',keys:['aegeri','ageri'],model:'delft3d-flow',lat:47.12,lng:8.63},
+ {name:'Lake Joux',keys:['joux'],model:'delft3d-flow',lat:46.65,lng:6.28},
+ {name:'Lake St. Moritz',keys:['stmoritz'],model:'delft3d-flow',lat:46.49,lng:9.83},
+ {name:'Lake Garda',keys:['garda'],model:'delft3d-flow',lat:45.65,lng:10.7},
+ {name:'Lake Caldonazzo',keys:['caldonazzo'],model:'delft3d-flow',lat:46.01,lng:11.24},
+ {name:'Lake Annecy',keys:['annecy'],model:'delft3d-flow',lat:45.86,lng:6.17},
+ {name:'Lake Bourget',keys:['bourget'],model:'delft3d-flow',lat:45.73,lng:5.86}];
+function parseAlp(j){
+  const raw=j.variables.temperature.data.map(x=>Array.isArray(x)?x.flat(Infinity)[0]:x);
+  const ts=j.time.map(t=>+new Date(/Z|[+-]\d\d:?\d\d$/.test(t)?t:t+'Z'));
+  return ts.map((t,i)=>({t,v:raw[i]})).filter(p=>typeof p.v==='number'&&isFinite(p.v));
+}
+async function alpPoint(lake,lat,lng,a,b){
+  for(const key of lake.keys){
+    for(const q of ['?variables=temperature','']){
+      try{const r=await fetch(`https://alplakes-api.eawag.ch/simulations/point/${lake.model}/${key}/${a}/${b}/0/${lat.toFixed(5)}/${lng.toFixed(5)}${q}`);
+        if(!r.ok)continue;const s=parseAlp(await r.json());if(s.length)return{series:s,key}}catch{}
+    }
+  }
+  return null;
+}
+const tfmt=d=>d.toISOString().slice(0,16).replace(/[-:T]/g,'');
+async function findLakePoint(city,lake,onProg){
+  const c=[[city.lat,city.lng]];
+  for(const r of [150,400,800,1500,3000,5000])for(let b=0;b<360;b+=45)c.push(dest(city.lat,city.lng,r,b));
+  for(let f=.1;f<=1.001;f+=.1)c.push([city.lat+(lake.lat-city.lat)*f,city.lng+(lake.lng-city.lng)*f]);
+  c.sort((p,q)=>km(city.lat,city.lng,p[0],p[1])-km(city.lat,city.lng,q[0],q[1]));
+  const now=Date.now(),a=tfmt(new Date(now-36e5)),b=tfmt(new Date(now+36e5));
+  for(let i=0;i<c.length;i+=8){
+    onProg&&onProg(i,c.length);
+    const batch=c.slice(i,i+8),res=await Promise.all(batch.map(p=>alpPoint(lake,p[0],p[1],a,b)));
+    const k=res.findIndex(Boolean);if(k>=0)return{pt:batch[k],key:res[k].key,dist:km(city.lat,city.lng,batch[k][0],batch[k][1])};
+  }
+  return null;
+}
+let stationCache=null;
+async function nearestStation(lat,lng){
+  try{
+    if(!stationCache){const r=await fetch('https://api.existenz.ch/apiv1/hydro/locations');stationCache=(await r.json()).payload}
+    let best=null;for(const k in stationCache){const d=stationCache[k].details||{};if(d['water-body-type']!=='lake'||d.lat==null)continue;const dd=km(lat,lng,+d.lat,+d.lon);if(dd<40&&(!best||dd<best.dist))best={id:String(d.id??k),name:d.name,dist:Math.round(dd)}}
+    return best;
+  }catch{return null}
+}
+async function geocode(q){const r=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=6&language=en&format=json`);const j=await r.json();return(j.results||[]).map(x=>({name:x.name,region:x.admin1||'',country:x.country||'',lat:x.latitude,lng:x.longitude}))}
+
+/* ====== data sources ====== */
+async function fetchAlp(){
+  const sp=S.settings.spot;if(!sp||!sp.lake||!sp.pt)throw new Error('no lake model set');
+  const now=Date.now(),r=await alpPoint({keys:[sp.lake.key],model:sp.lake.model},sp.pt[0],sp.pt[1],tfmt(new Date(now-6*36e5)),tfmt(new Date(now+48*36e5)));
+  if(!r)throw new Error('no model data');
+  let cur=r.series[0];for(const p of r.series)if(Math.abs(p.t-now)<Math.abs(cur.t-now))cur=p;
+  return{v:+cur.v.toFixed(1),t:cur.t,series:r.series.filter(p=>p.t>now-36e5).slice(0,60)};
+}
+async function fetchBafu(){
+  const st=S.settings.spot&&S.settings.spot.station;if(!st)throw new Error('no station set');
+  const r=await fetch(`https://api.existenz.ch/apiv1/hydro/latest?locations=${encodeURIComponent(st.id)}&parameters=temperature&app=ice-dip-log&version=1.0`);
+  if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json();
+  const p=(j.payload||[]).filter(x=>x.par==='temperature'&&x.val!=null).pop();if(!p)throw new Error('no temperature');
+  return{v:+(+p.val).toFixed(1),t:p.timestamp*1000};
+}
+async function fetchWx(){
+  const sp=S.settings.spot;if(!sp)throw new Error('no location set');
+  const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${sp.lat}&longitude=${sp.lng}&current=temperature_2m,apparent_temperature,wind_speed_10m,weather_code,is_day&hourly=temperature_2m,apparent_temperature,precipitation_probability,weather_code,wind_speed_10m&timezone=auto&forecast_days=2&wind_speed_unit=kmh`);
+  if(!r.ok)throw new Error('HTTP '+r.status);const j=await r.json(),h=j.hourly;
+  return{t:Date.now(),air:j.current.temperature_2m,feels:j.current.apparent_temperature,wind:j.current.wind_speed_10m,code:j.current.weather_code,day:j.current.is_day,
+    hours:h.time.map((t,i)=>({t:+new Date(t),air:h.temperature_2m[i],feels:h.apparent_temperature[i],pop:h.precipitation_probability[i],code:h.weather_code[i],wind:h.wind_speed_10m[i]}))};
+}
+const wxIcon=c=>c==null?'·':c===0?'☀️':c<=2?'🌤️':c===3?'☁️':c<=48?'🌫️':c<=57?'🌦️':c<=67?'🌧️':c<=77?'🌨️':c<=82?'🌧️':c<=86?'🌨️':'⛈️';
+let loading=false;
+async function refreshData(){
+  if(loading||!S.settings.spot)return;loading=true;render();
+  const [a,b,w]=await Promise.allSettled([fetchAlp(),fetchBafu(),fetchWx()]);
+  const c=S.cache;c.errors={};
+  if(a.status==='fulfilled')c.alp=a.value;else{c.errors.alp=a.reason.message;delete c.alp}
+  if(b.status==='fulfilled')c.bafu=b.value;else{c.errors.bafu=b.reason.message;delete c.bafu}
+  if(w.status==='fulfilled')c.wx=w.value;else c.errors.wx=w.reason.message;
+  c.fetched=Date.now();save();loading=false;render();
+}
+function waterNow(){
+  const m=S.manual;if(m&&Date.now()-m.t<6*36e5)return{v:m.v,src:'Your measurement',t:m.t};
+  const {alp,bafu}=S.cache;const A=alp&&{v:alp.v,src:'Lake model',t:alp.t},B=bafu&&{v:bafu.v,src:'Measuring station',t:bafu.t};
+  return A||B||null;
+}
+
+/* ====== suggestions ====== */
+const recommendSec=w=>w==null?120:Math.round(Math.min(Math.max(w,1),10))*60;
+function suggestion(){
+  const w=waterNow(),wx=S.cache.wx,out=[];
+  if(!w)return{lines:[{c:'warn',t:'No water temperature yet – refresh, or enter what you measure at the shore.'}],sec:120};
+  const sec=recommendSec(w.v),min=sec/60,lvl=w.v<4?'Extreme cold':w.v<7?'Very cold':w.v<10?'Cold':w.v<14?'Fresh':'Mild';
+  out.push({c:'good',t:`<b>${lvl} (${w.v.toFixed(1)}°C)</b> – aim for up to <b>${min} min</b> (rule of thumb: ~1 min per °C, max 10). `+(w.v<7?'Stay standing or swim only briefly; keep hands and head out if you can.':w.v<12?'Short swims are fine if you are acclimatised.':'Good conditions for a longer, relaxed dip.')});
+  if(wx){
+    if(wx.feels<3)out.push({c:'warn',t:`Feels like ${wx.feels.toFixed(0)}°C on shore – bring warm dry layers, a hat and a hot drink; get dressed fast.`});
+    if(wx.wind>20)out.push({c:'warn',t:`Wind ${Math.round(wx.wind)} km/h – wind chill after you get out will hurt; shorten the dip.`});
+    if(wx.code>=95)out.push({c:'warn',t:'Thunderstorm risk – stay out of the water.'});
+    else if(wx.code>=51&&wx.code<=82)out.push({c:'warn',t:'Rain/snow around – plan a sheltered place to change.'});
+    if(!wx.day)out.push({c:'warn',t:'It is dark – use a headlamp, bring a buddy, stay close to the shore.'});
+    const b=bestHour();if(b)out.push({c:'good',t:`Best slot ${b.today?'today':'tomorrow'}: <b>${pad(new Date(b.t).getHours())}:00</b> – feels like ${b.feels.toFixed(0)}°C, ${wxIcon(b.code)} ${b.pop??0}% rain chance.`});
+  }
+  out.push({c:'warn',t:'Never dip alone. Leave the water if you shiver uncontrollably or lose feeling in hands. Rewarm gradually (no hot shower right away). Not medical advice.'});
+  return{lines:out,sec};
+}
+function bestHour(){
+  const h=S.cache.wx?.hours;if(!h)return null;const now=Date.now(),d=new Date();
+  const ok=x=>{const hr=new Date(x.t).getHours();return hr>=8&&hr<=17&&x.code<95&&(x.pop??0)<60};
+  let c=h.filter(x=>x.t>now-36e5&&new Date(x.t).getDate()===d.getDate()&&ok(x)),today=true;
+  if(!c.length){c=h.filter(x=>x.t>now&&ok(x));today=false}
+  if(!c.length)return null;c.sort((a,b)=>b.feels-a.feels);return{...c[0],today};
+}
+
+/* ====== rows / stats ====== */
+function localRows(){const r=[];for(const d of S.dips)for(const p of d.people)r.push({key:d.id+'|'+p.name,dipId:d.id,ts:d.ts,name:p.name,sec:p.sec||d.durationSec,style:p.style,water:d.water,air:d.air,feeling:d.feeling});return r}
+function allRows(scope){const m=new Map();if(scope==='club')for(const c of S.club)m.set(String(c.key),{key:String(c.key),dipId:String(c.dipId),ts:+c.timestamp,name:String(c.name),sec:+c.seconds,style:c.style,water:c.waterC===''?null:+c.waterC,air:c.airC===''?null:+c.airC,feeling:c.feeling});for(const r of localRows())m.set(r.key,r);return[...m.values()].sort((a,b)=>a.ts-b.ts)}
+let statScope='mine';
+function statsHtml(){
+  const rows=statScope==='club'?allRows('club'):localRows().sort((a,b)=>a.ts-b.ts);
+  const dips=[...new Set(rows.map(r=>r.dipId))].map(id=>{const rs=rows.filter(r=>r.dipId===id);return{id,ts:rs[0].ts,sec:Math.max(...rs.map(r=>r.sec)),water:rs[0].water}});
+  const tot=rows.reduce((a,r)=>a+r.sec,0),ws=dips.filter(d=>d.water!=null);
+  const cold=ws.length?Math.min(...ws.map(d=>d.water)):null,avg=ws.length?ws.reduce((a,d)=>a+d.water,0)/ws.length:null;
+  const per=[...new Set(rows.map(r=>r.name))].map(n=>{const rs=rows.filter(r=>r.name===n),cw=rs.filter(r=>r.water!=null);return{n,c:rs.length,tot:rs.reduce((a,r)=>a+r.sec,0),max:Math.max(...rs.map(r=>r.sec)),cold:cw.length?Math.min(...cw.map(r=>r.water)):null,sw:rs.filter(r=>r.style==='swimming').length}}).sort((a,b)=>b.tot-a.tot);
+  return `<div class="seg" style="margin:8px 0"><button class="${statScope==='mine'?'on':''}" data-a="scope" data-v="mine">This phone</button><button class="${statScope==='club'?'on':''}" data-a="scope" data-v="club">Whole club (Sheet)</button></div>
+  ${statScope==='club'&&!S.settings.sheetUrl?'<div class="warn">Set up the shared Google Sheet in Settings › Shared Sheet to see everyone’s dips.</div>':''}
+  ${!rows.length?'<div class="card sub">No dips recorded yet.</div>':`
+  <div class="grid"><div class="stat">Dips<b>${dips.length}</b></div><div class="stat">Time in water<b>${tot>=3600?Math.floor(tot/3600)+' h '+pad(Math.floor(tot%3600/60))+' m':fmt(tot)}</b></div>
+  <div class="stat">Coldest water<b>${cold==null?'–':cold.toFixed(1)+'°C'}</b></div><div class="stat">Avg water<b>${avg==null?'–':avg.toFixed(1)+'°C'}</b></div></div>
+  <div class="card"><h2>Season chart</h2>${chart(dips.slice(-30))}<div class="sub">Bars: duration · line: water °C</div></div>
+  <div class="card"><h2>Who’s who</h2><table><tr><th>Name</th><th>Dips</th><th>Total</th><th>Best</th><th>Coldest</th><th>${ic('flame')}</th></tr>
+  ${per.map(p=>`<tr><td>${esc(p.n)}</td><td>${p.c}</td><td>${fmt(p.tot)}</td><td>${fmt(p.max)}</td><td>${p.cold==null?'–':p.cold.toFixed(1)+'°'}</td><td>${p.sw}</td></tr>`).join('')}</table><div class="sub">Last column: swims (not just standing).</div></div>`}`;
+}
+function chart(d){
+  if(!d.length)return '';const W=340,H=150,L=8,B=22,T=10,n=d.length,bw=Math.max(4,Math.min(26,(W-2*L)/n-3));
+  const mx=Math.max(60,...d.map(x=>x.sec)),ws=d.filter(x=>x.water!=null).map(x=>x.water),lo=Math.min(...ws,0)-1,hi=Math.max(...ws,10)+1;
+  const x=i=>L+(i+.5)*((W-2*L)/n),yb=s=>H-B-(s/mx)*(H-B-T),yw=w=>H-B-((w-lo)/(hi-lo))*(H-B-T);
+  const bars=d.map((q,i)=>`<rect x="${x(i)-bw/2}" y="${yb(q.sec)}" width="${bw}" height="${H-B-yb(q.sec)}" rx="2" fill="var(--acc)" opacity=".75"/>`).join('');
+  const pts=d.map((q,i)=>q.water==null?null:[x(i),yw(q.water)]).filter(Boolean);
+  const line=pts.length?`<polyline fill="none" stroke="var(--over)" stroke-width="2" points="${pts.map(p=>p.join(',')).join(' ')}"/>`+pts.map(p=>`<circle cx="${p[0]}" cy="${p[1]}" r="3" fill="var(--over)"/>`).join(''):'';
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Dips chart">${bars}${line}<text x="${L}" y="${H-6}" fill="var(--mute)" font-size="10">${fmtDate(d[0].ts)}</text><text x="${W-L}" y="${H-6}" fill="var(--mute)" font-size="10" text-anchor="end">${fmtDate(d[n-1].ts)}</text><text x="${L}" y="${T}" fill="var(--mute)" font-size="10">${Math.round(mx/60)} min</text></svg>`;
+}
+function historyHtml(){
+  const ds=[...S.dips].sort((a,b)=>b.ts-a.ts);if(!ds.length)return'<div class="card sub">No dips recorded yet.</div>';
+  return `<div class="card">${ds.map(d=>`<div class="dip"><div class="row sp"><div><b>${fmtDate(d.ts)} ${fmtTime(d.ts)}</b><div class="sub">${d.water!=null?d.water.toFixed(1)+'°C water':''}${d.air!=null?' · '+d.air.toFixed(0)+'°C air':''} · ${fmt(d.durationSec)}${d.feeling?' · '+['','🥶','😬','🙂','😄','🤩'][d.feeling]:''}</div></div><button class="ghost icon" data-a="deldip" data-v="${d.id}" aria-label="Delete">${ic('trash')}</button></div>
+  <div class="sub">${d.people.map(p=>esc(p.name)+(p.style==='swimming'?' (swim)':' (stand)')+(p.sec&&p.sec!==d.durationSec?' '+fmt(p.sec):'')).join(', ')}</div>${d.notes?`<div class="sub">“${esc(d.notes)}”</div>`:''}
+  ${d.hasPhoto?`<img data-photo="${d.id}" alt="photo">`:''}</div>`).join('')}</div>`;
+}
+async function loadPhotos(){for(const i of document.querySelectorAll('img[data-photo]')){const b=await photoGet(i.dataset.photo);if(b)i.src=URL.createObjectURL(b)}}
+
+/* ====== navigation / layout ====== */
+let page='home',sub=null,dirty=false,newer=null,menuOpen=false,deferredInstall=null;
+function go(p,s=null){page=p;sub=s;dirty=false;menuOpen=false;if(p==='setup'&&!W)initWiz();if(p==='settings'&&s==='spot')initSpot(S.settings.spot);render();window.scrollTo(0,0)}
+async function back(){
+  if(dirty&&!(await confirmD('Discard changes?','You changed something that is not saved yet.','Discard','Keep editing',true)))return;
+  if(page==='settings'&&sub)go('settings');else go('home');
+}
+const TITLES={home:'',cond:'Conditions',stats:'Statistics',hist:'History',settings:'Settings'};
+const SUBT={club:'Club',spot:'Swimming spot',members:'Members',dips:'Dip defaults',sheet:'Shared Sheet',look:'Appearance',backup:'Backup & data',about:'About'};
+function renderTop(){
+  const home=page==='home'||page==='setup',title=page==='setup'?APP_NAME:page==='settings'&&sub?SUBT[sub]:home?clubName():TITLES[page];
+  $('#top').innerHTML=`${home?(S.settings.club.logo?`<img class="logo" src="${S.settings.club.logo}" alt="">`:`<span style="font-size:26px;color:var(--acc2)">${ic('snowflake')}</span>`):`<button class="icon" data-a="back" aria-label="Back">${ic('arrow-left')}</button>`}
+   <div class="t"><b>${esc(title)}</b><span>${APP_NAME} v${APP_VERSION}${newer?' → v'+esc(newer.version):''}</span></div>
+   ${newer?`<button class="icon" data-a="updatepop" aria-label="Update available" style="color:var(--over)">${ic('refresh')}</button>`:''}
+   ${page==='setup'?'':`<button class="icon" data-a="menu" aria-label="Menu">${ic('menu-2')}</button>`}`;
+  const m=$('#menu');m.className=menuOpen?'show':'';
+  m.innerHTML=[['home','home','Home'],['cond','thermometer','Conditions'],['stats','chart-bar','Statistics'],['hist','history','History'],['settings','settings','Settings']].map(([k,i,l])=>`<button data-a="go" data-v="${k}">${ic(i)} ${l}</button>`).join('');
+}
+function render(){
+  applyTheme();renderTop();const m=$('#main'),bar=$('#bar');let b='';
+  const formPage=page==='settings'&&['club','spot','dips','sheet'].includes(sub);
+  if(page==='setup'){m.innerHTML=wizHtml();b=wizBar()}
+  else if(page==='home')m.innerHTML=homeHtml();
+  else if(page==='cond')m.innerHTML=condHtml();
+  else if(page==='stats')m.innerHTML=statsHtml();
+  else if(page==='hist')m.innerHTML=historyHtml();
+  else if(page==='settings')m.innerHTML=settingsHtml();
+  if(formPage)b=`<button class="ghost" data-a="back">Back</button><button class="pri" data-a="savepage">${ic('device-floppy')} Save</button>`;
+  bar.innerHTML=b;bar.className=b?'show':'';m.className=b?'hasbar':'';
+  if(page==='hist')loadPhotos();
+}
+
+/* ====== home / conditions ====== */
+function homeHtml(){
+  const w=waterNow(),wx=S.cache.wx,unfinished=localStorage.getItem(ACTIVE),sp=S.settings.spot;
+  return `${unfinished?`<div class="warn">Unfinished dip found. <button data-a="resume">Resume</button> <button class="ghost" data-a="discardActive">Discard</button></div>`:''}
+  <div class="card" data-a="go" data-v="cond" style="cursor:pointer"><div class="row sp"><div><div class="sub">Water${sp?' · '+esc(sp.city):''}</div><div class="big">${w?w.v.toFixed(1):'–'}<small>°C</small></div><div class="sub">${w?esc(w.src)+' · '+ago(w.t):'tap to set up or enter a value'}</div></div>
+   <div style="text-align:right"><div style="font-size:38px">${wx?wxIcon(wx.code):''}</div><div style="font-size:22px;font-weight:600">${wx?wx.air.toFixed(0)+'°C':''}</div><div class="sub">${wx?'feels '+wx.feels.toFixed(0)+'°':''}</div></div></div></div>
+  <button class="pri xl wide" data-a="recNew">${ic('snowflake')} Start a dip</button>
+  <div class="grid" style="margin-top:12px">
+   <button class="hb" data-a="go" data-v="cond">${ic('thermometer')}Conditions</button>
+   <button class="hb" data-a="go" data-v="stats">${ic('chart-bar')}Statistics</button>
+   <button class="hb" data-a="go" data-v="hist">${ic('history')}History</button>
+   <button class="hb" data-a="go" data-v="settings">${ic('settings')}Settings</button></div>`;
+}
+function condHtml(){
+  const w=waterNow(),c=S.cache,wx=c.wx,sg=suggestion(),sp=S.settings.spot;
+  return `<div class="row sp"><div class="sub">${sp?ic('map-pin')+' '+esc(sp.city)+(sp.lake?' · '+esc(sp.lake.name):''):'No swimming spot set'}</div><button data-a="refresh" ${loading?'disabled':''}>${loading?'…':ic('refresh')}</button></div>
+  ${!sp?`<div class="warn">Set your city and lake in <a href="#" data-a="gospot" style="color:var(--acc2)">Settings › Swimming spot</a>.</div>`:''}
+  <div class="card"><div class="sub">Water</div><div class="big">${w?w.v.toFixed(1):'–'}<small>°C</small></div>
+   <div class="sub">${w?esc(w.src)+' · '+ago(w.t):'no data'}</div>
+   <div class="row wrap" style="margin-top:8px">${c.alp?`<span class="chip">Lake model ${c.alp.v.toFixed(1)}°</span>`:''}${c.bafu?`<span class="chip">Station ${esc(sp.station.name)} ${c.bafu.v.toFixed(1)}° (${sp.station.dist} km)</span>`:''}${c.errors&&c.errors.alp&&sp&&sp.lake?`<span class="chip mute">Model: ${esc(c.errors.alp)}</span>`:''}${c.errors&&c.errors.bafu&&sp&&sp.station?`<span class="chip mute">Station: ${esc(c.errors.bafu)}</span>`:''}</div>
+   <div class="row" style="margin-top:10px"><input id="man" inputmode="decimal" placeholder="Measured at shore, °C" style="flex:1"><button data-a="manual">Set</button>${S.manual?`<button class="ghost" data-a="manualClear">${ic('x')}</button>`:''}</div>
+   ${c.alp&&c.alp.series.length?`<div class="sub" style="margin-top:8px">Model forecast: ${forecastTxt(c.alp.series)}</div>`:''}</div>
+  <div class="card"><div class="row sp"><div><div class="sub">Air</div><div class="big" style="font-size:44px">${wx?wx.air.toFixed(1):'–'}<small>°C</small></div></div><div style="font-size:40px">${wx?wxIcon(wx.code):''}</div></div>
+   <div class="sub">${wx?`Feels like ${wx.feels.toFixed(0)}° · wind ${Math.round(wx.wind)} km/h · ${ago(wx.t)}`:(c.errors&&c.errors.wx?'Weather: '+esc(c.errors.wx):'no data')}</div>${wx?hoursHtml(wx):''}</div>
+  <div class="card"><h2>Today’s dip</h2>${sg.lines.map(l=>`<div class="${l.c}">${l.t}</div>`).join('')}</div>
+  <div class="sub" style="text-align:center">Water: Alplakes (EPFL/Eawag) and BAFU via existenz.ch · Weather: Open-Meteo</div>`;
+}
+function forecastTxt(s){const now=Date.now();const pick=h=>{const t=now+h*36e5;return s.reduce((a,p)=>Math.abs(p.t-t)<Math.abs(a.t-t)?p:a)};return [6,24,48].map(h=>`+${h}h ${pick(h).v.toFixed(1)}°`).join(' · ')}
+function hoursHtml(wx){const now=Date.now(),b=bestHour();return `<div class="hours" style="margin-top:10px">${wx.hours.filter(h=>h.t>now-36e5).slice(0,12).map(h=>`<div class="hr ${b&&b.t===h.t?'best':''}">${pad(new Date(h.t).getHours())}h<b>${h.feels.toFixed(0)}°</b>${wxIcon(h.code)}<br><span class="sub">${h.pop??0}%</span></div>`).join('')}</div>`}
+
+/* ====== spot picker (shared by setup and settings) ====== */
+let SP=null;
+function initSpot(spot){SP={q:spot?spot.city:'',results:null,city:spot?{name:spot.city,region:spot.region,country:spot.country,lat:spot.lat,lng:spot.lng}:null,lake:spot&&spot.lake?LAKES.find(l=>l.name===spot.lake.name):null,none:!!(spot&&!spot.lake),busy:'',msg:spot?'Current setting kept – search again to change it.':'',result:spot||null,err:''}}
+function spotHtml(){
+  const s=SP,lakes=s.city?[...LAKES].map(l=>({...l,d:Math.round(km(s.city.lat,s.city.lng,l.lat,l.lng))})).sort((a,b)=>a.d-b.d):[];
+  return `<label style="margin-top:0">City or town near your swimming spot</label>
+  <div class="row"><input id="sp_q" value="${esc(s.q)}" placeholder="e.g. a town on the lake" style="flex:1" autocomplete="off"><button class="pri" data-a="geo">${ic('search')}</button></div>
+  ${s.busy==='geo'?'<div class="sub" style="margin-top:8px">Searching…</div>':''}${s.err?`<div class="warn">${esc(s.err)}</div>`:''}
+  ${s.results&&!s.results.length?'<div class="warn">No place found – try another spelling.</div>':''}
+  ${s.results&&s.results.length?`<div>${s.results.map((r,i)=>`<button class="pick" data-a="pickcity" data-v="${i}">${ic('map-pin')} <b>${esc(r.name)}</b> <span class="sub">${esc([r.region,r.country].filter(Boolean).join(', '))}</span></button>`).join('')}</div>`:''}
+  ${s.city&&!s.results?`<div class="good" style="margin-top:10px">${ic('map-pin')} ${esc(s.city.name)}${s.city.region?', '+esc(s.city.region):''}${s.city.country?', '+esc(s.city.country):''}</div>`:''}
+  ${s.city?`<label>Lake (water-temperature model)</label>
+   ${lakes.slice(0,6).map((l,i)=>`<button class="pick ${s.lake&&s.lake.name===l.name?'on':''}" data-a="picklake" data-v="${LAKES.indexOf(LAKES.find(x=>x.name===l.name))}">${esc(l.name)} <span class="sub">· ${l.d} km away</span></button>`).join('')}
+   <button class="pick ${s.none?'on':''}" data-a="picklake" data-v="-1">My lake is not listed – I will enter temperatures by hand</button>
+   ${s.busy==='lake'?'<div class="sub" style="margin-top:8px">Looking for model data near your spot… (can take ~20 s)</div>':''}${s.msg?`<div class="${/found|kept|hand/i.test(s.msg)?'good':'warn'}" style="margin-top:8px">${esc(s.msg)}</div>`:''}`:''}
+  <div class="sub" style="margin-top:10px">Water data comes from lake models of the Swiss Alplakes project; a nearby measuring station is added if one exists. Weather is found from the city. Everything can be overridden by hand on the Conditions page.</div>`;
+}
+async function spotGeo(){
+  SP.q=$('#sp_q').value.trim();if(SP.q.length<2)return;SP.busy='geo';SP.err='';SP.results=null;SP.city=null;renderBody();
+  try{SP.results=await geocode(SP.q)}catch{SP.err='Search failed – check your internet connection.';SP.results=null}
+  SP.busy='';renderBody();
+}
+async function spotPickCity(i){SP.city=SP.results[i];SP.results=null;SP.lake=null;SP.none=false;SP.msg='';SP.result=null;renderBody();const near=LAKES.map(l=>({l,d:km(SP.city.lat,SP.city.lng,l.lat,l.lng)})).sort((a,b)=>a.d-b.d)[0];if(near&&near.d<60)spotPickLake(LAKES.indexOf(near.l))}
+async function spotPickLake(i){
+  const c=SP.city;SP.msg='';
+  if(i<0){SP.lake=null;SP.none=true;const st=await nearestStation(c.lat,c.lng);SP.result={city:c.name,region:c.region,country:c.country,lat:c.lat,lng:c.lng,lake:null,pt:null,station:st};SP.msg='OK – you can enter temperatures by hand'+(st?`; station “${st.name}” (${st.dist} km) will be tried too.`:'.');renderBody();return}
+  SP.lake=LAKES[i];SP.none=false;SP.busy='lake';SP.result=null;renderBody();
+  const f=await findLakePoint(c,SP.lake);const st=await nearestStation(c.lat,c.lng);
+  SP.busy='';
+  if(f){SP.result={city:c.name,region:c.region,country:c.country,lat:c.lat,lng:c.lng,lake:{name:SP.lake.name,key:f.key,model:SP.lake.model},pt:f.pt,dist:f.dist,station:st};SP.msg=`Model data found ${f.dist<1?'right at':Math.round(f.dist*10)/10+' km from'} your city.`+(st?` Station “${st.name}” (${st.dist} km) added.`:'')}
+  else{SP.result={city:c.name,region:c.region,country:c.country,lat:c.lat,lng:c.lng,lake:null,pt:null,station:st};SP.msg='No model data near your city for this lake. Pick another lake or enter temperatures by hand.'}
+  renderBody();
+}
+function renderBody(){const m=$('#main');const y=window.scrollY;if(page==='setup')m.innerHTML=wizHtml();else if(page==='settings')m.innerHTML=settingsHtml();window.scrollTo(0,y)}
+
+/* ====== first-time wizard ====== */
+let W=null;
+function initWiz(){W={step:0,name:S.settings.club.name||'',logo:S.settings.club.logo||'',me:S.settings.me||'',members:[...S.members]};initSpot(null)}
+const WSTEPS=3;
+function wizHtml(){
+  const dots=`<div class="wzdots">${[0,1,2].map(i=>`<i class="${i<=W.step?'on':''}"></i>`).join('')}</div>`;
+  if(W.step===0)return `${dots}<h1>Welcome 👋</h1><p class="sub">Let’s set up your club. This takes a minute, and everything can be changed later in Settings.</p>
+   <div class="card"><label style="margin-top:0">Club name</label><input id="w_name" value="${esc(W.name)}" placeholder="e.g. Ice Bath Club" maxlength="40">
+   <label>Club logo (optional)</label><div class="row"><img class="logo-lg" id="w_logo" ${W.logo?`src="${W.logo}"`:'style="visibility:hidden"'} alt=""><label class="btn" style="margin:0;color:var(--ink)">${ic('photo')} Choose picture<input id="w_logofile" type="file" accept="image/*" hidden></label></div></div>`;
+  if(W.step===1)return `${dots}<h1>Where do you swim?</h1><div class="card">${spotHtml()}</div>`;
+  return `${dots}<h1>Who is in the club?</h1><div class="card"><label style="margin-top:0">Your name</label><input id="w_me" value="${esc(W.me)}" placeholder="Your name" maxlength="30">
+   <label>Other members (optional)</label><div class="row"><input id="w_newm" placeholder="Add a member" style="flex:1" maxlength="30"><button class="pri" data-a="wadd">${ic('plus')}</button></div>
+   <div class="row wrap" style="margin-top:10px">${W.members.filter(m=>m!==W.me).map(m=>`<span class="chip">${esc(m)} <a href="#" data-a="wdel" data-v="${esc(m)}" style="color:inherit;text-decoration:none"> ✕</a></span>`).join('')||'<span class="sub">You can add members later in Settings.</span>'}</div></div>`;
+}
+const wizBar=()=>`<button class="ghost" data-a="wback" ${W.step===0?'disabled':''}>Back</button><button class="pri" data-a="wnext">${W.step===WSTEPS-1?'Finish':'Next'}</button>`;
+function wizRead(){if($('#w_name'))W.name=$('#w_name').value.trim();if($('#w_me'))W.me=$('#w_me').value.trim()}
+async function wizNext(){
+  wizRead();
+  if(W.step===0&&!W.name){toast('Please enter a club name');return}
+  if(W.step===1){
+    if(!SP.result){if(!(await confirmD('No spot set','Continue without a swimming spot? Temperatures and weather stay empty until you set it in Settings.','Continue','Go back')))return}
+  }
+  if(W.step<WSTEPS-1){W.step++;render();window.scrollTo(0,0);return}
+  if(!W.me){toast('Please enter your name');return}
+  const me=W.me;W.members=[me,...W.members.filter(m=>m!==me)];
+  S.settings.club={name:W.name,logo:W.logo};S.settings.spot=SP.result||null;S.members=W.members;S.settings.me=me;S.settings.setupDone=true;S.settings.lastSeen=APP_VERSION;save();W=null;SP=null;
+  go('home');refreshData();
+}
+
+/* ====== settings pages ====== */
+const APPS_SCRIPT=`const SHEET='Dips';
+const HEAD=['key','dipId','timestamp','date','time','name','seconds','style','waterC','airC','feeling','notes','recordedBy'];
+function sh_(){const ss=SpreadsheetApp.getActiveSpreadsheet();let s=ss.getSheetByName(SHEET);if(!s){s=ss.insertSheet(SHEET);s.appendRow(HEAD);s.setFrozenRows(1);}return s;}
+function out_(o){return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON);}
+function doPost(e){
+  const lock=LockService.getScriptLock();lock.waitLock(20000);
+  try{
+    const rows=JSON.parse(e.postData.contents).rows||[];
+    const s=sh_();const last=s.getLastRow();
+    const have=new Set(last>1?s.getRange(2,1,last-1,1).getValues().map(r=>String(r[0])):[]);
+    const add=rows.filter(r=>!have.has(String(r.key))).map(r=>HEAD.map(h=>r[h]===undefined?'':r[h]));
+    if(add.length)s.getRange(last+1,1,add.length,HEAD.length).setValues(add);
+    return out_({ok:true,added:add.length});
+  }finally{lock.releaseLock();}
+}
+function doGet(e){
+  const v=sh_().getDataRange().getValues();const h=v.shift();
+  return out_({ok:true,rows:v.map(r=>Object.fromEntries(h.map((k,i)=>[k,r[i]])))});
+}`;
+const THEMES=[['ice','#2aa6e0'],['forest','#2fa36b'],['sunset','#f08a3c'],['violet','#8b6cf0'],['rose','#e0587a']];
+function settingsHtml(){
+  const s=S.settings;
+  if(!sub)return [['club','flame','Club name & logo'],['spot','map-pin','Swimming spot'],['members','users','Members'],['dips','snowflake','Dip defaults & voice'],['sheet','cloud-upload','Shared Sheet'],['look','palette','Appearance'],['backup','download','Backup & data'],['about','info-circle','About, license & changelog']]
+   .map(([k,i,l])=>`<button class="mi" data-a="sub" data-v="${k}">${ic(i)}<span>${l}</span><span style="flex:none;transform:scaleX(-1);display:inline-block">${ic('arrow-left')}</span></button>`).join('');
+  if(sub==='club')return `<div class="card"><label style="margin-top:0">Club name</label><input id="c_name" value="${esc(s.club.name)}" maxlength="40">
+   <label>Logo</label><div class="row"><img class="logo-lg" id="c_logo" ${s.club.logo?`src="${s.club.logo}"`:'style="visibility:hidden"'} alt=""><div><label class="btn" style="margin:0;color:var(--ink)">${ic('photo')} Choose picture<input id="c_logofile" type="file" accept="image/*" hidden></label><br><button class="ghost" style="margin-top:8px" data-a="rmlogo">Remove logo</button></div></div></div>`;
+  if(sub==='spot')return `<div class="card">${spotHtml()}</div>`;
+  if(sub==='members')return `<div class="card"><h2>Members</h2>${S.members.map(m=>`<div class="row sp" style="margin:6px 0"><span>${esc(m)} ${s.me===m?'<span class="chip on">me</span>':''}</span><span><button class="ghost" data-a="me" data-v="${esc(m)}">This is me</button> <button class="ghost icon" data-a="delmember" data-v="${esc(m)}" aria-label="Remove">${ic('trash')}</button></span></div>`).join('')||'<div class="sub">No members yet.</div>'}
+   <div class="row" style="margin-top:10px"><input id="newm" placeholder="Add member name" style="flex:1" maxlength="30"><button class="pri" data-a="addmember">${ic('plus')}</button></div><div class="sub" style="margin-top:6px">Removing a member keeps their past dips.</div></div>`;
+  if(sub==='dips')return `<div class="card"><label style="margin-top:0">Walk-to-water countdown (seconds)</label><input id="s_prep" type="number" value="${s.prepSec}">
+   <label>Time to stay in the water</label><div class="seg"><button class="${s.targetMode==='auto'?'on':''}" data-a="tmode" data-v="auto">Auto (from water temp)</button><button class="${s.targetMode==='fixed'?'on':''}" data-a="tmode" data-v="fixed">Fixed</button></div>
+   ${s.targetMode==='fixed'?`<label>Fixed target (mm:ss)</label><input id="s_target" value="${fmt(s.targetSec)}">`:''}
+   <label class="row"><input type="checkbox" id="s_voice" ${s.voice?'checked':''}> Spoken cues</label><label class="row"><input type="checkbox" id="s_beep" ${s.beep?'checked':''}> Beeps</label>
+   <label>Stop keyword(s), comma separated</label><input id="s_kw" value="${esc(s.keywords)}">
+   <label>Voice language</label><select id="s_lang">${[['en-US','English'],['de-CH','Deutsch (CH)'],['de-DE','Deutsch (DE)']].map(([v,l])=>`<option value="${v}" ${s.lang===v?'selected':''}>${l}</option>`).join('')}</select>
+   <button style="margin-top:12px" data-a="testvoice">${ic('microphone')} Test keyword</button><div class="sub" id="vtest" style="margin-top:6px"></div></div>`;
+  if(sub==='sheet')return `<div class="card"><div class="sub">Everyone in the club can read and write the same Google Sheet. Each phone keeps its own copy and uploads to the sheet. Photos stay on the phone.</div>
+   <label>Web app URL (Apps Script)</label><input id="s_sheet" value="${esc(s.sheetUrl)}" placeholder="https://script.google.com/macros/s/…/exec">
+   <button class="pri" style="margin-top:10px" data-a="sync">${ic('refresh')} Sync now</button>
+   <div class="sub" style="margin-top:6px">${s.lastSync?'Last sync '+ago(s.lastSync):'Never synced'} · ${S.dips.filter(d=>!d.synced).length} dip(s) waiting</div></div>
+   <div class="card"><h2>One-time setup</h2><ol class="sub" style="padding-left:18px"><li>Create a Google Sheet, open <b>Extensions › Apps Script</b>.</li><li>Replace the code with the script below, save.</li><li><b>Deploy › New deployment › Web app</b>: Execute as <b>Me</b>, access <b>Anyone with the link</b>; copy the URL.</li><li>Paste the URL above, on every member’s phone.</li></ol>
+   <button data-a="copyscript">Copy script</button><pre>${esc(APPS_SCRIPT)}</pre><div class="warn">Anyone with the URL can read and add rows – share it only inside the club.</div></div>`;
+  if(sub==='look')return `<div class="card"><h2>Colour</h2><div class="row wrap">${THEMES.map(([k,c])=>`<button class="sw ${s.theme===k?'on':''}" style="background:${c}" data-a="theme" data-v="${k}" aria-label="${k}"></button>`).join('')}</div>
+   <label>Mode</label><div class="seg">${['auto','light','dark'].map(m=>`<button class="${s.mode===m?'on':''}" data-a="mode" data-v="${m}">${m[0].toUpperCase()+m.slice(1)}</button>`).join('')}</div>
+   <label>Icon style</label><div class="seg">${[['icons','Icons'],['emoji','Emoji']].map(([k,l])=>`<button class="${s.iconStyle===k?'on':''}" data-a="iconstyle" data-v="${k}">${l}</button>`).join('')}</div></div>`;
+  if(sub==='backup')return `<div class="card"><h2>Backup</h2><div class="row wrap"><button data-a="csv">${ic('download')} Export CSV</button><button data-a="json">${ic('download')} Backup JSON</button><button data-a="import">${ic('upload')} Import JSON</button></div><input type="file" id="impfile" accept="application/json" hidden><div class="sub" style="margin-top:8px">The backup contains dips, members and settings (not photos).</div></div>
+   <div class="card"><h2>Erase</h2><button class="danger" data-a="erase">${ic('trash')} Erase all data on this phone</button></div>`;
+  if(sub==='about')return `<div class="card" style="text-align:center">${s.club.logo?`<img class="logo-lg" src="${s.club.logo}" alt="">`:`<div style="font-size:50px;color:var(--acc2)">${ic('snowflake')}</div>`}<h1>${APP_NAME}</h1><div class="sub">Version ${APP_VERSION}${newer?' · v'+esc(newer.version)+' available':''}</div>
+   <div class="row wrap" style="justify-content:center;margin-top:10px"><button data-a="chkupd">${ic('refresh')} Check for updates</button>${deferredInstall?`<button class="pri" data-a="install">${ic('download')} Install app</button>`:''}</div></div>
+   <button class="mi" data-a="changelog">${ic('list-details')}<span>Changelog</span></button>
+   <button class="mi" data-a="license">${ic('scale')}<span>License (GPL-3.0)</span></button>
+   <button class="mi" data-a="privacy">${ic('help-circle')}<span>Privacy & data sources</span></button>
+   <button class="mi" data-a="credits">${ic('info-circle')}<span>Credits</span></button>`;
+  return '';
+}
+const changelogHtml=(list)=>list.map(c=>`<p><b>v${esc(c.v)}</b> <span class="sub">${esc(c.date||'')}</span></p><ul>${c.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`).join('');
+async function savePage(){
+  const s=S.settings,g=id=>$(id);
+  if(sub==='club'){const n=g('#c_name').value.trim();if(!n){toast('Club name cannot be empty');return}s.club.name=n}
+  if(sub==='spot'){if(!SP.result){toast('Pick a city first');return}s.spot=SP.result;S.cache={};}
+  if(sub==='dips')readDips();
+  if(sub==='sheet')s.sheetUrl=g('#s_sheet').value.trim();
+  save();dirty=false;toast('Saved');go('settings');refreshDataIfSpot();
+}
+function refreshDataIfSpot(){if(S.settings.spot&&!S.cache.fetched)refreshData()}
+function readDips(){const s=S.settings,g=id=>$(id);if(!g('#s_prep'))return;s.prepSec=Math.max(5,+g('#s_prep').value||60);s.voice=g('#s_voice').checked;s.beep=g('#s_beep').checked;s.keywords=g('#s_kw').value||'stop';s.lang=g('#s_lang').value;const t=g('#s_target');if(t)s.targetSec=parseMS(t.value)||180}
+
+/* ====== updates / about ====== */
+async function checkUpdate(manual){
+  if(!navigator.onLine){if(manual)toast('You are offline');return}
+  try{const r=await fetch('version.json?t='+Date.now(),{cache:'no-store'});const j=await r.json();
+    if(cmpVer(j.version,APP_VERSION)>0){const first=!newer||newer.version!==j.version;newer=j;renderTop();if(manual||first)updatePop()}
+    else{newer=null;renderTop();if(manual)toast('You have the latest version')}}catch{if(manual)toast('Could not check for updates')}
+}
+async function updatePop(){
+  if(!newer)return;const notes=newer.notes&&newer.notes.length?`<ul>${newer.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:'';
+  const v=await dlg({title:'Update available',body:`<p>Version <b>${esc(newer.version)}</b> is ready (you have ${APP_VERSION}).</p>${notes}<p class="sub">Your dips and settings stay untouched.</p>`,actions:[{label:'Later',v:false,cls:'ghost'},{label:'Update now',v:true,cls:'pri'}]});
+  if(v)updateNow();
+}
+async function updateNow(){
+  try{const regs=await navigator.serviceWorker.getRegistrations();for(const r of regs)await r.unregister();for(const k of await caches.keys())await caches.delete(k)}catch{}
+  location.replace(location.pathname+'?u='+Date.now());
+}
+async function whatsNew(){
+  const s=S.settings;if(!s.setupDone)return;
+  if(s.lastSeen&&s.lastSeen!==APP_VERSION){const list=CHANGELOG.filter(c=>cmpVer(c.v,s.lastSeen)>0).slice(0,3);s.lastSeen=APP_VERSION;save();if(list.length)await dlg({title:`What’s new in v${APP_VERSION}`,body:changelogHtml(list),actions:[{label:'OK',v:1,cls:'pri'}]})}
+  else if(!s.lastSeen){s.lastSeen=APP_VERSION;save()}
+}
+
+/* ====== sheet sync ====== */
+function sheetRows(){const out=[],safe=t=>/^[=+\-@]/.test(t||'')?"'"+t:(t||'');for(const d of S.dips.filter(d=>!d.synced))for(const p of d.people)out.push({key:d.id+'|'+p.name,dipId:d.id,timestamp:d.ts,date:new Date(d.ts).toLocaleDateString('en-CA'),time:fmtTime(d.ts),name:p.name,seconds:p.sec||d.durationSec,style:p.style,waterC:d.water??'',airC:d.air??'',feeling:d.feeling||'',notes:safe(d.notes),recordedBy:S.settings.me||''});return out}
+async function sync(){
+  const u=S.settings.sheetUrl;if(!u){toast('Add the Sheet URL first');return}
+  try{toast('Syncing…');const rows=sheetRows();
+    if(rows.length){const r=await fetch(u,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({rows})});const j=await r.json();if(!j.ok)throw new Error('upload failed');S.dips.forEach(d=>d.synced=true)}
+    const j=await (await fetch(u)).json();if(!j.ok)throw new Error('download failed');
+    S.club=j.rows;S.settings.lastSync=Date.now();save();render();toast(`Synced · ${new Set(j.rows.map(r=>r.dipId)).size} dip(s) in the club sheet`,3500);
+  }catch(e){toast('Sync failed: '+e.message+' (check URL & deployment access)',4500)}
+}
+const csvEsc=v=>{v=String(v??'');return /[",\n;]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
+function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
+
+/* ====== audio / voice ====== */
+let ac;
+function beep(f=880,d=.15){if(!S.settings.beep)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(.001,ac.currentTime);g.gain.exponentialRampToValueAtTime(.6,ac.currentTime+.01);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.start();o.stop(ac.currentTime+d+.02)}catch{}}
+function say(t){if(!S.settings.voice||!window.speechSynthesis)return;try{const u=new SpeechSynthesisUtterance(t);u.lang=S.settings.lang;speechSynthesis.speak(u)}catch{}}
+let recog=null,listening=false,onHeard=null;
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+const kwList=()=>S.settings.keywords.toLowerCase().split(',').map(s=>s.trim()).filter(Boolean);
+function matchKw(txt){txt=txt.toLowerCase();const toks=txt.split(/[^a-zäöüéèàß]+/).filter(Boolean);return kwList().some(k=>k.includes(' ')?txt.includes(k):toks.includes(k))}
+function listen(cb,el){
+  if(!SR){if(el)el.textContent='⚠️ Voice recognition not supported – use the STOP button';return false}
+  stopListen();listening=true;onHeard=cb;
+  const start=()=>{recog=new SR();recog.lang=S.settings.lang;recog.continuous=true;recog.interimResults=true;recog.maxAlternatives=3;
+    recog.onresult=e=>{for(let i=e.resultIndex;i<e.results.length;i++)for(let j=0;j<e.results[i].length;j++){const t=e.results[i][j].transcript;if(el)el.textContent='🎙 heard: “'+t.trim().slice(-30)+'”';if(listening&&matchKw(t)){onHeard&&onHeard(t);return}}};
+    recog.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed'){listening=false;if(el)el.textContent='⚠️ Microphone blocked – allow it in Chrome site settings, or use the STOP button'}};
+    recog.onend=()=>{if(listening)setTimeout(()=>{try{start()}catch{}},120)};
+    try{recog.start();if(el&&!el.textContent)el.textContent='🎙 listening for “'+kwList().join('” / “')+'”'}catch{}};
+  start();return true;
+}
+function stopListen(){listening=false;onHeard=null;try{recog&&(recog.onend=null,recog.abort())}catch{}recog=null}
+let wake=null;
+async function lock(){try{wake=await navigator.wakeLock.request('screen')}catch{}}
+function unlock(){try{wake&&wake.release()}catch{}wake=null}
+
+/* ====== recording flow ====== */
+let R=null,tick=null,cueMark=null;
+const recEl=()=>$('#rec');
+const persistR=()=>R?localStorage.setItem(ACTIVE,JSON.stringify(R)):localStorage.removeItem(ACTIVE);
+function newRec(){
+  const w=waterNow(),wx=S.cache.wx,sg=suggestion();
+  R={phase:'setup',people:S.settings.me?[S.settings.me]:[],prepSec:S.settings.prepSec,targetSec:S.settings.targetMode==='fixed'?S.settings.targetSec:sg.sec,water:w?w.v:null,waterSrc:w?w.src:'manual',air:wx?wx.air:null,wind:wx?Math.round(wx.wind):null};
+  showRec();
+}
+function showRec(){recEl().className='show '+(R.phase==='prep'?'prep':R.phase==='dip'?'dip':'');renderRec()}
+function hideRec(){stopTick();stopListen();unlock();R=null;persistR();recEl().className='';recEl().innerHTML='';render()}
+const stopTick=()=>{clearInterval(tick);tick=null};
+function renderRec(){
+  const e=recEl(),head=t=>`<div class="row sp"><h1>${t}</h1><button class="ghost" data-a="recCancel">Cancel</button></div>`;
+  if(R.phase==='setup'){
+    e.innerHTML=`<div class="rb">${head('New dip')}
+    <div class="card"><h2>Who is going in?</h2><div class="row wrap">${S.members.map(m=>`<span class="chip ${R.people.includes(m)?'on':''}" style="font-size:16px;padding:9px 14px" data-a="rp" data-v="${esc(m)}">${esc(m)}</span>`).join('')||'<span class="sub">Add members in Settings first.</span>'}${R.people.filter(p=>!S.members.includes(p)).map(m=>`<span class="chip on" style="font-size:16px;padding:9px 14px" data-a="rp" data-v="${esc(m)}">${esc(m)}</span>`).join('')}</div>
+    <div class="row" style="margin-top:8px"><input id="guest" placeholder="Guest name" style="flex:1"><button data-a="guest">Add</button></div></div>
+    <div class="card"><label style="margin-top:0">Water temperature (°C)</label><input id="r_water" inputmode="decimal" value="${R.water??''}">
+     <label>Time to stay in the water</label><div class="step"><button data-a="tgt" data-v="-30">−</button><b id="r_tgt">${fmt(R.targetSec)}</b><button data-a="tgt" data-v="30">+</button></div>
+     <label>Countdown to walk to the water</label><div class="step"><button data-a="prp" data-v="-15">−</button><b id="r_prp">${fmt(R.prepSec)}</b><button data-a="prp" data-v="15">+</button></div></div>
+    <div class="sub">Voice stop needs Chrome, internet and microphone permission (asked once).</div></div>
+    <div class="rf"><button class="pri xl" data-a="recGo">▶ Start activity</button></div>`;
+  }else if(R.phase==='prep'){
+    e.innerHTML=`<div class="rb"><div class="row sp"><span class="sub">${R.people.map(esc).join(', ')}</span><button class="ghost" data-a="recCancel">Cancel</button></div>
+    <div class="mid"><div class="phase">Get in position…</div><div class="timer" id="tm">--:--</div><div class="listen">Walk to the water. The dip timer starts when this reaches zero.</div>
+    <div class="row" style="justify-content:center"><button data-a="prpAdd">+15 s</button><button class="pri" data-a="skipPrep">I’m ready – go now</button></div></div></div>`;
+  }else if(R.phase==='dip'){
+    e.innerHTML=`<div class="rb"><div class="sub">${R.people.map(esc).join(', ')}${R.water!=null?' · '+R.water+'°C':''}</div>
+    <div class="mid"><div class="phase" id="ph">In the water</div><div class="timer" id="tm">--:--</div><div class="listen" id="lst"></div><div class="listen" id="tot"></div></div></div>
+    <button class="danger stopbtn" data-a="recStop">STOP</button>`;
+  }else wrapHtml();
+}
+function wrapHtml(){
+  const e=recEl();
+  e.innerHTML=`<div class="rb"><h1>Nice one! 🎉</h1>
+  <div class="card"><label style="margin-top:0">Time in the water (mm:ss)</label><input id="w_dur" value="${fmt(R.durationSec)}">
+   <label>Water temperature (°C)</label><input id="w_water" inputmode="decimal" value="${R.water??''}">
+   <label>Air temperature (°C)</label><input id="w_air" inputmode="decimal" value="${R.air!=null?R.air.toFixed(1):''}"></div>
+  <div class="card"><h2>Per person</h2>${R.people.map((n,i)=>`<div class="pcard"><b>${esc(n)}</b>
+   <div class="seg" style="margin:6px 0"><button data-a="sty" data-v="${i}|standing" class="${R.styles[i]==='standing'?'on':''}">Standing</button><button data-a="sty" data-v="${i}|swimming" class="${R.styles[i]==='swimming'?'on':''}">Swimming</button></div>
+   <input class="w_own" data-i="${i}" placeholder="Own time if different (mm:ss)" value="${esc(R.own&&R.own[i]||'')}"></div>`).join('')}</div>
+  <div class="card"><label style="margin-top:0">How did it feel?</label><div class="row sp">${[1,2,3,4,5].map(n=>`<button class="${R.feeling===n?'pri':''}" style="font-size:26px;flex:1" data-a="feel" data-v="${n}">${['🥶','😬','🙂','😄','🤩'][n-1]}</button>`).join('')}</div>
+   <label>Notes</label><textarea id="w_notes" rows="2" placeholder="Sunny, calm, 5 swans…">${esc(R.notes||'')}</textarea>
+   <label>Photo of the lake</label><div class="row"><label class="btn" style="margin:0;color:var(--ink)">${ic('camera')} Take / choose photo<input id="w_photo" type="file" accept="image/*" capture="environment" hidden></label><span class="sub">${R.photo?'photo added ✓':''}</span></div>
+   ${R.photoUrl?`<img src="${R.photoUrl}" style="width:100%;border-radius:12px;margin-top:8px" alt="">`:''}</div></div>
+  <div class="rf"><button class="ghost" data-a="recDiscard">Discard</button><button class="pri" data-a="recSave">${ic('device-floppy')} Save dip</button></div>`;
+}
+function startPrep(){
+  R.phase='prep';R.prepStart=Date.now();persistR();ac=ac||new (window.AudioContext||window.webkitAudioContext)();ac.resume&&ac.resume();lock();showRec();cueMark=null;say('Get in position');
+  stopTick();tick=setInterval(doTick,200);doTick();
+}
+function startDip(){
+  R.phase='dip';R.dipStart=Date.now();R.targetHit=false;persistR();showRec();cueMark=null;beep(1200,.5);say('Go');
+  const st=$('#lst');setTimeout(()=>{if(R&&R.phase==='dip')listen(()=>stopDip(),st)},1500);
+  stopTick();tick=setInterval(doTick,200);doTick();
+}
+function doTick(){
+  if(!R)return;const tm=$('#tm');if(!tm)return;const now=Date.now();
+  if(R.phase==='prep'){
+    const rem=R.prepSec-(now-R.prepStart)/1000;if(rem<=0){startDip();return}
+    const c=Math.ceil(rem);tm.textContent=fmt(c);
+    if(cueMark!==c){cueMark=c;if(c<=5)beep(c<=1?1000:700,.12);if(c===10||c===30)say(String(c))}
+  }else if(R.phase==='dip'){
+    const el=(now-R.dipStart)/1000,over=el>=R.targetSec;
+    recEl().classList.toggle('over',over);tm.textContent=over?'+'+fmt(el-R.targetSec):fmt(R.targetSec-el+.999);
+    const ph=$('#ph');if(ph)ph.textContent=over?'Overtime – stay as long as you want':'In the water';
+    const tot=$('#tot');if(tot)tot.textContent='Total '+fmt(el);
+    if(over&&!R.targetHit){R.targetHit=true;beep(1000,.6);say('Target reached')}
+    const left=Math.ceil(R.targetSec-el);if(!over&&cueMark!==left){cueMark=left;if(left===10||left===5)beep(800,.1)}
+  }
+}
+function stopDip(){
+  if(!R||R.phase!=='dip')return;
+  R.dipEnd=Date.now();R.durationSec=Math.round((R.dipEnd-R.dipStart)/1000);R.phase='wrap';R.styles=R.people.map(n=>S.settings.lastStyle[n]||'standing');R.own={};
+  stopTick();stopListen();unlock();beep(600,.4);persistR();showRec();
+}
+function keepWrap(){if(!$('#w_dur'))return;const p=parseMS($('#w_dur').value);if(p)R.durationSec=p;R.water=num($('#w_water').value);R.air=num($('#w_air').value);R.notes=$('#w_notes').value;R.own=R.own||{};document.querySelectorAll('.w_own').forEach(i=>R.own[i.dataset.i]=i.value)}
+async function saveRec(){
+  keepWrap();const dur=parseMS($('#w_dur').value);if(!dur){toast('Enter a valid time');return}
+  const own={};document.querySelectorAll('.w_own').forEach(i=>{const s=parseMS(i.value);if(s)own[i.dataset.i]=s});
+  const id=uid(),d={id,ts:R.dipStart,durationSec:dur,water:R.water,air:R.air,waterSrc:R.waterSrc,wind:R.wind,feeling:R.feeling||0,notes:(R.notes||'').trim(),people:R.people.map((n,i)=>({name:n,style:R.styles[i],sec:own[i]||dur})),hasPhoto:false,synced:false};
+  R.people.forEach((n,i)=>S.settings.lastStyle[n]=R.styles[i]);
+  if(R.photo){try{await photoPut(id,R.photo);d.hasPhoto=true}catch{toast('Photo could not be saved')}}
+  S.dips.push(d);save();toast('Dip saved ✓');hideRec();go('stats');
+  if(S.settings.sheetUrl)sync();
+}
+
+/* ====== events ====== */
+document.addEventListener('click',async ev=>{
+  if(menuOpen&&!ev.target.closest('#menu')&&!ev.target.closest('[data-a=menu]')){menuOpen=false;renderTop()}
+  const t=ev.target.closest('[data-a]');if(!t)return;ev.preventDefault();const a=t.dataset.a,v=t.dataset.v,s=S.settings;
+  switch(a){
+    case'back':back();break;
+    case'menu':menuOpen=!menuOpen;renderTop();break;
+    case'go':go(v);break;
+    case'sub':go('settings',v);break;
+    case'gospot':go('settings','spot');break;
+    case'savepage':savePage();break;
+    case'refresh':refreshData();break;
+    case'manual':{const x=num($('#man').value);if(x==null){toast('Enter a number');break}S.manual={v:x,t:Date.now()};save();render();break}
+    case'manualClear':S.manual=null;save();render();break;
+    case'updatepop':updatePop();break;
+    case'chkupd':checkUpdate(true);break;
+    case'install':if(deferredInstall){deferredInstall.prompt();deferredInstall=null;render()}break;
+    case'changelog':infoD('Changelog',changelogHtml(CHANGELOG));break;
+    case'license':infoD('License',`<p><b>${APP_NAME}</b> is free software under the <b>GNU General Public License v3.0</b>.</p><p class="sub">You may use, study, share and modify it. If you distribute it or a modified version, you must keep it under the same license and make the source code available. There is no warranty. The full license text is in the LICENSE file of the project and at gnu.org/licenses/gpl-3.0.</p>`);break;
+    case'privacy':infoD('Privacy & data sources',`<p>All dips, members, photos and settings stay on this phone. There are no accounts, ads or tracking.</p><p>Only if you set it up: dips (names, times, temperatures, notes – not photos) are sent to <b>your own</b> Google Sheet.</p><p class="sub">Services contacted: Open-Meteo (place search and weather), Alplakes by EPFL/Eawag (lake model temperature), existenz.ch (BAFU measuring stations), and Google Apps Script for your sheet. They receive your city’s coordinates, not your name. Voice recognition is done by Chrome’s speech service.</p>`);break;
+    case'credits':infoD('Credits',`<ul><li>Icons: Tabler Icons (MIT)</li><li>Weather and place search: Open-Meteo</li><li>Lake temperature: Alplakes (EPFL, Eawag), simulated data</li><li>Measuring stations: BAFU via existenz.ch</li></ul>`);break;
+    /* wizard & spot */
+    case'wback':wizRead();if(W.step>0){W.step--;render()}break;
+    case'wnext':wizNext();break;
+    case'wadd':{const n=$('#w_newm').value.trim();wizRead();if(n&&!W.members.includes(n)&&n!==W.me){W.members.push(n);render()}break}
+    case'wdel':wizRead();W.members=W.members.filter(m=>m!==v);render();break;
+    case'geo':spotGeo();break;
+    case'pickcity':dirty=true;spotPickCity(+v);break;
+    case'picklake':dirty=true;spotPickLake(+v);break;
+    /* settings */
+    case'rmlogo':s.club.logo='';save();render();break;
+    case'theme':s.theme=v;save();render();break;
+    case'mode':s.mode=v;save();render();break;
+    case'iconstyle':s.iconStyle=v;save();render();break;
+    case'me':s.me=v;save();render();break;
+    case'addmember':{const n=$('#newm').value.trim();if(n&&!S.members.includes(n)){S.members.push(n);if(!s.me)s.me=n;save();render()}break}
+    case'delmember':if(await confirmD('Remove member',`Remove ${esc(v)} from the list? Past dips are kept.`,'Remove','Cancel',true)){S.members=S.members.filter(m=>m!==v);save();render()}break;
+    case'tmode':readDips();s.targetMode=v;dirty=true;render();break;
+    case'testvoice':{readDips();const el=$('#vtest');el.textContent='';stopListen();listen(()=>{stopListen();el.textContent='✅ Keyword recognised!'},el);setTimeout(()=>{if(listening){stopListen();el.textContent+=' (test ended)'}},15000);break}
+    case'sync':s.sheetUrl=$('#s_sheet').value.trim();save();sync();break;
+    case'copyscript':try{await navigator.clipboard.writeText(APPS_SCRIPT);toast('Script copied')}catch{toast('Select the text and copy manually')}break;
+    case'csv':{const h=['dipId','date','time','name','seconds','style','waterC','airC','feeling'];download('ice-dip-log.csv',[h.join(',')].concat(allRows('club').map(r=>[r.dipId,new Date(r.ts).toLocaleDateString('en-CA'),fmtTime(r.ts),r.name,r.sec,r.style,r.water??'',r.air??'',r.feeling??''].map(csvEsc).join(','))).join('\n'),'text/csv');break}
+    case'json':download('ice-dip-log-backup.json',JSON.stringify({members:S.members,dips:S.dips,settings:S.settings}),'application/json');break;
+    case'import':$('#impfile').click();break;
+    case'erase':if(await confirmD('Erase everything?','All dips, members and settings on this phone will be deleted. Rows already in the Sheet stay there. This cannot be undone.','Erase all','Cancel',true)){localStorage.removeItem(LS);localStorage.removeItem(ACTIVE);try{indexedDB.deleteDatabase('ice-dip-log-photos')}catch{}location.reload()}break;
+    case'scope':statScope=v;render();break;
+    case'deldip':if(await confirmD('Delete dip','Delete this dip from this phone? Rows already in the Sheet stay there.','Delete','Cancel',true)){S.dips=S.dips.filter(d=>d.id!==v);photoDel(v);save();render()}break;
+    /* recording */
+    case'recNew':if(!S.members.length){toast('Add members in Settings first');go('settings','members');break}newRec();break;
+    case'recCancel':if(await confirmD('Cancel this dip?','Nothing will be saved.','Cancel dip','Keep going',true))hideRec();break;
+    case'rp':R.people=R.people.includes(v)?R.people.filter(x=>x!==v):[...R.people,v];R.water=num($('#r_water').value);renderRec();break;
+    case'guest':{const n=$('#guest').value.trim();R.water=num($('#r_water').value);if(n&&!R.people.includes(n))R.people.push(n);renderRec();break}
+    case'tgt':R.targetSec=Math.max(30,R.targetSec+ +v);$('#r_tgt').textContent=fmt(R.targetSec);break;
+    case'prp':R.prepSec=Math.max(5,R.prepSec+ +v);$('#r_prp').textContent=fmt(R.prepSec);break;
+    case'recGo':{if(!R.people.length){toast('Pick who is going in');break}const w=waterNow();R.water=num($('#r_water').value);R.waterSrc=R.water!=null&&w&&R.water===w.v?w.src:'manual';startPrep();break}
+    case'prpAdd':R.prepSec+=15;persistR();break;
+    case'skipPrep':startDip();break;
+    case'recStop':stopDip();break;
+    case'sty':{keepWrap();const[i,st]=v.split('|');R.styles[+i]=st;wrapHtml();break}
+    case'feel':keepWrap();R.feeling=+v;wrapHtml();break;
+    case'recSave':saveRec();break;
+    case'recDiscard':if(await confirmD('Discard this dip?','The recording will be deleted.','Discard','Keep',true))hideRec();break;
+    case'resume':{const j=JSON.parse(localStorage.getItem(ACTIVE)||'null');if(!j)break;R=j;if(R.phase==='prep'){startPrep();break}if(R.phase==='dip'){lock();showRec();listen(()=>stopDip(),$('#lst'));stopTick();tick=setInterval(doTick,200);break}showRec();break}
+    case'discardActive':localStorage.removeItem(ACTIVE);render();break;
+  }
+});
+document.addEventListener('input',e=>{if(page==='settings'&&sub&&['club','dips','sheet'].includes(sub)&&e.target.closest('#main'))dirty=true;if(e.target.id==='sp_q')SP.q=e.target.value});
+document.addEventListener('change',async ev=>{
+  const id=ev.target.id;
+  if(id==='w_photo'){const f=ev.target.files[0];if(!f)return;keepWrap();try{R.photo=await shrink(f);R.photoUrl=URL.createObjectURL(R.photo);wrapHtml()}catch{toast('Could not read photo')}}
+  if(id==='w_logofile'||id==='c_logofile'){const f=ev.target.files[0];if(!f)return;try{const url=await blobToUrl(await shrink(f,192,'image/png'));if(id==='w_logofile'){wizRead();W.logo=url;render()}else{S.settings.club.logo=url;const n=$('#c_name').value;dirty=true;render();$('#c_name').value=n}}catch{toast('Could not read picture')}}
+  if(id==='impfile'){const f=ev.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());const ids=new Set(S.dips.map(d=>d.id));(j.dips||[]).forEach(d=>{if(!ids.has(d.id))S.dips.push(d)});(j.members||[]).forEach(m=>{if(!S.members.includes(m))S.members.push(m)});save();render();toast('Imported')}catch{toast('Invalid backup file')}}
+});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'){if(e.target.id==='guest')$('[data-a=guest]').click();if(e.target.id==='sp_q')spotGeo();if(e.target.id==='newm')$('[data-a=addmember]').click();if(e.target.id==='w_newm')$('[data-a=wadd]').click()}});
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;if(page==='settings'&&sub==='about')render()});
+window.addEventListener('online',()=>checkUpdate());
+
+/* ====== boot ====== */
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
+if(!S.settings.setupDone){initWiz();page='setup'}
+render();
+if(S.settings.setupDone){if(!S.cache.fetched||Date.now()-S.cache.fetched>10*60e3)refreshData()}
+(async()=>{await whatsNew();checkUpdate()})();
+document.addEventListener('visibilitychange',()=>{if(!document.hidden){if(R&&(R.phase==='prep'||R.phase==='dip')){lock();doTick()}else{checkUpdate();if(S.settings.setupDone&&Date.now()-(S.cache.fetched||0)>10*60e3)refreshData()}}});
+</script>
+</body>
+</html>
