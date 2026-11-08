@@ -1,7 +1,7 @@
 {
-  "version": "1.7",
+  "version": "1.8",
   "date": "2026-11-08",
   "notes": [
-    "Privacy: Test connection no longer contains a built-in example location; without a saved spot it tests the middle of Lake Zurich."
+    "Fixed: on the dip wrap-up screen the feeling icons no longer push the page out of the window."
   ]
 }

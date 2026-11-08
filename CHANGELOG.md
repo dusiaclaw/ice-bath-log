@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.8 (2026-11-08)
+- Fixed: on the dip wrap-up screen the feeling icons no longer push the page out of the window.
+
 ## v1.7 (2026-11-08)
 - Privacy: Test connection no longer contains a built-in example location; without a saved spot it tests the middle of Lake Zurich.
 
