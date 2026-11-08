@@ -1,0 +1,542 @@
+# Ice Bath Log translations. One line per text: English ||| Deutsch ||| Français ||| Italiano
+# Texts with {0}, {1} are templates for texts that contain numbers or names.
+# Edit this file, then run: python3 tools/make-lang.py   (writes lang.js)
+# ---------- navigation / general ----------
+Home ||| Start ||| Accueil ||| Home
+Conditions ||| Bedingungen ||| Conditions ||| Condizioni
+Advanced conditions ||| Erweiterte Bedingungen ||| Conditions détaillées ||| Condizioni avanzate
+Statistics ||| Statistik ||| Statistiques ||| Statistiche
+History ||| Verlauf ||| Historique ||| Cronologia
+Settings ||| Einstellungen ||| Paramètres ||| Impostazioni
+Menu ||| Menü ||| Menu ||| Menu
+Back ||| Zurück ||| Retour ||| Indietro
+Go back ||| Zurück ||| Retour ||| Indietro
+Close ||| Schliessen ||| Fermer ||| Chiudi
+Cancel ||| Abbrechen ||| Annuler ||| Annulla
+Save ||| Speichern ||| Enregistrer ||| Salva
+Delete ||| Löschen ||| Supprimer ||| Elimina
+Remove ||| Entfernen ||| Retirer ||| Rimuovi
+Discard ||| Verwerfen ||| Abandonner ||| Scarta
+Add ||| Hinzufügen ||| Ajouter ||| Aggiungi
+Set ||| Setzen ||| Définir ||| Imposta
+Choose ||| Wählen ||| Choisir ||| Scegli
+OK ||| OK ||| OK ||| OK
+Later ||| Später ||| Plus tard ||| Più tardi
+Continue ||| Weiter ||| Continuer ||| Continua
+Next ||| Weiter ||| Suivant ||| Avanti
+Finish ||| Fertig ||| Terminer ||| Fine
+Test ||| Test ||| Test ||| Test
+Name ||| Name ||| Nom ||| Nome
+Notes ||| Notizen ||| Notes ||| Note
+Unknown ||| Unbekannt ||| Inconnu ||| Sconosciuto
+Loading… ||| Lädt… ||| Chargement… ||| Caricamento…
+Zoom in ||| Vergrössern ||| Zoom avant ||| Ingrandisci
+Zoom out ||| Verkleinern ||| Zoom arrière ||| Riduci
+just now ||| gerade eben ||| à l’instant ||| proprio ora
+{0} min ago ||| vor {0} Min. ||| il y a {0} min ||| {0} min fa
+{0} h ago ||| vor {0} Std. ||| il y a {0} h ||| {0} h fa
+{0} d ago ||| vor {0} Tg. ||| il y a {0} j ||| {0} g fa
+· {0} km away ||| · {0} km entfernt ||| · à {0} km ||| · a {0} km
+me ||| ich ||| moi ||| io
+Me ||| Ich ||| Moi ||| Io
+swim ||| schwimmt ||| nage ||| nuota
+stand ||| steht ||| debout ||| in piedi
+Standing ||| Stehen ||| Debout ||| In piedi
+Swimming ||| Schwimmen ||| Nage ||| Nuoto
+Day ||| Tag ||| Jour ||| Giorno
+# ---------- home / conditions ----------
+Start a dip ||| Eisbad starten ||| Démarrer un bain ||| Inizia un bagno
+Water · {0} ||| Wasser · {0} ||| Eau · {0} ||| Acqua · {0}
+Water ||| Wasser ||| Eau ||| Acqua
+Air ||| Luft ||| Air ||| Aria
+Feels like ||| Gefühlt ||| Ressenti ||| Percepita
+Feels like {0} ||| Gefühlt {0} ||| Ressenti {0} ||| Percepita {0}
+feels {0} ||| gefühlt {0} ||| ressenti {0} ||| perc. {0}
+wind {0} km/h ||| Wind {0} km/h ||| vent {0} km/h ||| vento {0} km/h
+Lake model ||| Seemodell ||| Modèle du lac ||| Modello del lago
+Lake model {0} ||| Seemodell {0} ||| Modèle du lac {0} ||| Modello del lago {0}
+Measuring station ||| Messstation ||| Station de mesure ||| Stazione di misura
+Your measurement ||| Deine Messung ||| Ta mesure ||| La tua misura
+Typed by hand ||| Von Hand eingegeben ||| Saisie à la main ||| Inserita a mano
+Average of lake model and station ||| Mittel aus Seemodell und Station ||| Moyenne du modèle et de la station ||| Media di modello e stazione
+Measured at shore, °C ||| Am Ufer gemessen, °C ||| Mesuré sur la rive, °C ||| Misurata a riva, °C
+tap to set up or enter a value ||| tippen zum Einrichten oder Eingeben ||| touche pour configurer ou saisir ||| tocca per impostare o inserire
+Model forecast: {0} ||| Modellprognose: {0} ||| Prévision du modèle : {0} ||| Previsione del modello: {0}
+Today’s dip ||| Eisbad heute ||| Bain du jour ||| Bagno di oggi
+{0} ({1}°C) – aim for up to {2} min (rule of thumb: ~1 min per °C, max 10). ||| {0} ({1}°C) – bis zu {2} Min. (Faustregel: ca. 1 Min. pro °C, max. 10). ||| {0} ({1}°C) – vise jusqu’à {2} min (règle approximative : ~1 min par °C, max. 10). ||| {0} ({1}°C) – punta a {2} min al massimo (regola pratica: ~1 min per °C, max 10).
+Extreme cold ||| Extrem kalt ||| Froid extrême ||| Freddo estremo
+Very cold ||| Sehr kalt ||| Très froid ||| Molto freddo
+Cold ||| Kalt ||| Froid ||| Freddo
+Fresh ||| Frisch ||| Frais ||| Fresco
+Mild ||| Mild ||| Doux ||| Mite
+Stay standing or swim only briefly; keep hands and head out if you can. ||| Bleib stehen oder schwimm nur kurz; halte Hände und Kopf wenn möglich draussen. ||| Reste debout ou nage très peu ; garde les mains et la tête hors de l’eau si possible. ||| Resta in piedi o nuota solo brevemente; tieni mani e testa fuori se puoi.
+Short swims are fine if you are acclimatised. ||| Kurze Schwimmzüge sind in Ordnung, wenn du dich daran gewöhnt hast. ||| De courtes nages conviennent si tu es acclimaté. ||| Brevi nuotate vanno bene se sei abituato.
+Good conditions for a longer, relaxed dip. ||| Gute Bedingungen für ein längeres, entspanntes Bad. ||| Bonnes conditions pour un bain plus long et détendu. ||| Buone condizioni per un bagno più lungo e rilassato.
+Feels like {0}°C on shore – bring warm dry layers, a hat and a hot drink; get dressed fast. ||| Am Ufer fühlt es sich wie {0}°C an – nimm warme, trockene Kleidung, eine Mütze und ein heisses Getränk mit; zieh dich schnell an. ||| Ressenti {0}°C sur la rive – prends des vêtements chauds et secs, un bonnet et une boisson chaude ; habille-toi vite. ||| Sulla riva si percepiscono {0}°C – porta vestiti caldi e asciutti, un cappello e una bevanda calda; vestiti in fretta.
+Wind {0} km/h – wind chill after you get out will hurt; shorten the dip. ||| Wind {0} km/h – der Windchill nach dem Ausstieg wird unangenehm; verkürze das Bad. ||| Vent {0} km/h – le refroidissement éolien à la sortie sera pénible ; raccourcis le bain. ||| Vento {0} km/h – il freddo dopo l’uscita si farà sentire; accorcia il bagno.
+Thunderstorm risk – stay out of the water. ||| Gewittergefahr – bleib aus dem Wasser. ||| Risque d’orage – reste hors de l’eau. ||| Rischio di temporale – resta fuori dall’acqua.
+Rain/snow around – plan a sheltered place to change. ||| Regen/Schnee in der Nähe – plane einen geschützten Platz zum Umziehen. ||| Pluie/neige dans les environs – prévois un endroit abrité pour te changer. ||| Pioggia/neve in zona – prevedi un posto riparato per cambiarti.
+It is dark – use a headlamp, bring a buddy, stay close to the shore. ||| Es ist dunkel – nimm eine Stirnlampe und eine Begleitung mit und bleib nah am Ufer. ||| Il fait nuit – prends une lampe frontale, viens accompagné et reste près de la rive. ||| È buio – usa una frontale, vieni con qualcuno e resta vicino a riva.
+Best slot today: {0}:00 – feels like {1}°C, {2} {3}% rain chance. ||| Beste Zeit heute: {0}:00 – gefühlt {1}°C, {2} {3}% Regenwahrscheinlichkeit. ||| Meilleur créneau aujourd’hui : {0}:00 – ressenti {1}°C, {2} {3}% de risque de pluie. ||| Orario migliore oggi: {0}:00 – percepita {1}°C, {2} {3}% di probabilità di pioggia.
+Best slot tomorrow: {0}:00 – feels like {1}°C, {2} {3}% rain chance. ||| Beste Zeit morgen: {0}:00 – gefühlt {1}°C, {2} {3}% Regenwahrscheinlichkeit. ||| Meilleur créneau demain : {0}:00 – ressenti {1}°C, {2} {3}% de risque de pluie. ||| Orario migliore domani: {0}:00 – percepita {1}°C, {2} {3}% di probabilità di pioggia.
+Never dip alone. Leave the water if you shiver uncontrollably or lose feeling in hands. Rewarm gradually (no hot shower right away). Not medical advice. ||| Geh nie allein ins Wasser. Verlasse das Wasser, wenn du unkontrolliert zitterst oder das Gefühl in den Händen verlierst. Wärme dich langsam auf (nicht gleich heiss duschen). Kein medizinischer Rat. ||| Ne te baigne jamais seul. Sors de l’eau si tu trembles de façon incontrôlée ou si tu perds la sensation dans les mains. Réchauffe-toi progressivement (pas de douche chaude tout de suite). Ce n’est pas un avis médical. ||| Non fare mai il bagno da solo. Esci dall’acqua se tremi in modo incontrollato o perdi sensibilità alle mani. Riscaldati gradualmente (niente doccia calda subito). Non è un consiglio medico.
+No water temperature yet – refresh, or enter what you measure at the shore. ||| Noch keine Wassertemperatur – aktualisiere oder gib ein, was du am Ufer misst. ||| Pas encore de température de l’eau – actualise ou saisis ce que tu mesures sur la rive. ||| Ancora nessuna temperatura dell’acqua – aggiorna o inserisci quella misurata a riva.
+No lake model linked yet ({0}). Tap refresh to retry, or choose the lake in Settings › Swimming spot. ||| Noch kein Seemodell verknüpft ({0}). Tippe auf Aktualisieren oder wähle den See unter Einstellungen › Badestelle. ||| Aucun modèle de lac associé ({0}). Touche Actualiser pour réessayer ou choisis le lac dans Paramètres › Lieu de baignade. ||| Nessun modello del lago collegato ({0}). Tocca aggiorna per riprovare o scegli il lago in Impostazioni › Luogo del bagno.
+No lake model linked yet. Tap refresh to retry, or choose the lake in Settings › Swimming spot. ||| Noch kein Seemodell verknüpft. Tippe auf Aktualisieren oder wähle den See unter Einstellungen › Badestelle. ||| Aucun modèle de lac associé. Touche Actualiser pour réessayer ou choisis le lac dans Paramètres › Lieu de baignade. ||| Nessun modello del lago collegato. Tocca aggiorna per riprovare o scegli il lago in Impostazioni › Luogo del bagno.
+Set your city and lake in Settings › Swimming spot. ||| Lege Ort und See unter Einstellungen › Badestelle fest. ||| Définis ta ville et ton lac dans Paramètres › Lieu de baignade. ||| Imposta città e lago in Impostazioni › Luogo del bagno.
+{0} is not in the app's data feed ||| {0} ist nicht im Datenfeed der App ||| {0} n’est pas dans le flux de données de l’app ||| {0} non è nel flusso dati dell’app
+Hours ||| Stunden ||| Heures ||| Ore
+Alplakes simulation for your spot ||| Alplakes-Simulation für deine Badestelle ||| Simulation Alplakes pour ton lieu ||| Simulazione Alplakes per il tuo luogo
+Air temperature forecast ||| Lufttemperatur-Prognose ||| Prévision de température de l’air ||| Previsione della temperatura dell’aria
+Water temperature forecast ||| Wassertemperatur-Prognose ||| Prévision de température de l’eau ||| Previsione della temperatura dell’acqua
+Wind forecast ||| Windprognose ||| Prévision du vent ||| Previsione del vento
+Gusts ||| Böen ||| Rafales ||| Raffiche
+Wind ||| Wind ||| Vent ||| Vento
+Rain ||| Regen ||| Pluie ||| Pioggia
+UV ||| UV ||| UV ||| UV
+Sunrise ||| Sonnenaufgang ||| Lever du soleil ||| Alba
+Sunset ||| Sonnenuntergang ||| Coucher du soleil ||| Tramonto
+Sun & rain ||| Sonne & Regen ||| Soleil et pluie ||| Sole e pioggia
+Air · next 48 h ||| Luft · nächste 48 Std. ||| Air · 48 h à venir ||| Aria · prossime 48 h
+Water temperature · next 48 h ||| Wassertemperatur · nächste 48 Std. ||| Température de l’eau · 48 h à venir ||| Temperatura dell’acqua · prossime 48 h
+Wind · next 48 h (km/h) ||| Wind · nächste 48 Std. (km/h) ||| Vent · 48 h à venir (km/h) ||| Vento · prossime 48 h (km/h)
+Simulation of the lake surface at the model point near your spot. Updated {0}. ||| Simulation der Seeoberfläche am Modellpunkt nahe deiner Badestelle. Aktualisiert {0}. ||| Simulation de la surface du lac au point du modèle proche de ton lieu. Mis à jour {0}. ||| Simulazione della superficie del lago nel punto del modello vicino al tuo luogo. Aggiornato {0}.
+Current readings ||| Aktuelle Messwerte ||| Mesures actuelles ||| Misure attuali
+Readings now ||| Messwerte jetzt ||| Mesures actuelles ||| Misure attuali
+Refresh readings ||| Messwerte aktualisieren ||| Actualiser les mesures ||| Aggiorna le misure
+Source ||| Quelle ||| Source ||| Fonte
+Station ||| Station ||| Station ||| Stazione
+Age ||| Alter ||| Âge ||| Età
+Whole lake ||| Ganzer See ||| Tout le lac ||| Tutto il lago
+Coldest ||| Kältester ||| Le plus froid ||| Più fredda
+Average ||| Durchschnitt ||| Moyenne ||| Media
+Warmest ||| Wärmster ||| Le plus chaud ||| Più calda
+Model points ||| Modellpunkte ||| Points du modèle ||| Punti del modello
+Surface of {0}, {1}. Coldest spot is {2} km, warmest {3} km from your spot. ||| Oberfläche des {0}, {1}. Die kälteste Stelle ist {2} km, die wärmste {3} km von deiner Badestelle entfernt. ||| Surface de {0}, {1}. L’endroit le plus froid est à {2} km, le plus chaud à {3} km de ton lieu. ||| Superficie di {0}, {1}. Il punto più freddo è a {2} km, il più caldo a {3} km dal tuo luogo.
+Temperature by depth ||| Temperatur nach Tiefe ||| Température selon la profondeur ||| Temperatura per profondità
+surface ||| Oberfläche ||| surface ||| superficie
+Lake surface (model) ||| Seeoberfläche (Modell) ||| Surface du lac (modèle) ||| Superficie del lago (modello)
+Model values at the nearest deep point ({0} from your pin). Shallow shore water is usually warmer than the deeper layers in summer and equal or colder in winter. ||| Modellwerte am nächsten tiefen Punkt ({0} von deiner Markierung). Flaches Uferwasser ist im Sommer meist wärmer als die tieferen Schichten, im Winter gleich warm oder kälter. ||| Valeurs du modèle au point profond le plus proche ({0} de ton repère). L’eau peu profonde près de la rive est souvent plus chaude que les couches profondes en été, et égale ou plus froide en hiver. ||| Valori del modello nel punto profondo più vicino ({0} dal tuo segnaposto). L’acqua bassa vicino a riva è di solito più calda degli strati profondi in estate e uguale o più fredda in inverno.
+Model values at the nearest deep point ({0} m from your pin). Shallow shore water is usually warmer than the deeper layers in summer and equal or colder in winter. ||| Modellwerte am nächsten tiefen Punkt ({0} m von deiner Markierung). Flaches Uferwasser ist im Sommer meist wärmer als die tieferen Schichten, im Winter gleich warm oder kälter. ||| Valeurs du modèle au point profond le plus proche ({0} m de ton repère). L’eau peu profonde près de la rive est souvent plus chaude que les couches profondes en été, et égale ou plus froide en hiver. ||| Valori del modello nel punto profondo più vicino ({0} m dal tuo segnaposto). L’acqua bassa vicino a riva è di solito più calda degli strati profondi in estate e uguale o più fredda in inverno.
+Lake data not available ({0}). ||| Seedaten nicht verfügbar ({0}). ||| Données du lac indisponibles ({0}). ||| Dati del lago non disponibili ({0}).
+No data. ||| Keine Daten. ||| Pas de données. ||| Nessun dato.
+Depth data is not available for this lake. ||| Für diesen See sind keine Tiefendaten verfügbar. ||| Les données de profondeur ne sont pas disponibles pour ce lac. ||| Per questo lago non ci sono dati di profondità.
+No depth data near your spot (the lake is deeper elsewhere). ||| Keine Tiefendaten in der Nähe deiner Badestelle (der See ist anderswo tiefer). ||| Pas de données de profondeur près de ton lieu (le lac est plus profond ailleurs). ||| Nessun dato di profondità vicino al tuo luogo (il lago è più profondo altrove).
+No lake data for this spot – only weather and station information is available. ||| Keine Seedaten für diese Badestelle – nur Wetter- und Stationsdaten verfügbar. ||| Pas de données de lac pour ce lieu – seules la météo et les stations sont disponibles. ||| Nessun dato del lago per questo luogo – disponibili solo meteo e stazioni.
+No lake model data. ||| Keine Seemodell-Daten. ||| Pas de données du modèle de lac. ||| Nessun dato del modello del lago.
+No swimming spot set ||| Keine Badestelle festgelegt ||| Aucun lieu de baignade défini ||| Nessun luogo del bagno impostato
+Not enough data. ||| Nicht genug Daten. ||| Pas assez de données. ||| Dati insufficienti.
+Lake data: Alplakes (EPFL, Eawag), simulated · Stations: BAFU · Weather: Open-Meteo ||| Seedaten: Alplakes (EPFL, Eawag), simuliert · Stationen: BAFU · Wetter: Open-Meteo ||| Données du lac : Alplakes (EPFL, Eawag), simulées · Stations : OFEV · Météo : Open-Meteo ||| Dati del lago: Alplakes (EPFL, Eawag), simulati · Stazioni: UFAM · Meteo: Open-Meteo
+# ---------- recording ----------
+New dip ||| Neues Eisbad ||| Nouveau bain ||| Nuovo bagno
+Who is going in? ||| Wer geht ins Wasser? ||| Qui se met à l’eau ? ||| Chi entra in acqua?
+Guest name ||| Name des Gasts ||| Nom de l’invité ||| Nome dell’ospite
+Water temperature (°C) ||| Wassertemperatur (°C) ||| Température de l’eau (°C) ||| Temperatura dell’acqua (°C)
+Air temperature (°C) ||| Lufttemperatur (°C) ||| Température de l’air (°C) ||| Temperatura dell’aria (°C)
+Time to stay in the water ||| Zeit im Wasser ||| Durée dans l’eau ||| Tempo in acqua
+Countdown to walk to the water ||| Countdown für den Weg zum Wasser ||| Compte à rebours pour aller à l’eau ||| Conto alla rovescia per andare in acqua
+Voice stop needs Chrome, internet and microphone permission (asked once). ||| Der Sprachstopp braucht Chrome, Internet und die Mikrofon-Berechtigung (wird einmal abgefragt). ||| L’arrêt vocal nécessite Chrome, Internet et l’autorisation du micro (demandée une fois). ||| Lo stop vocale richiede Chrome, internet e l’autorizzazione del microfono (richiesta una volta).
+▶ Start activity ||| ▶ Aktivität starten ||| ▶ Démarrer l’activité ||| ▶ Avvia attività
+Get in position… ||| In Position gehen… ||| Mets-toi en position… ||| Mettiti in posizione…
+Walk to the water. The dip timer starts when this reaches zero. ||| Geh zum Wasser. Der Timer startet, wenn dieser Countdown null erreicht. ||| Va jusqu’à l’eau. Le chrono démarre quand ce compte à rebours atteint zéro. ||| Vai verso l’acqua. Il timer parte quando questo conto arriva a zero.
+I’m ready – go now ||| Ich bin bereit – jetzt los ||| Je suis prêt – c’est parti ||| Sono pronto – via
+In the water ||| Im Wasser ||| Dans l’eau ||| In acqua
+Overtime – stay as long as you want ||| Überzeit – bleib, so lange du willst ||| Prolongation – reste aussi longtemps que tu veux ||| Tempo extra – resta quanto vuoi
+Target reached ||| Ziel erreicht ||| Objectif atteint ||| Obiettivo raggiunto
+Total {0} ||| Total {0} ||| Total {0} ||| Totale {0}
+Total ||| Total ||| Total ||| Totale
+STOP ||| STOPP ||| STOP ||| STOP
+Nice one! 🎉 ||| Super! 🎉 ||| Bravo ! 🎉 ||| Bravo! 🎉
+Time in the water (mm:ss) ||| Zeit im Wasser (mm:ss) ||| Temps dans l’eau (mm:ss) ||| Tempo in acqua (mm:ss)
+Per person ||| Pro Person ||| Par personne ||| Per persona
+Own time if different (mm:ss) ||| Eigene Zeit, falls abweichend (mm:ss) ||| Temps personnel si différent (mm:ss) ||| Tempo personale se diverso (mm:ss)
+How did it feel? ||| Wie hat es sich angefühlt? ||| Comment c’était ? ||| Com’era?
+Sunny, calm, 5 swans… ||| Sonnig, ruhig, 5 Schwäne… ||| Ensoleillé, calme, 5 cygnes… ||| Soleggiato, calmo, 5 cigni…
+Photo of the lake ||| Foto vom See ||| Photo du lac ||| Foto del lago
+Take / choose photo ||| Foto aufnehmen / wählen ||| Prendre / choisir une photo ||| Scatta / scegli foto
+photo added ✓ ||| Foto hinzugefügt ✓ ||| photo ajoutée ✓ ||| foto aggiunta ✓
+Save dip ||| Eisbad speichern ||| Enregistrer le bain ||| Salva bagno
+Dip saved ✓ ||| Eisbad gespeichert ✓ ||| Bain enregistré ✓ ||| Bagno salvato ✓
+Cancel this dip? ||| Dieses Eisbad abbrechen? ||| Annuler ce bain ? ||| Annullare questo bagno?
+Nothing will be saved. ||| Es wird nichts gespeichert. ||| Rien ne sera enregistré. ||| Non verrà salvato nulla.
+Cancel dip ||| Eisbad abbrechen ||| Annuler le bain ||| Annulla bagno
+Keep going ||| Weitermachen ||| Continuer ||| Continua
+Discard this dip? ||| Dieses Eisbad verwerfen? ||| Abandonner ce bain ? ||| Scartare questo bagno?
+The recording will be deleted. ||| Die Aufnahme wird gelöscht. ||| L’enregistrement sera supprimé. ||| La registrazione verrà eliminata.
+Pick who is going in ||| Wähle, wer ins Wasser geht ||| Choisis qui se met à l’eau ||| Scegli chi entra in acqua
+Add members in Settings first ||| Füge zuerst Mitglieder in den Einstellungen hinzu ||| Ajoute d’abord des membres dans les paramètres ||| Aggiungi prima dei membri nelle impostazioni
+Add members in Settings first. ||| Füge zuerst Mitglieder in den Einstellungen hinzu. ||| Ajoute d’abord des membres dans les paramètres. ||| Aggiungi prima dei membri nelle impostazioni.
+Enter a valid time ||| Gib eine gültige Zeit ein ||| Saisis une durée valide ||| Inserisci un tempo valido
+Enter a number ||| Gib eine Zahl ein ||| Saisis un nombre ||| Inserisci un numero
+Photo could not be saved ||| Das Foto konnte nicht gespeichert werden ||| La photo n’a pas pu être enregistrée ||| Impossibile salvare la foto
+Could not read photo ||| Das Foto konnte nicht gelesen werden ||| Impossible de lire la photo ||| Impossibile leggere la foto
+Could not read picture ||| Das Bild konnte nicht gelesen werden ||| Impossible de lire l’image ||| Impossibile leggere l’immagine
+Test. Ice bath log. ||| Test. Eisbad-Logbuch. ||| Test. Journal de bain glacé. ||| Test. Registro bagni nel ghiaccio.
+Get in position ||| In Position gehen ||| Mets-toi en position ||| Mettiti in posizione
+# ---------- history / stats ----------
+No dips recorded yet. ||| Noch keine Eisbäder aufgezeichnet. ||| Aucun bain enregistré pour l’instant. ||| Nessun bagno registrato finora.
+Delete dip ||| Eisbad löschen ||| Supprimer le bain ||| Elimina bagno
+Delete this dip from this phone? Rows already in the Sheet stay there. ||| Dieses Eisbad von diesem Handy löschen? Zeilen in der Tabelle bleiben dort bestehen. ||| Supprimer ce bain de ce téléphone ? Les lignes déjà dans la feuille y restent. ||| Eliminare questo bagno da questo telefono? Le righe già nel foglio restano lì.
+{0}°C water ||| {0}°C Wasser ||| {0}°C eau ||| {0}°C acqua
+{0}°C air ||| {0}°C Luft ||| {0}°C air ||| {0}°C aria
+This phone ||| Dieses Handy ||| Ce téléphone ||| Questo telefono
+Whole club (Sheet) ||| Ganzer Club (Tabelle) ||| Tout le club (feuille) ||| Tutto il club (foglio)
+Dips ||| Eisbäder ||| Bains ||| Bagni
+Time in water ||| Zeit im Wasser ||| Temps dans l’eau ||| Tempo in acqua
+Coldest water ||| Kältestes Wasser ||| Eau la plus froide ||| Acqua più fredda
+Avg water ||| Ø Wasser ||| Eau moy. ||| Acqua media
+Season chart ||| Saisonverlauf ||| Courbe de la saison ||| Grafico della stagione
+Bars: duration · line: water °C ||| Balken: Dauer · Linie: Wasser °C ||| Barres : durée · ligne : eau °C ||| Barre: durata · linea: acqua °C
+Who’s who ||| Wer ist wer ||| Qui est qui ||| Chi è chi
+Dips chart ||| Diagramm der Eisbäder ||| Graphique des bains ||| Grafico dei bagni
+Best ||| Beste ||| Meilleur ||| Migliore
+Last column: swims (not just standing). ||| Letzte Spalte: Schwimmgänge (nicht nur Stehen). ||| Dernière colonne : nages (pas seulement debout). ||| Ultima colonna: nuotate (non solo in piedi).
+Set up the shared Google Sheet in Settings › Shared Sheet to see everyone’s dips. ||| Richte die gemeinsame Google-Tabelle unter Einstellungen › Gemeinsame Tabelle ein, um die Eisbäder aller zu sehen. ||| Configure la feuille Google partagée dans Paramètres › Feuille partagée pour voir les bains de tous. ||| Imposta il foglio Google condiviso in Impostazioni › Foglio condiviso per vedere i bagni di tutti.
+# ---------- settings menu ----------
+Club name & logo ||| Clubname & Logo ||| Nom et logo du club ||| Nome e logo del club
+Swimming spot ||| Badestelle ||| Lieu de baignade ||| Luogo del bagno
+Members ||| Mitglieder ||| Membres ||| Membri
+Dip defaults & voice ||| Standardwerte & Sprache ||| Réglages du bain et voix ||| Impostazioni bagno e voce
+Dip defaults ||| Standardwerte ||| Réglages du bain ||| Impostazioni bagno
+Shared Sheet ||| Gemeinsame Tabelle ||| Feuille partagée ||| Foglio condiviso
+Appearance ||| Aussehen ||| Apparence ||| Aspetto
+Language ||| Sprache ||| Langue ||| Lingua
+Water temperature source ||| Quelle der Wassertemperatur ||| Source de la température de l’eau ||| Fonte della temperatura dell’acqua
+Permissions & tests ||| Berechtigungen & Tests ||| Autorisations et tests ||| Autorizzazioni e test
+Install app on this phone ||| App auf diesem Handy installieren ||| Installer l’app sur ce téléphone ||| Installa l’app su questo telefono
+Test connection ||| Verbindung testen ||| Tester la connexion ||| Testa la connessione
+Backup & data ||| Backup & Daten ||| Sauvegarde et données ||| Backup e dati
+About, license & changelog ||| Info, Lizenz & Änderungen ||| À propos, licence et nouveautés ||| Info, licenza e novità
+Club ||| Club ||| Club ||| Club
+About ||| Info ||| À propos ||| Info
+Help & FAQ ||| Hilfe & FAQ ||| Aide et FAQ ||| Aiuto e FAQ
+First-time setup ||| Ersteinrichtung ||| Première configuration ||| Prima configurazione
+# ---------- club / members ----------
+Club name ||| Clubname ||| Nom du club ||| Nome del club
+Logo ||| Logo ||| Logo ||| Logo
+Choose picture ||| Bild wählen ||| Choisir une image ||| Scegli immagine
+Remove logo ||| Logo entfernen ||| Retirer le logo ||| Rimuovi logo
+No members yet. ||| Noch keine Mitglieder. ||| Pas encore de membres. ||| Ancora nessun membro.
+Add member name ||| Name des Mitglieds ||| Nom du membre ||| Nome del membro
+Removing a member keeps their past dips. ||| Beim Entfernen eines Mitglieds bleiben seine bisherigen Eisbäder erhalten. ||| Retirer un membre conserve ses bains passés. ||| Rimuovendo un membro i suoi bagni passati restano.
+This is me ||| Das bin ich ||| C’est moi ||| Sono io
+Remove member ||| Mitglied entfernen ||| Retirer le membre ||| Rimuovi membro
+Remove {0} from the list? Past dips are kept. ||| {0} aus der Liste entfernen? Bisherige Eisbäder bleiben erhalten. ||| Retirer {0} de la liste ? Les bains passés sont conservés. ||| Rimuovere {0} dall’elenco? I bagni passati restano.
+Club name cannot be empty ||| Der Clubname darf nicht leer sein ||| Le nom du club ne peut pas être vide ||| Il nome del club non può essere vuoto
+Pick a city first ||| Wähle zuerst einen Ort ||| Choisis d’abord une ville ||| Scegli prima una città
+Discard changes? ||| Änderungen verwerfen? ||| Abandonner les modifications ? ||| Scartare le modifiche?
+You changed something that is not saved yet. ||| Du hast etwas geändert, das noch nicht gespeichert ist. ||| Tu as modifié quelque chose qui n’est pas encore enregistré. ||| Hai cambiato qualcosa che non è ancora salvato.
+Keep editing ||| Weiter bearbeiten ||| Continuer à modifier ||| Continua a modificare
+# ---------- dip defaults ----------
+Walk-to-water countdown (seconds) ||| Countdown für den Weg zum Wasser (Sekunden) ||| Compte à rebours jusqu’à l’eau (secondes) ||| Conto alla rovescia verso l’acqua (secondi)
+Auto (from water temp) ||| Auto (nach Wassertemperatur) ||| Auto (selon la température) ||| Auto (dalla temperatura)
+Auto ||| Auto ||| Auto ||| Auto
+Fixed ||| Fest ||| Fixe ||| Fisso
+Fixed target (mm:ss) ||| Festes Ziel (mm:ss) ||| Objectif fixe (mm:ss) ||| Obiettivo fisso (mm:ss)
+Spoken cues ||| Sprachansagen ||| Annonces vocales ||| Annunci vocali
+Beeps ||| Pieptöne ||| Bips ||| Segnali acustici
+Voice language ||| Sprache für Spracherkennung ||| Langue de la voix ||| Lingua della voce
+Stop keyword(s), comma separated ||| Stoppwörter, durch Komma getrennt ||| Mots d’arrêt, séparés par des virgules ||| Parole di stop, separate da virgola
+Test keyword ||| Stoppwort testen ||| Tester le mot d’arrêt ||| Testa la parola di stop
+🎙 asking for microphone… ||| 🎙 Mikrofon wird angefragt… ||| 🎙 demande d’accès au micro… ||| 🎙 richiesta del microfono…
+🎙 listening for {0} ||| 🎙 höre auf {0} ||| 🎙 à l’écoute de {0} ||| 🎙 in ascolto di {0}
+🎙 heard: “{0}” ||| 🎙 gehört: „{0}“ ||| 🎙 entendu : « {0} » ||| 🎙 sentito: «{0}»
+✅ Keyword recognised! ||| ✅ Stoppwort erkannt! ||| ✅ Mot d’arrêt reconnu ! ||| ✅ Parola di stop riconosciuta!
+ (test ended) ||| (Test beendet) ||| (test terminé) ||| (test terminato)
+(test ended) ||| (Test beendet) ||| (test terminé) ||| (test terminato)
+⚠️ Voice recognition not supported – use the STOP button ||| ⚠️ Spracherkennung nicht unterstützt – nutze die STOPP-Taste ||| ⚠️ Reconnaissance vocale non prise en charge – utilise le bouton STOP ||| ⚠️ Riconoscimento vocale non supportato – usa il pulsante STOP
+⚠️ Voice recognition was refused ({0}). The microphone itself is allowed, so the phone's speech service blocks this app – try opening the app in Chrome instead of the installed icon, or use the STOP button. ||| ⚠️ Die Spracherkennung wurde verweigert ({0}). Das Mikrofon ist erlaubt, also blockiert der Sprachdienst des Handys diese App – öffne die App in Chrome statt über das installierte Symbol, oder nutze die STOPP-Taste. ||| ⚠️ La reconnaissance vocale a été refusée ({0}). Le micro est autorisé, donc le service vocal du téléphone bloque cette app – ouvre l’app dans Chrome plutôt que via l’icône installée, ou utilise le bouton STOP. ||| ⚠️ Il riconoscimento vocale è stato rifiutato ({0}). Il microfono è consentito, quindi il servizio vocale del telefono blocca questa app – apri l’app in Chrome invece che dall’icona installata, oppure usa il pulsante STOP.
+⚠️ Voice recognition needs an internet connection ||| ⚠️ Die Spracherkennung braucht eine Internetverbindung ||| ⚠️ La reconnaissance vocale nécessite une connexion Internet ||| ⚠️ Il riconoscimento vocale richiede una connessione internet
+⚠️ Microphone is blocked for this app. Open Settings › Permissions & tests for how to switch it on, or use the STOP button. ||| ⚠️ Das Mikrofon ist für diese App gesperrt. Unter Einstellungen › Berechtigungen & Tests steht, wie du es einschaltest – oder nutze die STOPP-Taste. ||| ⚠️ Le micro est bloqué pour cette app. Ouvre Paramètres › Autorisations et tests pour savoir comment l’activer, ou utilise le bouton STOP. ||| ⚠️ Il microfono è bloccato per questa app. Apri Impostazioni › Autorizzazioni e test per attivarlo, oppure usa il pulsante STOP.
+⚠️ No microphone available ({0}) – use the STOP button ||| ⚠️ Kein Mikrofon verfügbar ({0}) – nutze die STOPP-Taste ||| ⚠️ Aucun micro disponible ({0}) – utilise le bouton STOP ||| ⚠️ Nessun microfono disponibile ({0}) – usa il pulsante STOP
+# ---------- shared sheet ----------
+Everyone in the club can read and write the same Google Sheet. Each phone keeps its own copy and uploads to the sheet. Photos stay on the phone. ||| Alle im Club können dieselbe Google-Tabelle lesen und beschreiben. Jedes Handy behält seine eigene Kopie und lädt in die Tabelle hoch. Fotos bleiben auf dem Handy. ||| Tout le club peut lire et écrire la même feuille Google. Chaque téléphone garde sa propre copie et envoie vers la feuille. Les photos restent sur le téléphone. ||| Tutti nel club possono leggere e scrivere lo stesso foglio Google. Ogni telefono tiene la propria copia e carica nel foglio. Le foto restano sul telefono.
+Web app URL (Apps Script) ||| Web-App-URL (Apps Script) ||| URL de l’application web (Apps Script) ||| URL dell’app web (Apps Script)
+Anyone with the URL can read and add rows – share it only inside the club. ||| Jeder mit der URL kann Zeilen lesen und hinzufügen – teile sie nur im Club. ||| Toute personne avec l’URL peut lire et ajouter des lignes – ne la partage qu’au sein du club. ||| Chiunque abbia l’URL può leggere e aggiungere righe – condividila solo nel club.
+Sync now ||| Jetzt synchronisieren ||| Synchroniser maintenant ||| Sincronizza ora
+Last sync {0} ||| Letzte Synchronisierung {0} ||| Dernière synchronisation {0} ||| Ultima sincronizzazione {0}
+Never synced ||| Noch nie synchronisiert ||| Jamais synchronisé ||| Mai sincronizzato
+{0} dip(s) waiting ||| {0} Eisbad/-bäder warten ||| {0} bain(s) en attente ||| {0} bagno/i in attesa
+One-time setup ||| Einmalige Einrichtung ||| Configuration unique ||| Configurazione una tantum
+Create a Google Sheet and open Extensions › Apps Script. ||| Erstelle eine Google-Tabelle und öffne Erweiterungen › Apps Script. ||| Crée une feuille Google et ouvre Extensions › Apps Script. ||| Crea un foglio Google e apri Estensioni › Apps Script.
+Replace the code with the script below, save. ||| Ersetze den Code durch das Skript unten und speichere. ||| Remplace le code par le script ci-dessous et enregistre. ||| Sostituisci il codice con lo script qui sotto e salva.
+Choose Deploy › New deployment › Web app. Set “Execute as” to Me and access to Anyone with the link, then copy the URL. ||| Wähle Bereitstellen › Neue Bereitstellung › Web-App. Stelle „Ausführen als“ auf Ich und den Zugriff auf Jeder mit dem Link, dann kopiere die URL. ||| Choisis Déployer › Nouveau déploiement › Application web. Mets « Exécuter en tant que » sur Moi et l’accès sur Toute personne avec le lien, puis copie l’URL. ||| Scegli Esegui il deployment › Nuova implementazione › App web. Imposta «Esegui come» su Me e l’accesso su Chiunque abbia il link, poi copia l’URL.
+Paste the URL above, on every member’s phone. ||| Füge die URL oben ein, auf dem Handy jedes Mitglieds. ||| Colle l’URL ci-dessus, sur le téléphone de chaque membre. ||| Incolla l’URL qui sopra, sul telefono di ogni membro.
+Copy script ||| Skript kopieren ||| Copier le script ||| Copia script
+Script copied ||| Skript kopiert ||| Script copié ||| Script copiato
+Add the Sheet URL first ||| Gib zuerst die URL der Tabelle ein ||| Ajoute d’abord l’URL de la feuille ||| Inserisci prima l’URL del foglio
+Syncing… ||| Synchronisiere… ||| Synchronisation… ||| Sincronizzazione…
+Synced · {0} dip(s) in the club sheet ||| Synchronisiert · {0} Eisbad/-bäder in der Club-Tabelle ||| Synchronisé · {0} bain(s) dans la feuille du club ||| Sincronizzato · {0} bagno/i nel foglio del club
+Sync failed: {0} (check URL & deployment access) ||| Synchronisierung fehlgeschlagen: {0} (URL und Bereitstellungszugriff prüfen) ||| Échec de la synchronisation : {0} (vérifie l’URL et l’accès au déploiement) ||| Sincronizzazione fallita: {0} (controlla URL e accesso all’implementazione)
+Sync failed: ||| Synchronisierung fehlgeschlagen: ||| Échec de la synchronisation : ||| Sincronizzazione fallita:
+Select the text and copy manually ||| Markiere den Text und kopiere ihn manuell ||| Sélectionne le texte et copie-le manuellement ||| Seleziona il testo e copialo manualmente
+# ---------- appearance ----------
+Colour ||| Farbe ||| Couleur ||| Colore
+Mode ||| Modus ||| Mode ||| Modalità
+Automatic ||| Automatisch ||| Automatique ||| Automatico
+Light ||| Hell ||| Clair ||| Chiaro
+Dark ||| Dunkel ||| Sombre ||| Scuro
+Icon style ||| Symbolstil ||| Style des icônes ||| Stile delle icone
+Icons ||| Symbole ||| Icônes ||| Icone
+Emoji ||| Emoji ||| Emoji ||| Emoji
+ice ||| Eis ||| glace ||| ghiaccio
+forest ||| Wald ||| forêt ||| foresta
+sunset ||| Sonnenuntergang ||| coucher de soleil ||| tramonto
+violet ||| Violett ||| violet ||| viola
+rose ||| Rosa ||| rose ||| rosa
+# ---------- language page ----------
+Automatic (phone language) ||| Automatisch (Handysprache) ||| Automatique (langue du téléphone) ||| Automatica (lingua del telefono)
+Language of the app. “Automatic” follows the language of your phone. ||| Sprache der App. „Automatisch“ folgt der Sprache deines Handys. ||| Langue de l’app. « Automatique » suit la langue de ton téléphone. ||| Lingua dell’app. «Automatica» segue la lingua del telefono.
+The voice language and the stop words are set in Dip defaults. When you change the app language, the app offers to switch them too. ||| Sprache der Spracherkennung und Stoppwörter stellst du unter Standardwerte ein. Wenn du die App-Sprache änderst, bietet die App an, sie mitzuwechseln. ||| La langue de la voix et les mots d’arrêt se règlent dans Réglages du bain. Quand tu changes la langue de l’app, elle propose de les changer aussi. ||| La lingua della voce e le parole di stop si impostano in Impostazioni bagno. Quando cambi la lingua dell’app, ti viene proposto di cambiarle.
+Switch the voice too? ||| Auch die Spracherkennung umstellen? ||| Changer aussi la voix ? ||| Cambiare anche la voce?
+Set the voice language to {0} and the stop words to “{1}”? ||| Sprache der Spracherkennung auf {0} und Stoppwörter auf „{1}“ setzen? ||| Mettre la langue de la voix sur {0} et les mots d’arrêt sur « {1} » ? ||| Impostare la lingua della voce su {0} e le parole di stop su «{1}»?
+Yes, switch ||| Ja, umstellen ||| Oui, changer ||| Sì, cambia
+No ||| Nein ||| Non ||| No
+# ---------- wizard ----------
+Welcome 👋 ||| Willkommen 👋 ||| Bienvenue 👋 ||| Benvenuto 👋
+Let’s set up your club. This takes a minute, and everything can be changed later in Settings. ||| Richten wir deinen Club ein. Das dauert eine Minute, und alles lässt sich später in den Einstellungen ändern. ||| Configurons ton club. Cela prend une minute, et tout peut être modifié plus tard dans les paramètres. ||| Configuriamo il tuo club. Ci vuole un minuto e tutto si può cambiare più tardi nelle impostazioni.
+Club logo (optional) ||| Club-Logo (optional) ||| Logo du club (facultatif) ||| Logo del club (facoltativo) 
+e.g. Ice Bath Club ||| z. B. Eisbade-Club ||| p. ex. Club de bains glacés ||| es. Club del bagno nel ghiaccio
+Already use the app on another phone? ||| Nutzt du die App schon auf einem anderen Handy? ||| Tu utilises déjà l’app sur un autre téléphone ? ||| Usi già l’app su un altro telefono?
+Restore your full backup and skip the questions. ||| Stelle dein vollständiges Backup wieder her und überspringe die Fragen. ||| Restaure ta sauvegarde complète et passe les questions. ||| Ripristina il backup completo e salta le domande.
+Where do you swim? ||| Wo schwimmst du? ||| Où te baignes-tu ? ||| Dove nuoti?
+Who is in the club? ||| Wer ist im Club? ||| Qui fait partie du club ? ||| Chi fa parte del club?
+Your name ||| Dein Name ||| Ton nom ||| Il tuo nome
+Other members (optional) ||| Weitere Mitglieder (optional) ||| Autres membres (facultatif) ||| Altri membri (facoltativo)
+Add a member ||| Mitglied hinzufügen ||| Ajouter un membre ||| Aggiungi un membro
+You can add members later in Settings. ||| Mitglieder kannst du später in den Einstellungen hinzufügen. ||| Tu peux ajouter des membres plus tard dans les paramètres. ||| Puoi aggiungere membri più tardi nelle impostazioni.
+Please enter a club name ||| Bitte gib einen Clubnamen ein ||| Saisis un nom de club ||| Inserisci un nome per il club
+Please enter your name ||| Bitte gib deinen Namen ein ||| Saisis ton nom ||| Inserisci il tuo nome
+No spot set ||| Keine Badestelle festgelegt ||| Aucun lieu défini ||| Nessun luogo impostato
+Continue without a swimming spot? Temperatures and weather stay empty until you set it in Settings. ||| Ohne Badestelle fortfahren? Temperaturen und Wetter bleiben leer, bis du sie in den Einstellungen festlegst. ||| Continuer sans lieu de baignade ? Les températures et la météo restent vides jusqu’à ce que tu le définisses dans les paramètres. ||| Continuare senza luogo del bagno? Temperature e meteo restano vuoti finché non lo imposti nelle impostazioni.
+Check permissions? ||| Berechtigungen prüfen? ||| Vérifier les autorisations ? ||| Controllare le autorizzazioni?
+Test the microphone for the voice stop (and sound, screen and camera) now? You can also do it later in Settings › Permissions & tests. ||| Jetzt das Mikrofon für den Sprachstopp (sowie Ton, Bildschirm und Kamera) testen? Du kannst es auch später unter Einstellungen › Berechtigungen & Tests tun. ||| Tester maintenant le micro pour l’arrêt vocal (ainsi que le son, l’écran et la caméra) ? Tu peux aussi le faire plus tard dans Paramètres › Autorisations et tests. ||| Testare ora il microfono per lo stop vocale (e audio, schermo e fotocamera)? Puoi farlo anche più tardi in Impostazioni › Autorizzazioni e test.
+Check now ||| Jetzt prüfen ||| Vérifier maintenant ||| Controlla ora
+# ---------- spot ----------
+City or town near your swimming spot ||| Ort in der Nähe deiner Badestelle ||| Ville ou village près de ton lieu de baignade ||| Città o paese vicino al tuo luogo del bagno
+e.g. a town on the lake ||| z. B. ein Ort am See ||| p. ex. un village au bord du lac ||| es. un paese sul lago
+Searching… ||| Suche läuft… ||| Recherche… ||| Ricerca in corso…
+No place found – try another spelling. ||| Kein Ort gefunden – versuche eine andere Schreibweise. ||| Aucun lieu trouvé – essaie une autre orthographe. ||| Nessun luogo trovato – prova un’altra grafia.
+Search failed – check your internet connection. ||| Suche fehlgeschlagen – prüfe deine Internetverbindung. ||| Échec de la recherche – vérifie ta connexion Internet. ||| Ricerca non riuscita – controlla la connessione internet.
+Drag the pin or tap the map to fine-tune your swimming spot ({0}). ||| Ziehe die Markierung oder tippe auf die Karte, um deine Badestelle zu verfeinern ({0}). ||| Fais glisser le repère ou touche la carte pour affiner ton lieu de baignade ({0}). ||| Trascina il segnaposto o tocca la mappa per affinare il tuo luogo del bagno ({0}).
+Lake – the nearest ones with water-temperature data ||| See – die nächsten mit Wassertemperatur-Daten ||| Lac – les plus proches avec des données de température de l’eau ||| Lago – i più vicini con dati sulla temperatura dell’acqua
+My lake is not listed – I will enter temperatures by hand ||| Mein See fehlt – ich gebe die Temperaturen von Hand ein ||| Mon lac n’est pas dans la liste – je saisirai les températures à la main ||| Il mio lago non è nell’elenco – inserirò le temperature a mano
+Looking for model data near your spot… (can take ~20 s) ||| Suche Modelldaten in der Nähe deiner Badestelle… (kann ca. 20 s dauern) ||| Recherche de données du modèle près de ton lieu… (peut prendre ~20 s) ||| Ricerca dei dati del modello vicino al tuo luogo… (può richiedere ~20 s)
+Current setting kept – search again to change it. ||| Aktuelle Einstellung beibehalten – suche erneut, um sie zu ändern. ||| Réglage actuel conservé – refais une recherche pour le changer. ||| Impostazione attuale mantenuta – cerca di nuovo per cambiarla.
+OK – you can enter temperatures by hand; station “{0}” ({1} km) will be used too. ||| OK – du kannst Temperaturen von Hand eingeben; die Station „{0}“ ({1} km) wird ebenfalls verwendet. ||| OK – tu peux saisir les températures à la main ; la station « {0} » ({1} km) sera aussi utilisée. ||| OK – puoi inserire le temperature a mano; verrà usata anche la stazione «{0}» ({1} km).
+OK – you can enter temperatures by hand. ||| OK – du kannst Temperaturen von Hand eingeben. ||| OK – tu peux saisir les températures à la main. ||| OK – puoi inserire le temperature a mano.
+Model data found – the nearest model point is {0} from your pin. ||| Modelldaten gefunden – der nächste Modellpunkt ist {0} von deiner Markierung entfernt. ||| Données du modèle trouvées – le point du modèle le plus proche est à {0} de ton repère. ||| Dati del modello trovati – il punto più vicino è a {0} dal tuo segnaposto.
+Station “{0}” ({1} km) added. ||| Station „{0}“ ({1} km) hinzugefügt. ||| Station « {0} » ({1} km) ajoutée. ||| Stazione «{0}» ({1} km) aggiunta.
+The nearest model point is {0} km from your pin – move the pin onto the lake, or pick another lake. ||| Der nächste Modellpunkt ist {0} km von deiner Markierung entfernt – verschiebe die Markierung auf den See oder wähle einen anderen See. ||| Le point du modèle le plus proche est à {0} km de ton repère – place le repère sur le lac ou choisis un autre lac. ||| Il punto del modello più vicino è a {0} km dal tuo segnaposto – sposta il segnaposto sul lago o scegli un altro lago.
+Could not reach the lake data ({0}). Check your connection and tap the lake again. ||| Seedaten nicht erreichbar ({0}). Prüfe deine Verbindung und tippe den See erneut an. ||| Impossible d’atteindre les données du lac ({0}). Vérifie ta connexion et touche à nouveau le lac. ||| Impossibile raggiungere i dati del lago ({0}). Controlla la connessione e tocca di nuovo il lago.
+The map needs the map library and an internet connection. ||| Die Karte braucht die Kartenbibliothek und eine Internetverbindung. ||| La carte nécessite la bibliothèque cartographique et une connexion Internet. ||| La mappa richiede la libreria cartografica e una connessione internet.
+no answer ||| keine Antwort ||| pas de réponse ||| nessuna risposta
+# ---------- lakes ----------
+Lake Zurich ||| Zürichsee ||| Lac de Zurich ||| Lago di Zurigo
+Lake Geneva ||| Genfersee ||| Lac Léman ||| Lago di Ginevra
+Lake Lugano ||| Luganersee ||| Lac de Lugano ||| Lago di Lugano
+Lake Biel ||| Bielersee ||| Lac de Bienne ||| Lago di Bienne
+Lake Murten ||| Murtensee ||| Lac de Morat ||| Lago di Morat
+Lake Greifensee ||| Greifensee ||| Lac de Greifen ||| Lago di Greifen
+Lake Hallwil ||| Hallwilersee ||| Lac de Hallwil ||| Lago di Hallwil
+Lake Ägeri ||| Ägerisee ||| Lac d’Ägeri ||| Lago di Ägeri
+Lake Joux ||| Lac de Joux ||| Lac de Joux ||| Lago di Joux
+Lake St. Moritz ||| St. Moritzersee ||| Lac de Saint-Moritz ||| Lago di St. Moritz
+Lake Garda ||| Gardasee ||| Lac de Garde ||| Lago di Garda
+Lake Annecy ||| Lac d’Annecy ||| Lac d’Annecy ||| Lago di Annecy
+Lake Bourget ||| Lac du Bourget ||| Lac du Bourget ||| Lago di Bourget
+Lake Neuchâtel ||| Neuenburgersee ||| Lac de Neuchâtel ||| Lago di Neuchâtel
+Lake Lucerne ||| Vierwaldstättersee ||| Lac des Quatre-Cantons ||| Lago dei Quattro Cantoni
+Lake Zug ||| Zugersee ||| Lac de Zoug ||| Lago di Zugo
+Lake Caldonazzo ||| Caldonazzosee ||| Lac de Caldonazzo ||| Lago di Caldonazzo
+# ---------- water source ----------
+Choose which source feeds the water temperature shown in the app and saved with each dip. A value you type on Conditions always wins for 6 hours (always, in “by hand only”). ||| Wähle, welche Quelle die in der App angezeigte und bei jedem Eisbad gespeicherte Wassertemperatur liefert. Ein Wert, den du unter Bedingungen eingibst, gilt immer 6 Stunden lang (bei „nur von Hand“ immer). ||| Choisis quelle source fournit la température de l’eau affichée dans l’app et enregistrée avec chaque bain. Une valeur saisie dans Conditions l’emporte toujours pendant 6 heures (toujours, en « à la main seulement »). ||| Scegli quale fonte fornisce la temperatura dell’acqua mostrata nell’app e salvata con ogni bagno. Un valore inserito in Condizioni vale sempre per 6 ore (sempre, in «solo a mano»).
+Automatic ||| Automatisch ||| Automatique ||| Automatico
+Lake model first, then a nearby measuring station ||| Zuerst Seemodell, dann eine nahe Messstation ||| D’abord le modèle du lac, puis une station de mesure proche ||| Prima il modello del lago, poi una stazione di misura vicina
+Lake model only ||| Nur Seemodell ||| Modèle du lac seulement ||| Solo modello del lago
+Alplakes simulation for your spot ||| Alplakes-Simulation für deine Badestelle ||| Simulation Alplakes pour ton lieu ||| Simulazione Alplakes per il tuo luogo
+Measuring station only ||| Nur Messstation ||| Station de mesure seulement ||| Solo stazione di misura
+Nearest BAFU lake station with a temperature ||| Nächste BAFU-Seestation mit Temperatur ||| Station lacustre OFEV la plus proche avec température ||| Stazione lacustre UFAM più vicina con temperatura
+Average of both ||| Mittel aus beiden ||| Moyenne des deux ||| Media di entrambi
+Mean of lake model and station when both exist ||| Mittelwert aus Seemodell und Station, wenn beide vorhanden sind ||| Moyenne du modèle et de la station quand les deux existent ||| Media di modello e stazione quando esistono entrambi
+Typed by hand only ||| Nur von Hand eingegeben ||| Saisie à la main seulement ||| Solo inserita a mano
+Only the value you enter on Conditions ||| Nur der Wert, den du unter Bedingungen eingibst ||| Seulement la valeur saisie dans Conditions ||| Solo il valore inserito in Condizioni
+Compare with what you measure at the shore. In use now: {0}. ||| Vergleiche mit dem, was du am Ufer misst. Aktuell verwendet: {0}. ||| Compare avec ce que tu mesures sur la rive. Utilisé actuellement : {0}. ||| Confronta con ciò che misuri a riva. In uso ora: {0}.
+In use: {0} · change in Settings › Water temperature source. ||| Verwendet: {0} · änderbar unter Einstellungen › Quelle der Wassertemperatur. ||| Utilisé : {0} · modifiable dans Paramètres › Source de la température de l’eau. ||| In uso: {0} · modificabile in Impostazioni › Fonte della temperatura dell’acqua.
+In use: {0} ||| Verwendet: {0} ||| Utilisé : {0} ||| In uso: {0}
+# ---------- permissions ----------
+Everything the app may ask your phone for. Tap Allow (the phone shows its own question), then Test. Location and notifications are not used. ||| Alles, was die App von deinem Handy anfragen kann. Tippe auf Erlauben (das Handy zeigt eine eigene Frage), dann auf Test. Standort und Benachrichtigungen werden nicht verwendet. ||| Tout ce que l’app peut demander à ton téléphone. Touche Autoriser (le téléphone pose sa propre question), puis Test. La position et les notifications ne sont pas utilisées. ||| Tutto ciò che l’app può chiedere al telefono. Tocca Consenti (il telefono mostra la sua domanda), poi Test. Posizione e notifiche non vengono usate.
+Request all ||| Alle anfragen ||| Tout demander ||| Richiedi tutto
+Allow ||| Erlauben ||| Autoriser ||| Consenti
+Microphone ||| Mikrofon ||| Micro ||| Microfono
+Needed to hear the stop word. Test shows a live level meter. ||| Nötig, um das Stoppwort zu hören. Der Test zeigt eine Pegelanzeige. ||| Nécessaire pour entendre le mot d’arrêt. Le test affiche un indicateur de niveau. ||| Necessario per sentire la parola di stop. Il test mostra un indicatore di livello.
+Voice recognition ||| Spracherkennung ||| Reconnaissance vocale ||| Riconoscimento vocale
+Chrome’s speech service (needs internet). Test: say your stop word. ||| Sprachdienst von Chrome (braucht Internet). Test: Sag dein Stoppwort. ||| Service vocal de Chrome (nécessite Internet). Test : dis ton mot d’arrêt. ||| Servizio vocale di Chrome (richiede internet). Test: di’ la tua parola di stop.
+Sound & speech ||| Ton & Sprache ||| Son et voix ||| Audio e voce
+Beeps and spoken cues. Test plays a beep and speaks. ||| Pieptöne und Sprachansagen. Der Test spielt einen Piepton ab und spricht. ||| Bips et annonces vocales. Le test joue un bip et parle. ||| Segnali acustici e annunci vocali. Il test riproduce un segnale e parla.
+Keep screen on ||| Bildschirm anlassen ||| Garder l’écran allumé ||| Tieni lo schermo acceso
+Stops the screen switching off during a dip. Test holds it for 3 s. ||| Verhindert, dass sich der Bildschirm während des Eisbads ausschaltet. Der Test hält ihn 3 s an. ||| Empêche l’écran de s’éteindre pendant un bain. Le test le maintient 3 s. ||| Impedisce allo schermo di spegnersi durante il bagno. Il test lo mantiene 3 s.
+Camera ||| Kamera ||| Caméra ||| Fotocamera
+Only if you take the lake photo with the camera. Test shows a preview. ||| Nur, wenn du das Seefoto mit der Kamera aufnimmst. Der Test zeigt eine Vorschau. ||| Seulement si tu prends la photo du lac avec la caméra. Le test affiche un aperçu. ||| Solo se scatti la foto del lago con la fotocamera. Il test mostra un’anteprima.
+Allowed ||| Erlaubt ||| Autorisé ||| Consentito
+Blocked ||| Blockiert ||| Bloqué ||| Bloccato
+Not asked yet ||| Noch nicht gefragt ||| Pas encore demandé ||| Non ancora richiesto
+Available ||| Verfügbar ||| Disponible ||| Disponibile
+Not supported here ||| Hier nicht unterstützt ||| Non pris en charge ici ||| Non supportato qui
+Beeps only ||| Nur Pieptöne ||| Bips seulement ||| Solo segnali acustici
+Blocked. Re-enable it: Chrome ⋮ menu › Settings › Site settings › Microphone › this site › Allow. A web page cannot ask again. ||| Blockiert. Wieder aktivieren: Chrome-Menü ⋮ › Einstellungen › Websiteeinstellungen › Mikrofon › diese Seite › Zulassen. Eine Webseite kann nicht erneut fragen. ||| Bloqué. Pour réactiver : menu Chrome ⋮ › Paramètres › Paramètres des sites › Micro › ce site › Autoriser. Une page web ne peut pas redemander. ||| Bloccato. Per riattivarlo: menu Chrome ⋮ › Impostazioni › Impostazioni sito › Microfono › questo sito › Consenti. Una pagina web non può chiedere di nuovo.
+Blocked. Re-enable it: Chrome ⋮ menu › Settings › Site settings › Camera › this site › Allow. A web page cannot ask again. ||| Blockiert. Wieder aktivieren: Chrome-Menü ⋮ › Einstellungen › Websiteeinstellungen › Kamera › diese Seite › Zulassen. Eine Webseite kann nicht erneut fragen. ||| Bloqué. Pour réactiver : menu Chrome ⋮ › Paramètres › Paramètres des sites › Caméra › ce site › Autoriser. Une page web ne peut pas redemander. ||| Bloccato. Per riattivarlo: menu Chrome ⋮ › Impostazioni › Impostazioni sito › Fotocamera › questo sito › Consenti. Una pagina web non può chiedere di nuovo.
+Allowed ✓ ||| Erlaubt ✓ ||| Autorisé ✓ ||| Consentito ✓
+Blocked – see below. ||| Blockiert – siehe unten. ||| Bloqué – voir ci-dessous. ||| Bloccato – vedi sotto.
+Failed: {0} ||| Fehlgeschlagen: {0} ||| Échec : {0} ||| Non riuscito: {0}
+Say something… ||| Sag etwas… ||| Dis quelque chose… ||| Di’ qualcosa…
+Microphone works ✓ (heard sound) ||| Mikrofon funktioniert ✓ (Ton gehört) ||| Le micro fonctionne ✓ (son entendu) ||| Il microfono funziona ✓ (suono rilevato)
+Microphone is open but I heard almost nothing – speak louder or check the phone’s mic. ||| Das Mikrofon ist offen, aber ich habe fast nichts gehört – sprich lauter oder prüfe das Mikrofon des Handys. ||| Le micro est ouvert mais je n’ai presque rien entendu – parle plus fort ou vérifie le micro du téléphone. ||| Il microfono è aperto ma ho sentito quasi nulla – parla più forte o controlla il microfono del telefono.
+Blocked – allow the microphone first. ||| Blockiert – erlaube zuerst das Mikrofon. ||| Bloqué – autorise d’abord le micro. ||| Bloccato – consenti prima il microfono.
+Voice recognition is not supported in this browser. ||| Spracherkennung wird in diesem Browser nicht unterstützt. ||| La reconnaissance vocale n’est pas prise en charge dans ce navigateur. ||| Il riconoscimento vocale non è supportato in questo browser.
+Say “{0}” within 12 s… ||| Sag „{0}“ innerhalb von 12 s… ||| Dis « {0} » dans les 12 s… ||| Di’ «{0}» entro 12 s…
+Heard the stop word ✓ ||| Stoppwort gehört ✓ ||| Mot d’arrêt entendu ✓ ||| Parola di stop sentita ✓
+ – not heard. Check the microphone, internet and the keyword in Settings › Dip defaults. ||| – nicht gehört. Prüfe Mikrofon, Internet und das Stoppwort unter Einstellungen › Standardwerte. ||| – pas entendu. Vérifie le micro, Internet et le mot d’arrêt dans Paramètres › Réglages du bain. ||| – non sentita. Controlla microfono, internet e la parola di stop in Impostazioni › Impostazioni bagno.
+You should hear two beeps and a spoken test. Nothing? Check volume and silent mode. ||| Du solltest zwei Pieptöne und einen gesprochenen Test hören. Nichts? Prüfe Lautstärke und Stummschaltung. ||| Tu devrais entendre deux bips et un test parlé. Rien ? Vérifie le volume et le mode silencieux. ||| Dovresti sentire due segnali e un test parlato. Niente? Controlla volume e modalità silenziosa.
+Not supported in this browser. ||| In diesem Browser nicht unterstützt. ||| Non pris en charge dans ce navigateur. ||| Non supportato in questo browser.
+Screen is being kept on ✓ (3 s) ||| Bildschirm bleibt an ✓ (3 s) ||| L’écran reste allumé ✓ (3 s) ||| Lo schermo resta acceso ✓ (3 s)
+Works ✓ ||| Funktioniert ✓ ||| Fonctionne ✓ ||| Funziona ✓
+Refused: {0} ||| Abgelehnt: {0} ||| Refusé : {0} ||| Rifiutato: {0}
+Camera works ✓ ||| Kamera funktioniert ✓ ||| La caméra fonctionne ✓ ||| La fotocamera funziona ✓
+Blocked – allow the camera first. ||| Blockiert – erlaube zuerst die Kamera. ||| Bloqué – autorise d’abord la caméra. ||| Bloccato – consenti prima la fotocamera.
+Now run the individual tests below ||| Führe jetzt die einzelnen Tests unten aus ||| Lance maintenant les tests individuels ci-dessous ||| Esegui ora i singoli test qui sotto
+# ---------- diag ----------
+Calls every data source live from this phone and shows the exact answer or error. Tap Run, then Copy and send the text if something does not work. ||| Ruft jede Datenquelle live von diesem Handy aus auf und zeigt die genaue Antwort oder den Fehler. Tippe auf Starten, dann auf Kopieren und sende den Text, falls etwas nicht funktioniert. ||| Appelle chaque source de données en direct depuis ce téléphone et affiche la réponse ou l’erreur exacte. Touche Lancer, puis Copier et envoie le texte si quelque chose ne marche pas. ||| Chiama ogni fonte di dati dal vivo da questo telefono e mostra la risposta o l’errore esatto. Tocca Avvia, poi Copia e invia il testo se qualcosa non funziona.
+Run test ||| Test starten ||| Lancer le test ||| Avvia test
+Copy result ||| Ergebnis kopieren ||| Copier le résultat ||| Copia risultato
+Copied ||| Kopiert ||| Copié ||| Copiato
+Lake model ({0}) ||| Seemodell ({0}) ||| Modèle du lac ({0}) ||| Modello del lago ({0})
+Measuring station ({0}) ||| Messstation ({0}) ||| Station de mesure ({0}) ||| Stazione di misura ({0})
+Typed by hand ({0}) ||| Von Hand eingegeben ({0}) ||| Saisie à la main ({0}) ||| Inserita a mano ({0})
+Your measurement ({0}) ||| Deine Messung ({0}) ||| Ta mesure ({0}) ||| La tua misura ({0})
+Water data comes from lake models of the Swiss Alplakes project; a nearby measuring station is added if one exists. Weather is found from the city. Everything can be overridden by hand on the Conditions page. ||| Die Wasserdaten stammen aus Seemodellen des Schweizer Projekts Alplakes; eine nahe Messstation wird ergänzt, falls es eine gibt. Das Wetter wird über den Ort gefunden. Alles lässt sich auf der Seite Bedingungen von Hand überschreiben. ||| Les données de l’eau proviennent des modèles de lacs du projet suisse Alplakes ; une station de mesure proche est ajoutée s’il y en a une. La météo est trouvée à partir de la ville. Tout peut être remplacé à la main sur la page Conditions. ||| I dati dell’acqua provengono dai modelli dei laghi del progetto svizzero Alplakes; se esiste, viene aggiunta una stazione di misura vicina. Il meteo viene trovato dalla città. Tutto può essere sostituito a mano nella pagina Condizioni.
+Water: Alplakes (EPFL/Eawag) and BAFU via existenz.ch · Weather: Open-Meteo ||| Wasser: Alplakes (EPFL/Eawag) und BAFU via existenz.ch · Wetter: Open-Meteo ||| Eau : Alplakes (EPFL/Eawag) et OFEV via existenz.ch · Météo : Open-Meteo ||| Acqua: Alplakes (EPFL/Eawag) e UFAM via existenz.ch · Meteo: Open-Meteo
+# ---------- backup ----------
+Full backup ||| Vollständiges Backup ||| Sauvegarde complète ||| Backup completo
+One file with all dips, members, settings, club logo and photos. Use it to move the app to a new phone: install the app there, then choose Restore backup (also offered on the first screen). ||| Eine Datei mit allen Eisbädern, Mitgliedern, Einstellungen, Club-Logo und Fotos. Damit ziehst du die App auf ein neues Handy um: App dort installieren, dann Backup wiederherstellen wählen (wird auch auf dem ersten Bildschirm angeboten). ||| Un seul fichier avec tous les bains, membres, réglages, logo du club et photos. Sers-t’en pour passer à un nouveau téléphone : installe l’app là-bas, puis choisis Restaurer la sauvegarde (aussi proposé sur le premier écran). ||| Un unico file con tutti i bagni, membri, impostazioni, logo del club e foto. Usalo per passare a un nuovo telefono: installa lì l’app, poi scegli Ripristina backup (proposto anche nella prima schermata).
+Full backup (with photos) ||| Vollständiges Backup (mit Fotos) ||| Sauvegarde complète (avec photos) ||| Backup completo (con foto)
+Restore backup ||| Backup wiederherstellen ||| Restaurer la sauvegarde ||| Ripristina backup
+Other exports ||| Weitere Exporte ||| Autres exports ||| Altre esportazioni
+Export CSV ||| CSV exportieren ||| Exporter en CSV ||| Esporta CSV
+Backup JSON ||| Backup-JSON ||| Sauvegarde JSON ||| Backup JSON
+Backup JSON is small: dips, members and settings, but no photos. ||| Das Backup-JSON ist klein: Eisbäder, Mitglieder und Einstellungen, aber keine Fotos. ||| La sauvegarde JSON est petite : bains, membres et réglages, mais pas de photos. ||| Il backup JSON è piccolo: bagni, membri e impostazioni, ma niente foto.
+Preparing backup… ||| Backup wird vorbereitet… ||| Préparation de la sauvegarde… ||| Preparazione del backup…
+Backup created ||| Backup erstellt ||| Sauvegarde créée ||| Backup creato
+✓ Full backup created: {0} dips, {1} photos, {2} MB. Find it in your Downloads and keep a copy somewhere safe (Drive, e-mail to yourself). ||| ✓ Vollständiges Backup erstellt: {0} Eisbäder, {1} Fotos, {2} MB. Du findest es in deinen Downloads – bewahre eine Kopie an einem sicheren Ort auf (Drive, E-Mail an dich selbst). ||| ✓ Sauvegarde complète créée : {0} bains, {1} photos, {2} Mo. Tu la trouveras dans tes Téléchargements – garde une copie en lieu sûr (Drive, e-mail à toi-même). ||| ✓ Backup completo creato: {0} bagni, {1} foto, {2} MB. Lo trovi nei Download – conserva una copia in un posto sicuro (Drive, e-mail a te stesso).
+⚠️ Backup failed: {0} ||| ⚠️ Backup fehlgeschlagen: {0} ||| ⚠️ Échec de la sauvegarde : {0} ||| ⚠️ Backup non riuscito: {0}
+This is not a valid backup file. ||| Das ist keine gültige Backup-Datei. ||| Ce n’est pas un fichier de sauvegarde valide. ||| Questo non è un file di backup valido.
+This is not an Ice Bath Log backup. ||| Das ist kein Ice-Bath-Log-Backup. ||| Ce n’est pas une sauvegarde d’Ice Bath Log. ||| Questo non è un backup di Ice Bath Log.
+Invalid backup file ||| Ungültige Backup-Datei ||| Fichier de sauvegarde invalide ||| File di backup non valido
+Restore backup? ||| Backup wiederherstellen? ||| Restaurer la sauvegarde ? ||| Ripristinare il backup?
+This adds {0} dip(s) and up to {1} photo(s) from the backup. Dips already on this phone are kept. ||| Das fügt {0} Eisbad/-bäder und bis zu {1} Foto(s) aus dem Backup hinzu. Eisbäder, die schon auf diesem Handy sind, bleiben erhalten. ||| Cela ajoute {0} bain(s) et jusqu’à {1} photo(s) de la sauvegarde. Les bains déjà présents sur ce téléphone sont conservés. ||| Questo aggiunge {0} bagno/i e fino a {1} foto dal backup. I bagni già presenti su questo telefono vengono mantenuti.
+Settings, members and club logo from the backup replace the current ones. ||| Einstellungen, Mitglieder und Club-Logo aus dem Backup ersetzen die aktuellen. ||| Les réglages, membres et logo du club de la sauvegarde remplacent les actuels. ||| Impostazioni, membri e logo del club del backup sostituiscono quelli attuali.
+Settings are not part of this backup type and stay as they are. ||| Einstellungen sind nicht Teil dieses Backup-Typs und bleiben unverändert. ||| Les réglages ne font pas partie de ce type de sauvegarde et restent inchangés. ||| Le impostazioni non fanno parte di questo tipo di backup e restano invariate.
+Restore ||| Wiederherstellen ||| Restaurer ||| Ripristina
+Restoring… ||| Stelle wieder her… ||| Restauration… ||| Ripristino in corso…
+Restored {0} dips, {1} photos ||| {0} Eisbäder, {1} Fotos wiederhergestellt ||| {0} bains, {1} photos restaurés ||| {0} bagni, {1} foto ripristinati
+Restored {0} dip(s), but this file has no settings. Please answer the questions. ||| {0} Eisbad/-bäder wiederhergestellt, aber diese Datei enthält keine Einstellungen. Bitte beantworte die Fragen. ||| {0} bain(s) restauré(s), mais ce fichier ne contient pas de réglages. Réponds aux questions. ||| {0} bagno/i ripristinato/i, ma questo file non contiene impostazioni. Rispondi alle domande.
+⚠️ Restore failed: {0} ||| ⚠️ Wiederherstellung fehlgeschlagen: {0} ||| ⚠️ Échec de la restauration : {0} ||| ⚠️ Ripristino non riuscito: {0}
+Imported ||| Importiert ||| Importé ||| Importato
+Storage full – export a backup! ||| Speicher voll – exportiere ein Backup! ||| Stockage plein – exporte une sauvegarde ! ||| Memoria piena – esporta un backup!
+Erase all data on this phone ||| Alle Daten auf diesem Handy löschen ||| Effacer toutes les données de ce téléphone ||| Cancella tutti i dati su questo telefono
+Erase ||| Löschen ||| Effacer ||| Cancella
+Erase everything? ||| Alles löschen? ||| Tout effacer ? ||| Cancellare tutto?
+All dips, members and settings on this phone will be deleted. Rows already in the Sheet stay there. This cannot be undone. ||| Alle Eisbäder, Mitglieder und Einstellungen auf diesem Handy werden gelöscht. Zeilen, die schon in der Tabelle sind, bleiben dort. Das lässt sich nicht rückgängig machen. ||| Tous les bains, membres et réglages de ce téléphone seront supprimés. Les lignes déjà dans la feuille y restent. Cette action est irréversible. ||| Tutti i bagni, i membri e le impostazioni su questo telefono verranno eliminati. Le righe già nel foglio restano lì. Non si può annullare.
+Erase all ||| Alles löschen ||| Tout effacer ||| Cancella tutto
+# ---------- about / updates / dialogs ----------
+Version {0} ||| Version {0} ||| Version {0} ||| Versione {0}
+v{0} available ||| v{0} verfügbar ||| v{0} disponible ||| v{0} disponibile
+Check for updates ||| Nach Updates suchen ||| Rechercher des mises à jour ||| Cerca aggiornamenti
+Install app ||| App installieren ||| Installer l’app ||| Installa l’app
+Changelog ||| Änderungsprotokoll ||| Nouveautés ||| Novità
+License (GPL-3.0) ||| Lizenz (GPL-3.0) ||| Licence (GPL-3.0) ||| Licenza (GPL-3.0)
+License ||| Lizenz ||| Licence ||| Licenza
+Privacy & data sources ||| Datenschutz & Datenquellen ||| Confidentialité et sources de données ||| Privacy e fonti di dati
+Credits ||| Danksagungen ||| Crédits ||| Crediti
+{0} is free software under the GNU General Public License v3.0. ||| {0} ist freie Software unter der GNU General Public License v3.0. ||| {0} est un logiciel libre sous licence GNU General Public License v3.0. ||| {0} è software libero con licenza GNU General Public License v3.0.
+You may use, study, share and modify it. If you distribute it or a modified version, you must keep it under the same license and make the source code available. There is no warranty. The full license text is in the LICENSE file of the project and at gnu.org/licenses/gpl-3.0. ||| Du darfst sie nutzen, untersuchen, teilen und verändern. Wenn du sie oder eine veränderte Version weitergibst, musst du sie unter derselben Lizenz halten und den Quellcode verfügbar machen. Es gibt keine Garantie. Den vollständigen Lizenztext findest du in der Datei LICENSE des Projekts und unter gnu.org/licenses/gpl-3.0. ||| Tu peux l’utiliser, l’étudier, la partager et la modifier. Si tu la distribues, ou une version modifiée, tu dois la garder sous la même licence et rendre le code source disponible. Il n’y a aucune garantie. Le texte complet de la licence se trouve dans le fichier LICENSE du projet et sur gnu.org/licenses/gpl-3.0. ||| Puoi usarlo, studiarlo, condividerlo e modificarlo. Se lo distribuisci, o ne distribuisci una versione modificata, devi mantenerlo con la stessa licenza e rendere disponibile il codice sorgente. Non c’è alcuna garanzia. Il testo completo della licenza è nel file LICENSE del progetto e su gnu.org/licenses/gpl-3.0.
+All dips, members, photos and settings stay on this phone. There are no accounts, ads or tracking. ||| Alle Eisbäder, Mitglieder, Fotos und Einstellungen bleiben auf diesem Handy. Es gibt keine Konten, Werbung oder Tracking. ||| Tous les bains, membres, photos et réglages restent sur ce téléphone. Il n’y a ni compte, ni publicité, ni suivi. ||| Tutti i bagni, membri, foto e impostazioni restano su questo telefono. Non ci sono account, pubblicità o tracciamento.
+Only if you set it up: dips (names, times, temperatures, notes – not photos) are sent to your own Google Sheet. ||| Nur wenn du es einrichtest: Eisbäder (Namen, Zeiten, Temperaturen, Notizen – keine Fotos) werden an deine eigene Google-Tabelle gesendet. ||| Seulement si tu le configures : les bains (noms, heures, températures, notes – pas les photos) sont envoyés à ta propre feuille Google. ||| Solo se lo configuri: i bagni (nomi, orari, temperature, note – non le foto) vengono inviati al tuo foglio Google.
+Services contacted: Open-Meteo (place search and weather), Alplakes by EPFL/Eawag (lake model temperature), existenz.ch (BAFU measuring stations), and Google Apps Script for your sheet. They receive your city’s coordinates, not your name. Voice recognition is done by Chrome’s speech service. ||| Kontaktierte Dienste: Open-Meteo (Ortssuche und Wetter), Alplakes von EPFL/Eawag (Seemodell-Temperatur), existenz.ch (BAFU-Messstationen) und Google Apps Script für deine Tabelle. Sie erhalten die Koordinaten deines Ortes, nicht deinen Namen. Die Spracherkennung erledigt der Sprachdienst von Chrome. ||| Services contactés : Open-Meteo (recherche de lieux et météo), Alplakes de l’EPFL/Eawag (température du modèle de lac), existenz.ch (stations de mesure OFEV) et Google Apps Script pour ta feuille. Ils reçoivent les coordonnées de ta ville, pas ton nom. La reconnaissance vocale est assurée par le service vocal de Chrome. ||| Servizi contattati: Open-Meteo (ricerca luoghi e meteo), Alplakes di EPFL/Eawag (temperatura del modello del lago), existenz.ch (stazioni di misura UFAM) e Google Apps Script per il tuo foglio. Ricevono le coordinate della tua città, non il tuo nome. Il riconoscimento vocale è svolto dal servizio vocale di Chrome.
+Icons: Tabler Icons (MIT) ||| Symbole: Tabler Icons (MIT) ||| Icônes : Tabler Icons (MIT) ||| Icone: Tabler Icons (MIT)
+Map: Leaflet (BSD-2) with © OpenStreetMap contributors ||| Karte: Leaflet (BSD-2) mit © OpenStreetMap-Mitwirkenden ||| Carte : Leaflet (BSD-2) avec © contributeurs OpenStreetMap ||| Mappa: Leaflet (BSD-2) con © collaboratori di OpenStreetMap
+Weather and place search: Open-Meteo ||| Wetter und Ortssuche: Open-Meteo ||| Météo et recherche de lieux : Open-Meteo ||| Meteo e ricerca luoghi: Open-Meteo
+Lake temperature: Alplakes (EPFL, Eawag), simulated data, republished hourly by the repo’s GitHub job ||| Seetemperatur: Alplakes (EPFL, Eawag), simulierte Daten, stündlich vom GitHub-Job des Projekts neu veröffentlicht ||| Température du lac : Alplakes (EPFL, Eawag), données simulées, republiées toutes les heures par le job GitHub du dépôt ||| Temperatura del lago: Alplakes (EPFL, Eawag), dati simulati, ripubblicati ogni ora dal job GitHub del repository
+Measuring stations: BAFU via existenz.ch ||| Messstationen: BAFU via existenz.ch ||| Stations de mesure : OFEV via existenz.ch ||| Stazioni di misura: UFAM via existenz.ch
+Update available ||| Update verfügbar ||| Mise à jour disponible ||| Aggiornamento disponibile
+Update now ||| Jetzt aktualisieren ||| Mettre à jour maintenant ||| Aggiorna ora
+Version {0} is ready (you have {1}). ||| Version {0} ist bereit (du hast {1}). ||| La version {0} est prête (tu as la {1}). ||| La versione {0} è pronta (hai la {1}).
+Your dips and settings stay untouched. ||| Deine Eisbäder und Einstellungen bleiben unverändert. ||| Tes bains et réglages restent intacts. ||| I tuoi bagni e le tue impostazioni restano intatti.
+What’s new in v{0} ||| Neu in v{0} ||| Nouveautés de la v{0} ||| Novità della v{0}
+You are offline ||| Du bist offline ||| Tu es hors ligne ||| Sei offline
+You have the latest version ||| Du hast die neueste Version ||| Tu as la dernière version ||| Hai l’ultima versione
+Could not check for updates ||| Updates konnten nicht geprüft werden ||| Impossible de vérifier les mises à jour ||| Impossibile cercare aggiornamenti
+Already installed ||| Bereits installiert ||| Déjà installée ||| Già installata
+This app is already installed on your phone. ||| Diese App ist bereits auf deinem Handy installiert. ||| Cette app est déjà installée sur ton téléphone. ||| Questa app è già installata sul tuo telefono.
+Install on this phone ||| Auf diesem Handy installieren ||| Installer sur ce téléphone ||| Installa su questo telefono
+Open this page in Chrome. ||| Öffne diese Seite in Chrome. ||| Ouvre cette page dans Chrome. ||| Apri questa pagina in Chrome.
+Tap the ⋮ menu at the top right. ||| Tippe oben rechts auf das Menü ⋮. ||| Touche le menu ⋮ en haut à droite. ||| Tocca il menu ⋮ in alto a destra.
+Choose Install app (or Add to Home screen). ||| Wähle App installieren (oder Zum Startbildschirm hinzufügen). ||| Choisis Installer l’application (ou Ajouter à l’écran d’accueil). ||| Scegli Installa app (o Aggiungi a schermata Home).
+Chrome shows its own install button only after the page has been open for a short while; if you dismissed it before, the menu always works. ||| Chrome zeigt seine eigene Installationsschaltfläche erst, nachdem die Seite eine Weile offen war; wenn du sie früher weggewischt hast, funktioniert das Menü immer. ||| Chrome n’affiche son propre bouton d’installation qu’après un moment ; si tu l’as fermé avant, le menu fonctionne toujours. ||| Chrome mostra il proprio pulsante di installazione solo dopo che la pagina è rimasta aperta per un po’; se l’hai chiuso prima, il menu funziona sempre.
+Target reached ||| Ziel erreicht ||| Objectif atteint ||| Obiettivo raggiunto
+# ---------- FAQ ----------
+The microphone is blocked or Chrome never asks ||| Das Mikrofon ist blockiert oder Chrome fragt nie ||| Le micro est bloqué ou Chrome ne demande jamais ||| Il microfono è bloccato o Chrome non chiede mai
+If the app says the microphone is blocked, or Chrome never shows a question, the phone itself is blocking it. This is the most common problem. ||| Wenn die App sagt, das Mikrofon sei blockiert, oder Chrome keine Frage zeigt, blockiert das Handy selbst. Das ist das häufigste Problem. ||| Si l’app dit que le micro est bloqué, ou si Chrome ne pose aucune question, c’est le téléphone lui-même qui bloque. C’est le problème le plus fréquent. ||| Se l’app dice che il microfono è bloccato, o Chrome non mostra nessuna domanda, è il telefono stesso a bloccarlo. È il problema più comune.
+1. Open the phone’s Settings › Apps › Chrome › Permissions › Microphone and choose “Allow only while using the app”. If it says “Don’t allow”, this is the cause. ||| 1. Öffne die Handy-Einstellungen › Apps › Chrome › Berechtigungen › Mikrofon und wähle „Nur bei Nutzung der App zulassen“. Steht dort „Nicht zulassen“, ist das die Ursache. ||| 1. Ouvre les Paramètres du téléphone › Applications › Chrome › Autorisations › Micro et choisis « Autoriser uniquement pendant l’utilisation de l’appli ». S’il est sur « Ne pas autoriser », c’est la cause. ||| 1. Apri le Impostazioni del telefono › App › Chrome › Autorizzazioni › Microfono e scegli «Consenti solo durante l’uso dell’app». Se c’è «Non consentire», è questa la causa.
+2. Samsung: open Settings › Privacy › Controls and alerts and switch “Microphone access” on. ||| 2. Samsung: Öffne Einstellungen › Datenschutz › Steuerung und Hinweise und schalte „Mikrofonzugriff“ ein. ||| 2. Samsung : ouvre Paramètres › Confidentialité › Contrôles et alertes et active « Accès au micro ». ||| 2. Samsung: apri Impostazioni › Privacy › Controlli e avvisi e attiva «Accesso al microfono».
+3. In Chrome tap ⋮ › Settings › Site settings › Microphone. Make sure sites may ask and that this site is not blocked. ||| 3. Tippe in Chrome auf ⋮ › Einstellungen › Websiteeinstellungen › Mikrofon. Stelle sicher, dass Seiten fragen dürfen und diese Seite nicht blockiert ist. ||| 3. Dans Chrome, touche ⋮ › Paramètres › Paramètres des sites › Micro. Vérifie que les sites peuvent demander et que ce site n’est pas bloqué. ||| 3. In Chrome tocca ⋮ › Impostazioni › Impostazioni sito › Microfono. Controlla che i siti possano chiedere e che questo sito non sia bloccato.
+4. Close the app completely, open it again and tap Test on the Permissions & tests page. ||| 4. Schliesse die App ganz, öffne sie erneut und tippe auf der Seite Berechtigungen & Tests auf Test. ||| 4. Ferme complètement l’app, rouvre-la et touche Test sur la page Autorisations et tests. ||| 4. Chiudi completamente l’app, riaprila e tocca Test nella pagina Autorizzazioni e test.
+Open Permissions & tests ||| Berechtigungen & Tests öffnen ||| Ouvrir Autorisations et tests ||| Apri Autorizzazioni e test
+The stop word is not recognised ||| Das Stoppwort wird nicht erkannt ||| Le mot d’arrêt n’est pas reconnu ||| La parola di stop non viene riconosciuta
+Voice recognition needs internet and the microphone. Say the stop word clearly while the timer shows “In the water”. ||| Die Spracherkennung braucht Internet und das Mikrofon. Sag das Stoppwort deutlich, während der Timer „Im Wasser“ zeigt. ||| La reconnaissance vocale nécessite Internet et le micro. Dis clairement le mot d’arrêt pendant que le chrono affiche « Dans l’eau ». ||| Il riconoscimento vocale richiede internet e il microfono. Di’ chiaramente la parola di stop mentre il timer mostra «In acqua».
+Check the stop words and the voice language in Dip defaults: they must match the language you speak. ||| Prüfe Stoppwörter und Sprache unter Standardwerte: Sie müssen zur gesprochenen Sprache passen. ||| Vérifie les mots d’arrêt et la langue de la voix dans Réglages du bain : ils doivent correspondre à la langue que tu parles. ||| Controlla le parole di stop e la lingua della voce in Impostazioni bagno: devono corrispondere alla lingua che parli.
+If it still fails in the installed app, open the app in a normal Chrome tab. The big STOP button always works. ||| Klappt es in der installierten App weiterhin nicht, öffne die App in einem normalen Chrome-Tab. Die grosse STOPP-Taste funktioniert immer. ||| Si cela échoue encore dans l’app installée, ouvre l’app dans un onglet Chrome normal. Le grand bouton STOP fonctionne toujours. ||| Se continua a non funzionare nell’app installata, apri l’app in una normale scheda di Chrome. Il grande pulsante STOP funziona sempre.
+Open Dip defaults & voice ||| Standardwerte & Sprache öffnen ||| Ouvrir Réglages du bain et voix ||| Apri Impostazioni bagno e voce
+No water temperature (shows –) ||| Keine Wassertemperatur (zeigt –) ||| Pas de température de l’eau (affiche –) ||| Nessuna temperatura dell’acqua (mostra –)
+Open Test connection and look for red lines. ||| Öffne Verbindung testen und suche nach roten Zeilen. ||| Ouvre Tester la connexion et cherche les lignes rouges. ||| Apri Testa la connessione e cerca le righe rosse.
+Lakes that are not in the Alplakes service have no model. Type the temperature you measured on the Conditions page. ||| Seen, die nicht im Alplakes-Dienst sind, haben kein Modell. Gib die gemessene Temperatur auf der Seite Bedingungen ein. ||| Les lacs absents du service Alplakes n’ont pas de modèle. Saisis la température mesurée sur la page Conditions. ||| I laghi che non sono nel servizio Alplakes non hanno un modello. Inserisci la temperatura misurata nella pagina Condizioni.
+Make sure your swimming spot is on or next to the lake (Swimming spot). ||| Stelle sicher, dass deine Badestelle am oder direkt neben dem See liegt (Badestelle). ||| Vérifie que ton lieu de baignade est sur le lac ou juste à côté (Lieu de baignade). ||| Controlla che il tuo luogo del bagno sia sul lago o accanto (Luogo del bagno).
+Open Test connection ||| Verbindung testen öffnen ||| Ouvrir Tester la connexion ||| Apri Testa la connessione
+The temperature differs from my thermometer ||| Die Temperatur weicht von meinem Thermometer ab ||| La température diffère de mon thermomètre ||| La temperatura è diversa dal mio termometro
+The app shows a model estimate of the lake surface near your spot. It can be a degree or more away, especially after sun or wind. ||| Die App zeigt eine Modellschätzung der Seeoberfläche in der Nähe deiner Badestelle. Sie kann ein Grad oder mehr abweichen, besonders nach Sonne oder Wind. ||| L’app affiche une estimation du modèle pour la surface du lac près de ton lieu. Elle peut s’écarter d’un degré ou plus, surtout après du soleil ou du vent. ||| L’app mostra una stima del modello per la superficie del lago vicino al tuo luogo. Può differire di un grado o più, soprattutto dopo sole o vento.
+A value you type on the Conditions page replaces it for 6 hours. ||| Ein Wert, den du auf der Seite Bedingungen eingibst, ersetzt sie für 6 Stunden. ||| Une valeur saisie sur la page Conditions la remplace pendant 6 heures. ||| Un valore inserito nella pagina Condizioni la sostituisce per 6 ore.
+You can choose the source in Water temperature source. ||| Die Quelle wählst du unter Quelle der Wassertemperatur. ||| Tu peux choisir la source dans Source de la température de l’eau. ||| Puoi scegliere la fonte in Fonte della temperatura dell’acqua.
+Open Water temperature source ||| Quelle der Wassertemperatur öffnen ||| Ouvrir Source de la température de l’eau ||| Apri Fonte della temperatura dell’acqua
+The app shows an old version ||| Die App zeigt eine alte Version ||| L’app affiche une ancienne version ||| L’app mostra una versione vecchia
+Close the app completely (swipe it away) and open it again with internet. A pop-up appears when a new version is ready. ||| Schliesse die App ganz (wegwischen) und öffne sie mit Internet erneut. Ein Pop-up erscheint, wenn eine neue Version bereit ist. ||| Ferme complètement l’app (balaie-la) et rouvre-la avec Internet. Une fenêtre apparaît quand une nouvelle version est prête. ||| Chiudi completamente l’app (scorrila via) e riaprila con internet. Appare un popup quando una nuova versione è pronta.
+Still old? Make a full backup, remove the app, install it again and restore the backup. ||| Immer noch alt? Mach ein vollständiges Backup, entferne die App, installiere sie neu und stelle das Backup wieder her. ||| Toujours ancienne ? Fais une sauvegarde complète, retire l’app, réinstalle-la et restaure la sauvegarde. ||| Ancora vecchia? Fai un backup completo, rimuovi l’app, reinstallala e ripristina il backup.
+Open Backup & data ||| Backup & Daten öffnen ||| Ouvrir Sauvegarde et données ||| Apri Backup e dati
+I have a new phone or lost my data ||| Ich habe ein neues Handy oder meine Daten verloren ||| J’ai un nouveau téléphone ou j’ai perdu mes données ||| Ho un nuovo telefono o ho perso i dati
+On the old phone make a full backup in Backup & data. Send the file to the new phone (e-mail, Drive, WhatsApp to yourself). ||| Mach auf dem alten Handy ein vollständiges Backup unter Backup & Daten. Schicke die Datei an das neue Handy (E-Mail, Drive, WhatsApp an dich selbst). ||| Sur l’ancien téléphone, fais une sauvegarde complète dans Sauvegarde et données. Envoie le fichier au nouveau téléphone (e-mail, Drive, WhatsApp à toi-même). ||| Sul vecchio telefono fai un backup completo in Backup e dati. Invia il file al nuovo telefono (e-mail, Drive, WhatsApp a te stesso).
+On the new phone install the app and tap Restore backup on the first screen. ||| Installiere auf dem neuen Handy die App und tippe auf dem ersten Bildschirm auf Backup wiederherstellen. ||| Sur le nouveau téléphone, installe l’app et touche Restaurer la sauvegarde sur le premier écran. ||| Sul nuovo telefono installa l’app e tocca Ripristina backup nella prima schermata.
+Your data lives only on the phone: clearing Chrome’s site data or removing the app deletes it. The shared Sheet only holds dip rows, not photos or settings. ||| Deine Daten liegen nur auf dem Handy: Löschst du die Websitedaten von Chrome oder entfernst die App, sind sie weg. Die gemeinsame Tabelle enthält nur Eisbad-Zeilen, keine Fotos oder Einstellungen. ||| Tes données sont uniquement sur le téléphone : effacer les données de site de Chrome ou retirer l’app les supprime. La feuille partagée ne contient que des lignes de bains, pas les photos ni les réglages. ||| I tuoi dati sono solo sul telefono: cancellare i dati dei siti di Chrome o rimuovere l’app li elimina. Il foglio condiviso contiene solo le righe dei bagni, non foto o impostazioni.
+How do I install the app? ||| Wie installiere ich die App? ||| Comment installer l’app ? ||| Come installo l’app?
+Open the link in Chrome, tap ⋮ › Install app (or Add to Home screen). ||| Öffne den Link in Chrome und tippe auf ⋮ › App installieren (oder Zum Startbildschirm hinzufügen). ||| Ouvre le lien dans Chrome et touche ⋮ › Installer l’application (ou Ajouter à l’écran d’accueil). ||| Apri il link in Chrome e tocca ⋮ › Installa app (o Aggiungi a schermata Home).
+iPhone: open the link in Safari, tap Share › Add to Home Screen. ||| iPhone: Öffne den Link in Safari und tippe auf Teilen › Zum Home-Bildschirm. ||| iPhone : ouvre le lien dans Safari et touche Partager › Sur l’écran d’accueil. ||| iPhone: apri il link in Safari e tocca Condividi › Aggiungi alla schermata Home.
+Install app on this phone ||| App auf diesem Handy installieren ||| Installer l’app sur ce téléphone ||| Installa l’app su questo telefono
+Photos are missing in the shared Sheet ||| Fotos fehlen in der gemeinsamen Tabelle ||| Les photos manquent dans la feuille partagée ||| Mancano le foto nel foglio condiviso
+Photos stay on the phone that took them. The shared Sheet only receives the dip rows. Use the full backup to move photos to another phone. ||| Fotos bleiben auf dem Handy, das sie aufgenommen hat. Die gemeinsame Tabelle erhält nur die Eisbad-Zeilen. Mit dem vollständigen Backup ziehst du Fotos auf ein anderes Handy um. ||| Les photos restent sur le téléphone qui les a prises. La feuille partagée ne reçoit que les lignes de bains. Utilise la sauvegarde complète pour déplacer les photos vers un autre téléphone. ||| Le foto restano sul telefono che le ha scattate. Il foglio condiviso riceve solo le righe dei bagni. Usa il backup completo per spostare le foto su un altro telefono.
+The screen goes dark during a dip ||| Der Bildschirm wird während des Eisbads dunkel ||| L’écran s’éteint pendant un bain ||| Lo schermo si spegne durante il bagno
+Open Permissions & tests and test “Keep screen on”. ||| Öffne Berechtigungen & Tests und teste „Bildschirm anlassen“. ||| Ouvre Autorisations et tests et teste « Garder l’écran allumé ». ||| Apri Autorizzazioni e test e prova «Tieni lo schermo acceso».
+Battery saver can switch it off. Turn battery saver off or allow the app to stay active. ||| Der Energiesparmodus kann es ausschalten. Schalte ihn aus oder erlaube der App, aktiv zu bleiben. ||| L’économiseur de batterie peut le désactiver. Désactive-le ou autorise l’app à rester active. ||| Il risparmio energetico può disattivarlo. Disattivalo o consenti all’app di restare attiva.
+No beeps or spoken cues ||| Keine Pieptöne oder Sprachansagen ||| Pas de bips ni d’annonces vocales ||| Nessun segnale o annuncio vocale
+Check the phone volume and silent mode. ||| Prüfe Lautstärke und Stummschaltung des Handys. ||| Vérifie le volume et le mode silencieux du téléphone. ||| Controlla il volume e la modalità silenziosa del telefono.
+Beeps and speech can be switched on in Dip defaults. ||| Pieptöne und Sprache lassen sich unter Standardwerte einschalten. ||| Les bips et la voix peuvent être activés dans Réglages du bain. ||| Segnali acustici e voce si attivano in Impostazioni bagno.
+Tap once in the app before the dip: phones only play sound after a tap. ||| Tippe vor dem Eisbad einmal in der App: Handys spielen Ton erst nach einem Tippen ab. ||| Touche une fois l’app avant le bain : les téléphones ne jouent du son qu’après un toucher. ||| Tocca una volta l’app prima del bagno: i telefoni riproducono l’audio solo dopo un tocco.
+The shared Sheet does not sync ||| Die gemeinsame Tabelle synchronisiert nicht ||| La feuille partagée ne se synchronise pas ||| Il foglio condiviso non si sincronizza
+Use the Test and Sync buttons in Shared Sheet. The script link must be the “Web app” link and its access must be “Anyone”. ||| Nutze die Schaltflächen Test und Sync unter Gemeinsame Tabelle. Der Skript-Link muss der „Web-App“-Link sein und der Zugriff „Jeder“. ||| Utilise les boutons Test et Sync dans Feuille partagée. Le lien du script doit être le lien « Application web » et son accès « Tout le monde ». ||| Usa i pulsanti Test e Sync in Foglio condiviso. Il link dello script deve essere il link «App web» e l’accesso «Chiunque».
+Dips that could not be sent are kept and sent next time. ||| Eisbäder, die nicht gesendet werden konnten, bleiben gespeichert und werden beim nächsten Mal gesendet. ||| Les bains qui n’ont pas pu être envoyés sont conservés et envoyés la fois suivante. ||| I bagni che non è stato possibile inviare vengono conservati e inviati la volta successiva.
+Open Shared Sheet ||| Gemeinsame Tabelle öffnen ||| Ouvrir Feuille partagée ||| Apri Foglio condiviso
+Statistics differ between phones ||| Die Statistik unterscheidet sich zwischen Handys ||| Les statistiques diffèrent d’un téléphone à l’autre ||| Le statistiche differiscono tra telefoni
+“This phone” shows only dips recorded on this phone. “Whole club (Sheet)” shows everybody’s dips from the shared Sheet. ||| „Dieses Handy“ zeigt nur Eisbäder, die auf diesem Handy aufgezeichnet wurden. „Ganzer Club (Tabelle)“ zeigt die Eisbäder aller aus der gemeinsamen Tabelle. ||| « Ce téléphone » n’affiche que les bains enregistrés sur ce téléphone. « Tout le club (feuille) » affiche les bains de tous depuis la feuille partagée. ||| «Questo telefono» mostra solo i bagni registrati su questo telefono. «Tutto il club (foglio)» mostra i bagni di tutti dal foglio condiviso.
+How do I change the language? ||| Wie ändere ich die Sprache? ||| Comment changer la langue ? ||| Come cambio la lingua?
+Open Language in Settings. “Automatic” follows your phone. The app offers to switch the voice language and stop words together with it. ||| Öffne Sprache in den Einstellungen. „Automatisch“ folgt deinem Handy. Die App bietet an, Sprache der Spracherkennung und Stoppwörter mitzuwechseln. ||| Ouvre Langue dans les paramètres. « Automatique » suit ton téléphone. L’app propose de changer aussi la langue de la voix et les mots d’arrêt. ||| Apri Lingua nelle impostazioni. «Automatica» segue il telefono. L’app propone di cambiare insieme anche la lingua della voce e le parole di stop.
+Open Language ||| Sprache öffnen ||| Ouvrir Langue ||| Apri Lingua
+Staying safe ||| Sicher bleiben ||| Rester en sécurité ||| Restare al sicuro
+Never swim alone. Get out when you feel cold, numb or start to shiver a lot. ||| Schwimm nie allein. Steig aus, wenn dir kalt wird, du taub wirst oder stark zu zittern beginnst. ||| Ne nage jamais seul. Sors quand tu as froid, que tu t’engourdis ou que tu commences à beaucoup trembler. ||| Non nuotare mai da solo. Esci quando senti freddo, intorpidimento o inizi a tremare molto.
+The suggested times are a rule of thumb, not medical advice. ||| Die vorgeschlagenen Zeiten sind eine Faustregel, kein medizinischer Rat. ||| Les durées suggérées sont une règle approximative, pas un avis médical. ||| I tempi suggeriti sono una regola pratica, non un consiglio medico.

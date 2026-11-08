@@ -12,6 +12,7 @@
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="stylesheet" href="lib/leaflet.css">
 <script src="lib/leaflet.js"></script>
+<script src="lang.js"></script>
 <style>
 :root{--acc:#2aa6e0;--acc2:#5ad1ff;--onacc:#03202f;--red:#ff4d5e;--ok:#3fcf94;--over:#ffb454;--r:18px}
 [data-theme=forest]{--acc:#2fa36b;--acc2:#5fd39a;--onacc:#03251a}
@@ -82,6 +83,7 @@ pre{background:var(--field);border-radius:10px;padding:10px;font-size:11px;overf
 .stopbtn{height:28vh;font-size:12vw;font-weight:800;margin:0 12px calc(12px + env(safe-area-inset-bottom));border-radius:22px}
 .listen{text-align:center;color:var(--mute);font-size:14px;min-height:20px}
 .step{display:flex;gap:8px;align-items:center}.step button{width:48px;padding:10px}.step b{flex:1;text-align:center;font-size:20px}
+.faq{background:var(--card);border-radius:14px;margin:8px 0;padding:0 14px}.faq summary{padding:14px 0;cursor:pointer;font-weight:600;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:'＋';float:right;color:var(--acc2)}.faq[open] summary::after{content:'－'}.faq[open]{padding-bottom:10px}.faq p{margin:0 0 10px;font-size:14px}
 .wzdots{display:flex;gap:6px;justify-content:center;margin:6px 0 10px}.wzdots i{width:26px;height:5px;border-radius:3px;background:var(--card2)}.wzdots i.on{background:var(--acc)}
 </style>
 </head>
@@ -96,8 +98,8 @@ pre{background:var(--field);border-radius:10px;padding:10px;font-size:11px;overf
 <script>
 'use strict';
 const APP_NAME='Ice Bath Log';
-const APP_VERSION='2.1';
-/*CHANGELOG*/const CHANGELOG=[{"v":"2.1","date":"2026-11-08","notes":["Settings › Backup: new full backup (dips, members, settings, club logo and all photos in one file) and Restore backup, to move the app to a new phone.","First-time setup now offers Restore backup, so a new phone can skip the questions.","Fixed: results in Settings › Permissions & tests (Allow and Test) now stay on screen instead of disappearing."]},{"v":"2.0","date":"2026-11-08","notes":["Settings › Water temperature source: choose Automatic, lake model, measuring station, average of both, or typed by hand, with the current readings side by side.","Advanced conditions (button on Conditions): 48-hour water, air and wind curves, readings of all sources, whole-lake coldest/average/warmest, temperature by depth, sunrise, sunset, UV and rain.","Settings › Permissions & tests: allow and test microphone, voice recognition, sound, screen-on and camera. Offered once after first-time setup.","Measuring stations are now read through the data feed (the direct call was blocked by browsers).","Fixed: the dip wrap-up screen no longer jumps back to the top when you tap a feeling or Standing/Swimming.","Fixed: voice keyword now asks for microphone access first, so Chrome shows the permission prompt."]},{"v":"1.9","date":"2026-11-08","notes":["Water temperature now works for every lake of the Alplakes service, not only Lake Zurich: the hourly data job publishes all lakes and the app picks the ones near your swimming spot. Lakes outside the service can still be used with hand-entered temperatures."]},{"v":"1.8","date":"2026-11-08","notes":["Fixed: on the dip wrap-up screen the feeling icons no longer push the page out of the window."]},{"v":"1.7","date":"2026-11-08","notes":["Privacy: Test connection no longer contains a built-in example location; without a saved spot it tests the middle of Lake Zurich."]},{"v":"1.6","date":"2026-11-08","notes":["Water temperature fixed: phones may not read the lake service directly, so an hourly job in the GitHub repo now publishes the lake temperatures and the app reads them from there. Spots saved as \"lake not listed\" are linked to their lake again."]},{"v":"1.5","date":"2026-11-08","notes":["New app icon (lake at dawn). It is also shown in the top bar and in About when no club logo is set."]},{"v":"1.4","date":"2026-11-08","notes":["Settings › Test connection: calls every data source from your phone and shows the exact answer or error.","Settings › Install app on this phone."]},{"v":"1.3","date":"2026-11-08","notes":["Water temperature: the lake model is now linked reliably (the app uses the nearest model point and tells you how far it is); a spot saved without a lake is repaired automatically; measuring stations without temperature data are no longer used."]},{"v":"1.2","date":"2026-11-08","notes":["Swimming spot: a map with a draggable pin (or tap the map) to place your exact spot; weather and lake data follow the pin."]},{"v":"1.1","date":"2026-11-08","notes":["Top bar shows the app name with its version; burger menu stays at the top right."]},{"v":"1.0","date":"2026-11-08","notes":["First release: water and air temperature for your own swimming spot, daily dip suggestions, timed dips with a walk-to-water countdown and voice stop, standing or swimming per person, photos, statistics, optional shared Google Sheet.","First-time setup for club name, logo, city and lake, and members.","Themes, light/dark mode, icon style, backups, license and changelog in Settings. Update pop-up when a new version is available."]}];/*END*/
+const APP_VERSION='2.2';
+/*CHANGELOG*/const CHANGELOG=[{"v":"2.2","date":"2026-11-08","notes":["New: app language in Settings › Language – Automatic (follows your phone), English, Deutsch, Français or Italiano. The app offers to switch the voice language and stop words with it.","New: Help & FAQ at the bottom of Settings – microphone problems, stop word, water temperature, new phone, install and more, with shortcuts to the right page.","The first-time setup also follows your phone’s language."]},{"v":"2.1","date":"2026-11-08","notes":["Settings › Backup: new full backup (dips, members, settings, club logo and all photos in one file) and Restore backup, to move the app to a new phone.","First-time setup now offers Restore backup, so a new phone can skip the questions.","Fixed: results in Settings › Permissions & tests (Allow and Test) now stay on screen instead of disappearing."]},{"v":"2.0","date":"2026-11-08","notes":["Settings › Water temperature source: choose Automatic, lake model, measuring station, average of both, or typed by hand, with the current readings side by side.","Advanced conditions (button on Conditions): 48-hour water, air and wind curves, readings of all sources, whole-lake coldest/average/warmest, temperature by depth, sunrise, sunset, UV and rain.","Settings › Permissions & tests: allow and test microphone, voice recognition, sound, screen-on and camera. Offered once after first-time setup.","Measuring stations are now read through the data feed (the direct call was blocked by browsers).","Fixed: the dip wrap-up screen no longer jumps back to the top when you tap a feeling or Standing/Swimming.","Fixed: voice keyword now asks for microphone access first, so Chrome shows the permission prompt."]},{"v":"1.9","date":"2026-11-08","notes":["Water temperature now works for every lake of the Alplakes service, not only Lake Zurich: the hourly data job publishes all lakes and the app picks the ones near your swimming spot. Lakes outside the service can still be used with hand-entered temperatures."]},{"v":"1.8","date":"2026-11-08","notes":["Fixed: on the dip wrap-up screen the feeling icons no longer push the page out of the window."]},{"v":"1.7","date":"2026-11-08","notes":["Privacy: Test connection no longer contains a built-in example location; without a saved spot it tests the middle of Lake Zurich."]},{"v":"1.6","date":"2026-11-08","notes":["Water temperature fixed: phones may not read the lake service directly, so an hourly job in the GitHub repo now publishes the lake temperatures and the app reads them from there. Spots saved as \"lake not listed\" are linked to their lake again."]},{"v":"1.5","date":"2026-11-08","notes":["New app icon (lake at dawn). It is also shown in the top bar and in About when no club logo is set."]},{"v":"1.4","date":"2026-11-08","notes":["Settings › Test connection: calls every data source from your phone and shows the exact answer or error.","Settings › Install app on this phone."]},{"v":"1.3","date":"2026-11-08","notes":["Water temperature: the lake model is now linked reliably (the app uses the nearest model point and tells you how far it is); a spot saved without a lake is repaired automatically; measuring stations without temperature data are no longer used."]},{"v":"1.2","date":"2026-11-08","notes":["Swimming spot: a map with a draggable pin (or tap the map) to place your exact spot; weather and lake data follow the pin."]},{"v":"1.1","date":"2026-11-08","notes":["Top bar shows the app name with its version; burger menu stays at the top right."]},{"v":"1.0","date":"2026-11-08","notes":["First release: water and air temperature for your own swimming spot, daily dip suggestions, timed dips with a walk-to-water countdown and voice stop, standing or swimming per person, photos, statistics, optional shared Google Sheet.","First-time setup for club name, logo, city and lake, and members.","Themes, light/dark mode, icon style, backups, license and changelog in Settings. Update pop-up when a new version is available."]}];/*END*/
 const ICONS=/*ICONS*/{"home": "<path d=\"M5 12l-2 0l9 -9l9 9l-2 0\" /> <path d=\"M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7\" /> <path d=\"M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6\" />", "snowflake": "<path d=\"M10 4l2 1l2 -1\" /> <path d=\"M12 2v6.5l3 1.72\" /> <path d=\"M17.928 6.268l.134 2.232l1.866 1.232\" /> <path d=\"M20.66 7l-5.629 3.25l.01 3.458\" /> <path d=\"M19.928 14.268l-1.866 1.232l-.134 2.232\" /> <path d=\"M20.66 17l-5.629 -3.25l-2.99 1.738\" /> <path d=\"M14 20l-2 -1l-2 1\" /> <path d=\"M12 22v-6.5l-3 -1.72\" /> <path d=\"M6.072 17.732l-.134 -2.232l-1.866 -1.232\" /> <path d=\"M3.34 17l5.629 -3.25l-.01 -3.458\" /> <path d=\"M4.072 9.732l1.866 -1.232l.134 -2.232\" /> <path d=\"M3.34 7l5.629 3.25l2.99 -1.738\" />", "chart-bar": "<path d=\"M3 13a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -6\" /> <path d=\"M15 9a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -10\" /> <path d=\"M9 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -14\" /> <path d=\"M4 20h14\" />", "history": "<path d=\"M12 8l0 4l2 2\" /> <path d=\"M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5\" />", "settings": "<path d=\"M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065\" /> <path d=\"M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" />", "menu-2": "<path d=\"M4 6l16 0\" /> <path d=\"M4 12l16 0\" /> <path d=\"M4 18l16 0\" />", "x": "<path d=\"M18 6l-12 12\" /> <path d=\"M6 6l12 12\" />", "arrow-left": "<path d=\"M5 12l14 0\" /> <path d=\"M5 12l6 6\" /> <path d=\"M5 12l6 -6\" />", "check": "<path d=\"M5 12l5 5l10 -10\" />", "plus": "<path d=\"M12 5l0 14\" /> <path d=\"M5 12l14 0\" />", "trash": "<path d=\"M4 7l16 0\" /> <path d=\"M10 11l0 6\" /> <path d=\"M14 11l0 6\" /> <path d=\"M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12\" /> <path d=\"M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3\" />", "refresh": "<path d=\"M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4\" /> <path d=\"M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4\" />", "users": "<path d=\"M5 7a4 4 0 1 0 8 0a4 4 0 1 0 -8 0\" /> <path d=\"M3 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2\" /> <path d=\"M16 3.13a4 4 0 0 1 0 7.75\" /> <path d=\"M21 21v-2a4 4 0 0 0 -3 -3.85\" />", "palette": "<path d=\"M12 21a9 9 0 0 1 0 -18c4.97 0 9 3.582 9 8c0 1.06 -.474 2.078 -1.318 2.828c-.844 .75 -1.989 1.172 -3.182 1.172h-2.5a2 2 0 0 0 -1 3.75a1.3 1.3 0 0 1 -1 2.25\" /> <path d=\"M7.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" /> <path d=\"M11.5 7.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" /> <path d=\"M15.5 10.5a1 1 0 1 0 2 0a1 1 0 1 0 -2 0\" />", "cloud-upload": "<path d=\"M7 18a4.6 4.4 0 0 1 0 -9a5 4.5 0 0 1 11 2h1a3.5 3.5 0 0 1 0 7h-1\" /> <path d=\"M9 15l3 -3l3 3\" /> <path d=\"M12 12l0 9\" />", "photo": "<path d=\"M15 8h.01\" /> <path d=\"M3 6a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3v-12\" /> <path d=\"M3 16l5 -5c.928 -.893 2.072 -.893 3 0l5 5\" /> <path d=\"M14 14l1 -1c.928 -.893 2.072 -.893 3 0l3 3\" />", "camera": "<path d=\"M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2\" /> <path d=\"M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" />", "microphone": "<path d=\"M9 5a3 3 0 0 1 3 -3a3 3 0 0 1 3 3v5a3 3 0 0 1 -3 3a3 3 0 0 1 -3 -3l0 -5\" /> <path d=\"M5 10a7 7 0 0 0 14 0\" /> <path d=\"M8 21l8 0\" /> <path d=\"M12 17l0 4\" />", "info-circle": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\" /> <path d=\"M12 9h.01\" /> <path d=\"M11 12h1v4h1\" />", "file-text": "<path d=\"M14 3v4a1 1 0 0 0 1 1h4\" /> <path d=\"M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2\" /> <path d=\"M9 9l1 0\" /> <path d=\"M9 13l6 0\" /> <path d=\"M9 17l6 0\" />", "list-details": "<path d=\"M13 5h8\" /> <path d=\"M13 9h5\" /> <path d=\"M13 15h8\" /> <path d=\"M13 19h5\" /> <path d=\"M3 5a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4\" /> <path d=\"M3 15a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v4a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1l0 -4\" />", "device-floppy": "<path d=\"M6 4h10l4 4v10a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2\" /> <path d=\"M10 14a2 2 0 1 0 4 0a2 2 0 1 0 -4 0\" /> <path d=\"M14 4l0 4l-6 0l0 -4\" />", "download": "<path d=\"M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2\" /> <path d=\"M7 11l5 5l5 -5\" /> <path d=\"M12 4l0 12\" />", "upload": "<path d=\"M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2\" /> <path d=\"M7 9l5 -5l5 5\" /> <path d=\"M12 4l0 12\" />", "thermometer": "<path d=\"M19 5a2.828 2.828 0 0 1 0 4l-8 8h-4v-4l8 -8a2.828 2.828 0 0 1 4 0\" /> <path d=\"M16 7l-1.5 -1.5\" /> <path d=\"M13 10l-1.5 -1.5\" /> <path d=\"M10 13l-1.5 -1.5\" /> <path d=\"M7 17l-3 3\" />", "wind": "<path d=\"M5 8h8.5a2.5 2.5 0 1 0 -2.34 -3.24\" /> <path d=\"M3 12h15.5a2.5 2.5 0 1 1 -2.34 3.24\" /> <path d=\"M4 16h5.5a2.5 2.5 0 1 1 -2.34 3.24\" />", "map-pin": "<path d=\"M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0\" /> <path d=\"M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0\" />", "search": "<path d=\"M3 10a7 7 0 1 0 14 0a7 7 0 1 0 -14 0\" /> <path d=\"M21 21l-6 -6\" />", "user": "<path d=\"M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0\" /> <path d=\"M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2\" />", "flame": "<path d=\"M12 10.941c2.333 -3.308 .167 -7.823 -1 -8.941c0 3.395 -2.235 5.299 -3.667 6.706c-1.43 1.408 -2.333 3.294 -2.333 5.588c0 3.704 3.134 6.706 7 6.706c3.866 0 7 -3.002 7 -6.706c0 -1.712 -1.232 -4.403 -2.333 -5.588c-2.084 3.353 -3.257 3.353 -4.667 2.235\" />", "scale": "<path d=\"M7 20l10 0\" /> <path d=\"M6 6l6 -1l6 1\" /> <path d=\"M12 3l0 17\" /> <path d=\"M9 12l-3 -6l-3 6a3 3 0 0 0 6 0\" /> <path d=\"M21 12l-3 -6l-3 6a3 3 0 0 0 6 0\" />", "world": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\" /> <path d=\"M3.6 9h16.8\" /> <path d=\"M3.6 15h16.8\" /> <path d=\"M11.5 3a17 17 0 0 0 0 18\" /> <path d=\"M12.5 3a17 17 0 0 1 0 18\" />", "help-circle": "<path d=\"M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0\" /> <path d=\"M12 16v.01\" /> <path d=\"M12 13a2 2 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483\" />"}/*ENDICONS*/;
 const EMO={home:'🏠',snowflake:'❄️','chart-bar':'📊',history:'🕘',settings:'⚙️','menu-2':'☰',x:'✕','arrow-left':'←',check:'✓',plus:'＋',trash:'🗑',refresh:'⟳',users:'👥',palette:'🎨','cloud-upload':'☁️',photo:'🖼️',camera:'📷',microphone:'🎙️','info-circle':'ℹ️','file-text':'📄','list-details':'📋','device-floppy':'💾',download:'⬇️',upload:'⬆️',thermometer:'🌡️',wind:'💨','map-pin':'📍',search:'🔍',user:'👤',flame:'🔥',scale:'⚖️',world:'🌍','help-circle':'❓'};
 
@@ -110,8 +112,8 @@ const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
 const num=v=>{v=parseFloat(String(v).replace(',','.'));return isFinite(v)?v:null};
 const parseMS=t=>{t=String(t||'').trim();if(!t)return null;if(t.includes(':')){const[a,b]=t.split(':');return (+a||0)*60+(+b||0)}const n=num(t);return n==null?null:Math.round(n*60)};
 function toast(m,ms=2600){const d=document.createElement('div');d.className='toast';d.textContent=m;document.body.appendChild(d);setTimeout(()=>d.remove(),ms)}
-const fmtDate=ts=>new Date(ts).toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'2-digit'});
-const fmtTime=ts=>new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+const fmtDate=ts=>new Date(ts).toLocaleDateString(loc(),{day:'2-digit',month:'short',year:'2-digit'});
+const fmtTime=ts=>new Date(ts).toLocaleTimeString(loc(),{hour:'2-digit',minute:'2-digit'});
 const ago=ts=>{const m=Math.round((Date.now()-ts)/60000);return m<2?'just now':m<90?m+' min ago':m<2880?Math.round(m/60)+' h ago':Math.round(m/1440)+' d ago'};
 const cmpVer=(a,b)=>{const x=String(a).split('.').map(Number),y=String(b).split('.').map(Number);for(let i=0;i<3;i++){if((x[i]||0)!==(y[i]||0))return(x[i]||0)>(y[i]||0)?1:-1}return 0};
 const km=(a,b,c,d)=>{const R=6371,t=x=>x*Math.PI/180,dl=t(c-a),dn=t(d-b),h=Math.sin(dl/2)**2+Math.cos(t(a))*Math.cos(t(c))*Math.sin(dn/2)**2;return 2*R*Math.asin(Math.sqrt(h))};
@@ -123,6 +125,47 @@ const LS='ice-bath-log-v1', ACTIVE='ice-bath-log-active';
 const DEF={club:{name:'',logo:''},spot:null,setupDone:false,lastSeen:'',theme:'ice',mode:'auto',waterSource:'auto',iconStyle:'icons',prepSec:60,targetMode:'auto',targetSec:180,keywords:'stop, out, done',lang:'en-US',voice:true,beep:true,sheetUrl:'',lastSync:0,me:'',lastStyle:{}};
 let S=(()=>{try{const j=JSON.parse(localStorage.getItem(LS)||'{}');const st=Object.assign({},DEF,j.settings);st.club=Object.assign({},DEF.club,(j.settings||{}).club);return{members:j.members||[],dips:j.dips||[],club:j.club||[],cache:j.cache||{},manual:j.manual||null,settings:st}}catch{return{members:[],dips:[],club:[],cache:{},manual:null,settings:{...DEF}}}})();
 const save=()=>{try{localStorage.setItem(LS,JSON.stringify(S))}catch(e){toast('Storage full – export a backup!')}};
+/* ====== language ====== */
+window.I18N=window.I18N||{};
+const APPLANGS=[['auto','Automatic (phone language)'],['en','English'],['de','Deutsch'],['fr','Français'],['it','Italiano']];
+const VOICE_OPTS=[['en-US','English'],['de-CH','Deutsch (CH)'],['de-DE','Deutsch (DE)'],['fr-CH','Français (CH)'],['fr-FR','Français (FR)'],['it-CH','Italiano (CH)'],['it-IT','Italiano (IT)']];
+const VOICE_DEF={en:['en-US','stop, out, done'],de:['de-CH','stopp, stop, raus, fertig'],fr:['fr-CH','stop, sortie, sorti, fini'],it:['it-CH','stop, fuori, basta, finito']};
+const LOCALE={en:'en-GB',de:'de-CH',fr:'fr-CH',it:'it-CH'};
+let LANG='en',TPL=[];
+function sysLang(){for(const l of (navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en'])){const c=String(l).slice(0,2).toLowerCase();if(APPLANGS.some(x=>x[0]===c))return c}return 'en'}
+const effLang=()=>{const a=S.settings.appLang||'auto';return a==='auto'?sysLang():a};
+const loc=()=>LOCALE[LANG]||'en-GB';
+function voiceFor(l){for(const n of (navigator.languages||[])){if(VOICE_OPTS.some(o=>o[0]===n)&&n.slice(0,2)===l)return [n,VOICE_DEF[l][1]]}return VOICE_DEF[l]||VOICE_DEF.en}
+function buildLang(){
+  LANG=effLang();document.documentElement.lang=LANG;TPL=[];const D=I18N[LANG];if(!D)return;
+  for(const k of Object.keys(D)){if(!/\{\d\}/.test(k))continue;const re=new RegExp('^'+k.replace(/[.*+?^$()|[\]\\]/g,'\\$&').replace(/\{\d\}/g,'(.+?)')+'$','s');TPL.push([re,D[k]])}
+}
+function tr(s){
+  if(LANG==='en'||!s)return s;const D=I18N[LANG];if(!D)return s;const k=s.trim();if(!k)return s;
+  if(Object.prototype.hasOwnProperty.call(D,k))return s.replace(k,()=>D[k]);
+  for(const [re,t] of TPL){const m=k.match(re);if(m)return s.replace(k,()=>t.replace(/\{(\d)\}/g,(_,i)=>m[+i+1]!==undefined?tr(m[+i+1]):''))}
+  if(k.includes(' · ')){const parts=k.split(' · '),o=parts.map(x=>tr(x));if(o.some((x,i)=>x!==parts[i]))return s.replace(k,()=>o.join(' · '))}
+  return s;
+}
+function T(k,...a){const D=I18N[LANG]||{};const t=LANG!=='en'&&Object.prototype.hasOwnProperty.call(D,k)?D[k]:k;return t.replace(/\{(\d)\}/g,(_,i)=>a[+i]!==undefined?a[+i]:'')}
+const SKIPT=new Set(['SCRIPT','STYLE','PRE','TEXTAREA','CODE']);
+function trNode(n){
+  if(LANG==='en')return;
+  if(n.nodeType===3){const p=n.parentNode;if(!p||SKIPT.has(p.nodeName)||p.id==='diagout')return;const v=n.nodeValue;if(!/[A-Za-z]{2}/.test(v))return;const o=tr(v);if(o!==v)n.nodeValue=o}
+  else if(n.nodeType===1){if(SKIPT.has(n.nodeName)||n.id==='diagout')return;for(const a of ['placeholder','aria-label','title','alt']){const v=n.getAttribute(a);if(v){const o=tr(v);if(o!==v)n.setAttribute(a,o)}}for(let c=n.firstChild;c;c=c.nextSibling)trNode(c)}
+}
+const langObs=new MutationObserver(recs=>{if(LANG==='en'){langObs.takeRecords();return}for(const r of recs){if(r.type==='childList')r.addedNodes.forEach(trNode);else if(r.type==='characterData')trNode(r.target);else if(r.type==='attributes')trNode(r.target)}langObs.takeRecords()});
+function startLangObs(){buildLang();langObs.observe(document.body,{childList:true,subtree:true,characterData:true,attributes:true,attributeFilter:['placeholder','aria-label','title']});trNode(document.body)}
+async function setAppLang(v,wiz){
+  S.settings.appLang=v;save();buildLang();
+  if(wiz){const [vl,kw]=voiceFor(LANG);S.settings.lang=vl;S.settings.keywords=kw;save();render();return}
+  render();
+  const [vl,kw]=voiceFor(LANG);
+  if(S.settings.lang.slice(0,2)!==vl.slice(0,2)||S.settings.keywords!==kw){
+    if(await confirmD('Switch the voice too?','Set the voice language to '+vl+' and the stop words to “'+kw+'”?','Yes, switch','No')){S.settings.lang=vl;S.settings.keywords=kw;save();render()}
+  }
+}
+
 const clubName=()=>S.settings.club.name||'My club';
 
 /* photos in IndexedDB */
@@ -309,14 +352,14 @@ function suggestion(){
   const w=waterNow(),wx=S.cache.wx,out=[];
   if(!w)return{lines:[{c:'warn',t:'No water temperature yet – refresh, or enter what you measure at the shore.'}],sec:120};
   const sec=recommendSec(w.v),min=sec/60,lvl=w.v<4?'Extreme cold':w.v<7?'Very cold':w.v<10?'Cold':w.v<14?'Fresh':'Mild';
-  out.push({c:'good',t:`<b>${lvl} (${w.v.toFixed(1)}°C)</b> – aim for up to <b>${min} min</b> (rule of thumb: ~1 min per °C, max 10). `+(w.v<7?'Stay standing or swim only briefly; keep hands and head out if you can.':w.v<12?'Short swims are fine if you are acclimatised.':'Good conditions for a longer, relaxed dip.')});
+  out.push({c:'good',t:T('{0} ({1}°C) – aim for up to {2} min (rule of thumb: ~1 min per °C, max 10).',tr(lvl),w.v.toFixed(1),min)+' '+tr(w.v<7?'Stay standing or swim only briefly; keep hands and head out if you can.':w.v<12?'Short swims are fine if you are acclimatised.':'Good conditions for a longer, relaxed dip.')});
   if(wx){
     if(wx.feels<3)out.push({c:'warn',t:`Feels like ${wx.feels.toFixed(0)}°C on shore – bring warm dry layers, a hat and a hot drink; get dressed fast.`});
     if(wx.wind>20)out.push({c:'warn',t:`Wind ${Math.round(wx.wind)} km/h – wind chill after you get out will hurt; shorten the dip.`});
     if(wx.code>=95)out.push({c:'warn',t:'Thunderstorm risk – stay out of the water.'});
     else if(wx.code>=51&&wx.code<=82)out.push({c:'warn',t:'Rain/snow around – plan a sheltered place to change.'});
     if(!wx.day)out.push({c:'warn',t:'It is dark – use a headlamp, bring a buddy, stay close to the shore.'});
-    const b=bestHour();if(b)out.push({c:'good',t:`Best slot ${b.today?'today':'tomorrow'}: <b>${pad(new Date(b.t).getHours())}:00</b> – feels like ${b.feels.toFixed(0)}°C, ${wxIcon(b.code)} ${b.pop??0}% rain chance.`});
+    const b=bestHour();if(b)out.push({c:'good',t:T(b.today?'Best slot today: {0}:00 – feels like {1}°C, {2} {3}% rain chance.':'Best slot tomorrow: {0}:00 – feels like {1}°C, {2} {3}% rain chance.',pad(new Date(b.t).getHours()),b.feels.toFixed(0),wxIcon(b.code),b.pop??0)});
   }
   out.push({c:'warn',t:'Never dip alone. Leave the water if you shiver uncontrollably or lose feeling in hands. Rewarm gradually (no hot shower right away). Not medical advice.'});
   return{lines:out,sec};
@@ -362,15 +405,15 @@ function lineChart(list,o={}){
   const t0=Math.min(...all.map(p=>p.t)),t1=Math.max(...all.map(p=>p.t));let lo=Math.min(...all.map(p=>p.v)),hi=Math.max(...all.map(p=>p.v));if(hi-lo<1){lo-=.5;hi+=.5}const pd=(hi-lo)*.1;lo-=pd;hi+=pd;
   const x=t=>L+(t-t0)/(t1-t0||1)*(W-L-R),y=v=>H-B-(v-lo)/(hi-lo)*(H-B-T);
   const grid=[0,.5,1].map(f=>{const v=lo+(hi-lo)*f;return `<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${L-4}" y="${y(v)+3}" fill="var(--mute)" font-size="10" text-anchor="end">${v.toFixed(1)}</text>`}).join('');
-  const ticks=[0,1,2,3].map(i=>{const t=t0+(t1-t0)*i/3,d=new Date(t);return `<text x="${x(t)}" y="${H-6}" fill="var(--mute)" font-size="10" text-anchor="${i===0?'start':i===3?'end':'middle'}">${d.toLocaleDateString('en-GB',{weekday:'short'})} ${pad(d.getHours())}h</text>`}).join('');
+  const ticks=[0,1,2,3].map(i=>{const t=t0+(t1-t0)*i/3,d=new Date(t);return `<text x="${x(t)}" y="${H-6}" fill="var(--mute)" font-size="10" text-anchor="${i===0?'start':i===3?'end':'middle'}">${d.toLocaleDateString(loc(),{weekday:'short'})} ${pad(d.getHours())}h</text>`}).join('');
   const lines=list.map(s=>`<polyline fill="none" stroke="${s.color}" stroke-width="2.2" stroke-linejoin="round" points="${s.pts.filter(p=>p.v!=null).map(p=>x(p.t).toFixed(1)+','+y(p.v).toFixed(1)).join(' ')}"/>`).join('');
   const nowX=Date.now()>=t0&&Date.now()<=t1?`<line x1="${x(Date.now())}" x2="${x(Date.now())}" y1="${T}" y2="${H-B}" stroke="var(--mute)" stroke-dasharray="3 3"/>`:'';
   return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="${esc(o.label||'Chart')}">${grid}${nowX}${lines}${ticks}</svg>`+(list.length>1?`<div class="row wrap sub">${list.map(s=>`<span><span style="color:${s.color}">●</span> ${esc(s.name)}</span>`).join('')}</div>`:'');
 }
 function historyHtml(){
   const ds=[...S.dips].sort((a,b)=>b.ts-a.ts);if(!ds.length)return'<div class="card sub">No dips recorded yet.</div>';
-  return `<div class="card">${ds.map(d=>`<div class="dip"><div class="row sp"><div><b>${fmtDate(d.ts)} ${fmtTime(d.ts)}</b><div class="sub">${d.water!=null?d.water.toFixed(1)+'°C water':''}${d.air!=null?' · '+d.air.toFixed(0)+'°C air':''} · ${fmt(d.durationSec)}${d.feeling?' · '+['','🥶','😬','🙂','😄','🤩'][d.feeling]:''}</div></div><button class="ghost icon" data-a="deldip" data-v="${d.id}" aria-label="Delete">${ic('trash')}</button></div>
-  <div class="sub">${d.people.map(p=>esc(p.name)+(p.style==='swimming'?' (swim)':' (stand)')+(p.sec&&p.sec!==d.durationSec?' '+fmt(p.sec):'')).join(', ')}</div>${d.notes?`<div class="sub">“${esc(d.notes)}”</div>`:''}
+  return `<div class="card">${ds.map(d=>`<div class="dip"><div class="row sp"><div><b>${fmtDate(d.ts)} ${fmtTime(d.ts)}</b><div class="sub">${[d.water!=null?T('{0}°C water',d.water.toFixed(1)):'',d.air!=null?T('{0}°C air',d.air.toFixed(0)):'',fmt(d.durationSec),d.feeling?['','🥶','😬','🙂','😄','🤩'][d.feeling]:''].filter(Boolean).join(' · ')}</div></div><button class="ghost icon" data-a="deldip" data-v="${d.id}" aria-label="Delete">${ic('trash')}</button></div>
+  <div class="sub">${d.people.map(p=>esc(p.name)+(p.style==='swimming'?' ('+tr('swim')+')':' ('+tr('stand')+')')+(p.sec&&p.sec!==d.durationSec?' '+fmt(p.sec):'')).join(', ')}</div>${d.notes?`<div class="sub">“${esc(d.notes)}”</div>`:''}
   ${d.hasPhoto?`<img data-photo="${d.id}" alt="photo">`:''}</div>`).join('')}</div>`;
 }
 async function loadPhotos(){for(const i of document.querySelectorAll('img[data-photo]')){const b=await photoGet(i.dataset.photo);if(b)i.src=URL.createObjectURL(b)}}
@@ -383,7 +426,7 @@ async function back(){
   if(page==='settings'&&sub){permStop();go('settings')}else if(page==='adv')go('cond');else go('home');
 }
 const TITLES={home:'',cond:'Conditions',adv:'Advanced conditions',stats:'Statistics',hist:'History',settings:'Settings'};
-const SUBT={diag:'Test connection',water:'Water temperature source',perm:'Permissions & tests',club:'Club',spot:'Swimming spot',members:'Members',dips:'Dip defaults',sheet:'Shared Sheet',look:'Appearance',backup:'Backup & data',about:'About'};
+const SUBT={diag:'Test connection',water:'Water temperature source',perm:'Permissions & tests',club:'Club',spot:'Swimming spot',members:'Members',dips:'Dip defaults',sheet:'Shared Sheet',look:'Appearance',lang:'Language',backup:'Backup & data',about:'About'};
 function renderTop(){
   const home=page==='home'||page==='setup',title=page==='setup'?'First-time setup':page==='settings'&&sub?SUBT[sub]:home?clubName():TITLES[page];
   $('#top').innerHTML=`${home?`<img class="logo" src="${S.settings.club.logo||'icons/icon-192.png'}" alt="">`:`<button class="icon" data-a="back" aria-label="Back">${ic('arrow-left')}</button>`}
@@ -427,8 +470,8 @@ function homeHtml(){
 function condHtml(){
   const w=waterNow(),c=S.cache,wx=c.wx,sg=suggestion(),sp=S.settings.spot;
   return `<div class="row sp"><div class="sub">${sp?ic('map-pin')+' '+esc(sp.city)+(sp.lake?' · '+esc(sp.lake.name):''):'No swimming spot set'}</div><button data-a="refresh" ${loading?'disabled':''}>${loading?'…':ic('refresh')}</button></div>
-  ${sp&&!sp.lake&&!sp.manualNone?`<div class="warn">No lake model linked yet${lastAlpErr?' ('+esc(lastAlpErr)+')':''}. Tap refresh to retry, or choose the lake in <a href="#" data-a="gospot" style="color:var(--acc2)">Settings › Swimming spot</a>.</div>`:''}
-  ${!sp?`<div class="warn">Set your city and lake in <a href="#" data-a="gospot" style="color:var(--acc2)">Settings › Swimming spot</a>.</div>`:''}
+  ${sp&&!sp.lake&&!sp.manualNone?`<div class="warn"><a href="#" data-a="gospot" style="color:inherit;text-decoration:none">${esc(lastAlpErr?T('No lake model linked yet ({0}). Tap refresh to retry, or choose the lake in Settings › Swimming spot.',tr(lastAlpErr)):T('No lake model linked yet. Tap refresh to retry, or choose the lake in Settings › Swimming spot.'))}</a></div>`:''}
+  ${!sp?`<div class="warn"><a href="#" data-a="gospot" style="color:inherit;text-decoration:none">Set your city and lake in Settings › Swimming spot.</a></div>`:''}
   <div class="card"><div class="sub">Water</div><div class="big">${w?w.v.toFixed(1):'–'}<small>°C</small></div>
    <div class="sub">${w?esc(w.src)+' · '+ago(w.t):'no data'}</div>
    <div class="row wrap" style="margin-top:8px">${c.alp?`<span class="chip">Lake model ${c.alp.v.toFixed(1)}°</span>`:''}${c.bafu?`<span class="chip">Station ${esc(sp.station.name)} ${c.bafu.v.toFixed(1)}° (${sp.station.dist} km)</span>`:''}${c.errors&&c.errors.alp&&sp&&sp.lake?`<span class="chip mute">Model: ${esc(c.errors.alp)}</span>`:''}${c.errors&&c.errors.bafu&&sp&&sp.station?`<span class="chip mute">Station: ${esc(c.errors.bafu)}</span>`:''}</div>
@@ -456,7 +499,7 @@ function advHtml(){
   if(wx){
     out+=sec('Air · next 48 h',lineChart([{name:'Air',color:'var(--over)',pts:wx.hours.map(x=>({t:x.t,v:x.air}))},{name:'Feels like',color:'var(--acc2)',pts:wx.hours.map(x=>({t:x.t,v:x.feels}))}],{label:'Air temperature forecast'}));
     out+=sec('Wind · next 48 h (km/h)',lineChart([{name:'Wind',color:'var(--acc2)',pts:wx.hours.map(x=>({t:x.t,v:x.wind}))}].concat(wx.hours.some(x=>x.gust!=null)?[{name:'Gusts',color:'var(--red)',pts:wx.hours.map(x=>({t:x.t,v:x.gust}))}]:[]),{label:'Wind forecast'}));
-    const d=wx.daily||[];if(d.length)out+=sec('Sun & rain',`<table><tr><th>Day</th><th>Sunrise</th><th>Sunset</th><th>UV</th><th>Rain</th></tr>${d.map(x=>`<tr><td>${new Date(x.date).toLocaleDateString('en-GB',{weekday:'short',day:'numeric'})}</td><td>${x.sunrise.slice(11,16)}</td><td>${x.sunset.slice(11,16)}</td><td>${x.uv!=null?Math.round(x.uv):'–'}</td><td>${x.pop!=null?x.pop+'%':'–'}</td></tr>`).join('')}</table>`);
+    const d=wx.daily||[];if(d.length)out+=sec('Sun & rain',`<table><tr><th>Day</th><th>Sunrise</th><th>Sunset</th><th>UV</th><th>Rain</th></tr>${d.map(x=>`<tr><td>${new Date(x.date).toLocaleDateString(loc(),{weekday:'short',day:'numeric'})}</td><td>${x.sunrise.slice(11,16)}</td><td>${x.sunset.slice(11,16)}</td><td>${x.uv!=null?Math.round(x.uv):'–'}</td><td>${x.pop!=null?x.pop+'%':'–'}</td></tr>`).join('')}</table>`);
   }
   return out+`<div class="sub" style="text-align:center">Lake data: Alplakes (EPFL, Eawag), simulated · Stations: BAFU · Weather: Open-Meteo</div>`;
 }
@@ -467,7 +510,7 @@ async function advLoad(){
     if(!L)el.textContent='Lake data not available ('+(relayErr||'no answer')+').';
     else{const k=L.times.reduce((a,t,i)=>Math.abs(t-Date.now())<Math.abs(L.times[a]-Date.now())?i:a,0),v=L.t[k].filter(x=>typeof x==='number');
       if(!v.length)el.textContent='No data.';else{const mn=Math.min(...v),mx=Math.max(...v),av=v.reduce((a,b)=>a+b,0)/v.length,iMn=L.t[k].indexOf(mn),iMx=L.t[k].indexOf(mx);
-        el.innerHTML=`<div class="grid"><div class="stat">Coldest<b>${mn.toFixed(1)}°C</b></div><div class="stat">Average<b>${av.toFixed(1)}°C</b></div><div class="stat">Warmest<b>${mx.toFixed(1)}°C</b></div><div class="stat">Model points<b>${v.length}</b></div></div><div class="sub" style="margin-top:6px">Surface of ${esc(L.name||sp.lake.name)}, ${ago(L.times[k])}. Coldest spot is ${Math.round(km(sp.pt[0],sp.pt[1],L.lat[iMn],L.lng[iMn]))} km, warmest ${Math.round(km(sp.pt[0],sp.pt[1],L.lat[iMx],L.lng[iMx]))} km from your spot.</div>`}}
+        el.innerHTML=`<div class="grid"><div class="stat">Coldest<b>${mn.toFixed(1)}°C</b></div><div class="stat">Average<b>${av.toFixed(1)}°C</b></div><div class="stat">Warmest<b>${mx.toFixed(1)}°C</b></div><div class="stat">Model points<b>${v.length}</b></div></div><div class="sub" style="margin-top:6px">${esc(T('Surface of {0}, {1}. Coldest spot is {2} km, warmest {3} km from your spot.',tr(L.name||sp.lake.name),tr(ago(L.times[k])),Math.round(km(sp.pt[0],sp.pt[1],L.lat[iMn],L.lng[iMn])),Math.round(km(sp.pt[0],sp.pt[1],L.lat[iMx],L.lng[iMx]))))}</div>`}}
   }
   if(ed){
     let D=null;try{D=await relayJson('lakes/'+key+'-depth.json')}catch{}
@@ -553,7 +596,7 @@ function spotHtml(){
   ${s.city?`<label>Lake – the nearest ones with water-temperature data</label>
    ${lakes.slice(0,5).map((l,i)=>`<button class="pick ${s.lake&&s.lake.name===l.name?'on':''}" data-a="picklake" data-v="${LAKES.indexOf(LAKES.find(x=>x.name===l.name))}">${esc(l.name)} <span class="sub">· ${l.d} km away</span></button>`).join('')}
    <button class="pick ${s.none?'on':''}" data-a="picklake" data-v="-1">My lake is not listed – I will enter temperatures by hand</button>
-   ${s.busy==='lake'?'<div class="sub" style="margin-top:8px">Looking for model data near your spot… (can take ~20 s)</div>':''}${s.msg?`<div class="${/found|kept|hand/i.test(s.msg)?'good':'warn'}" style="margin-top:8px">${esc(s.msg)}</div>`:''}`:''}
+   ${s.busy==='lake'?'<div class="sub" style="margin-top:8px">Looking for model data near your spot… (can take ~20 s)</div>':''}${s.msg?`<div class="${(s.result?!!(s.result.lake||s.result.manualNone):/found|kept|hand/i.test(s.msg))?'good':'warn'}" style="margin-top:8px">${esc(s.msg)}</div>`:''}`:''}
   <div class="sub" style="margin-top:10px">Water data comes from lake models of the Swiss Alplakes project; a nearby measuring station is added if one exists. Weather is found from the city. Everything can be overridden by hand on the Conditions page.</div>`;
 }
 async function spotGeo(){
@@ -564,12 +607,12 @@ async function spotGeo(){
 async function spotPickCity(i){SP.city=SP.results[i];SP.view=null;SP.results=null;SP.lake=null;SP.none=false;SP.msg='';SP.result=null;renderBody();const near=LAKES.map(l=>({l,d:dl(l,SP.city.lat,SP.city.lng)})).sort((a,b)=>a.d-b.d)[0];if(near&&near.d<30)spotPickLake(LAKES.indexOf(near.l))}
 async function spotPickLake(i){
   const c=SP.city;SP.msg='';
-  if(i<0){SP.lake=null;SP.none=true;const st=await nearestStation(c.lat,c.lng);SP.result={city:c.name,region:c.region,country:c.country,lat:c.lat,lng:c.lng,lake:null,pt:null,manualNone:true,station:st};SP.msg='OK – you can enter temperatures by hand'+(st?`; station “${st.name}” (${st.dist} km) will be used too.`:'.');renderBody();return}
+  if(i<0){SP.lake=null;SP.none=true;const st=await nearestStation(c.lat,c.lng);SP.result={city:c.name,region:c.region,country:c.country,lat:c.lat,lng:c.lng,lake:null,pt:null,manualNone:true,station:st};SP.msg=st?T('OK – you can enter temperatures by hand; station “{0}” ({1} km) will be used too.',st.name,st.dist):T('OK – you can enter temperatures by hand.');renderBody();return}
   SP.lake=LAKES[i];SP.none=false;SP.busy='lake';SP.result=null;renderBody();
   const f=await findLakePoint(c,SP.lake);const st=await nearestStation(c.lat,c.lng);
   SP.busy='';
-  if(f&&f.pt){SP.result={city:c.name,region:c.region,country:c.country,lat:c.lat,lng:c.lng,lake:{name:SP.lake.name,key:f.key,model:SP.lake.model},pt:f.pt,dist:f.dist,station:st};SP.msg=`Model data found – the nearest model point is ${f.dist<1?Math.round(f.dist*1000)+' m':f.dist.toFixed(1)+' km'} from your pin.`+(st?` Station “${st.name}” (${st.dist} km) added.`:'')}
-  else{SP.result={city:c.name,region:c.region,country:c.country,lat:c.lat,lng:c.lng,lake:null,pt:null,station:st};SP.msg=f&&f.far?`The nearest model point is ${f.far.toFixed(1)} km from your pin – move the pin onto the lake, or pick another lake.`:(lastAlpErr&&/not in the app/.test(lastAlpErr)?lastAlpErr+'.':`Could not reach the lake data (${relayErr||lastAlpErr||'no answer'}). Check your connection and tap the lake again.`)}
+  if(f&&f.pt){SP.result={city:c.name,region:c.region,country:c.country,lat:c.lat,lng:c.lng,lake:{name:SP.lake.name,key:f.key,model:SP.lake.model},pt:f.pt,dist:f.dist,station:st};SP.msg=T('Model data found – the nearest model point is {0} from your pin.',f.dist<1?Math.round(f.dist*1000)+' m':f.dist.toFixed(1)+' km')+(st?' '+T('Station “{0}” ({1} km) added.',st.name,st.dist):'')}
+  else{SP.result={city:c.name,region:c.region,country:c.country,lat:c.lat,lng:c.lng,lake:null,pt:null,station:st};SP.msg=f&&f.far?T('The nearest model point is {0} km from your pin – move the pin onto the lake, or pick another lake.',f.far.toFixed(1)):(lastAlpErr&&/not in the app/.test(lastAlpErr)?tr(lastAlpErr)+'.':T('Could not reach the lake data ({0}). Check your connection and tap the lake again.',relayErr||lastAlpErr||'no answer'))}
   renderBody();
 }
 const PIN='<svg width="32" height="42" viewBox="0 0 32 42"><path d="M16 1C8 1 2 7 2 15c0 10 14 25 14 25s14-15 14-25C30 7 24 1 16 1z" fill="#e5384f" stroke="#fff" stroke-width="2"/><circle cx="16" cy="15" r="5.5" fill="#fff"/></svg>';
@@ -597,12 +640,14 @@ function renderBody(){const m=$('#main');const y=window.scrollY;if(page==='setup
 
 /* ====== first-time wizard ====== */
 let W=null;
-function initWiz(){W={step:0,name:S.settings.club.name||'',logo:S.settings.club.logo||'',me:S.settings.me||'',members:[...S.members]};initSpot(null)}
+function initWiz(){if(!S.settings.setupDone&&!S.settings.voiceInit){const [vl,kw]=voiceFor(effLang());S.settings.lang=vl;S.settings.keywords=kw;S.settings.voiceInit=true;save()}
+  W={step:0,name:S.settings.club.name||'',logo:S.settings.club.logo||'',me:S.settings.me||'',members:[...S.members]};initSpot(null)}
 const WSTEPS=3;
 function wizHtml(){
   const dots=`<div class="wzdots">${[0,1,2].map(i=>`<i class="${i<=W.step?'on':''}"></i>`).join('')}</div>`;
   if(W.step===0)return `${dots}<h1>Welcome 👋</h1><p class="sub">Let’s set up your club. This takes a minute, and everything can be changed later in Settings.</p>
-   <div class="card"><label style="margin-top:0">Club name</label><input id="w_name" value="${esc(W.name)}" placeholder="e.g. Ice Bath Club" maxlength="40">
+   <div class="card"><label style="margin-top:0">Language</label><select id="w_lang">${APPLANGS.map(([k,l])=>`<option value="${k}" ${(S.settings.appLang||'auto')===k?'selected':''}>${l}</option>`).join('')}</select>
+   <label>Club name</label><input id="w_name" value="${esc(W.name)}" placeholder="e.g. Ice Bath Club" maxlength="40">
    <label>Club logo (optional)</label><div class="row"><img class="logo-lg" id="w_logo" ${W.logo?`src="${W.logo}"`:'style="visibility:hidden"'} alt=""><label class="btn" style="margin:0;color:var(--ink)">${ic('photo')} Choose picture<input id="w_logofile" type="file" accept="image/*" hidden></label></div></div>
    <div class="card"><b>Already use the app on another phone?</b><div class="sub" style="margin:4px 0 8px">Restore your full backup and skip the questions.</div><button data-a="wrestore">${ic('upload')} Restore backup</button><input type="file" id="restfile" accept="application/json,.json" hidden><div class="sub" id="rest_msg" style="margin-top:6px"></div></div>`;
   if(W.step===1)return `${dots}<h1>Where do you swim?</h1><div class="card">${spotHtml()}</div>`;
@@ -647,10 +692,28 @@ function doGet(e){
   return out_({ok:true,rows:v.map(r=>Object.fromEntries(h.map((k,i)=>[k,r[i]])))});
 }`;
 const THEMES=[['ice','#2aa6e0'],['forest','#2fa36b'],['sunset','#f08a3c'],['violet','#8b6cf0'],['rose','#e0587a']];
+
+const FAQ=[
+ ['The microphone is blocked or Chrome never asks',['If the app says the microphone is blocked, or Chrome never shows a question, the phone itself is blocking it. This is the most common problem.','1. Open the phone’s Settings › Apps › Chrome › Permissions › Microphone and choose “Allow only while using the app”. If it says “Don’t allow”, this is the cause.','2. Samsung: open Settings › Privacy › Controls and alerts and switch “Microphone access” on.','3. In Chrome tap ⋮ › Settings › Site settings › Microphone. Make sure sites may ask and that this site is not blocked.','4. Close the app completely, open it again and tap Test on the Permissions & tests page.'],['Open Permissions & tests','perm']],
+ ['The stop word is not recognised',['Voice recognition needs internet and the microphone. Say the stop word clearly while the timer shows “In the water”.','Check the stop words and the voice language in Dip defaults: they must match the language you speak.','If it still fails in the installed app, open the app in a normal Chrome tab. The big STOP button always works.'],['Open Dip defaults & voice','dips']],
+ ['No water temperature (shows –)',['Open Test connection and look for red lines.','Lakes that are not in the Alplakes service have no model. Type the temperature you measured on the Conditions page.','Make sure your swimming spot is on or next to the lake (Swimming spot).'],['Open Test connection','diag']],
+ ['The temperature differs from my thermometer',['The app shows a model estimate of the lake surface near your spot. It can be a degree or more away, especially after sun or wind.','A value you type on the Conditions page replaces it for 6 hours.','You can choose the source in Water temperature source.'],['Open Water temperature source','water']],
+ ['The app shows an old version',['Close the app completely (swipe it away) and open it again with internet. A pop-up appears when a new version is ready.','Still old? Make a full backup, remove the app, install it again and restore the backup.'],['Open Backup & data','backup']],
+ ['I have a new phone or lost my data',['On the old phone make a full backup in Backup & data. Send the file to the new phone (e-mail, Drive, WhatsApp to yourself).','On the new phone install the app and tap Restore backup on the first screen.','Your data lives only on the phone: clearing Chrome’s site data or removing the app deletes it. The shared Sheet only holds dip rows, not photos or settings.'],['Open Backup & data','backup']],
+ ['How do I install the app?',['Open the link in Chrome, tap ⋮ › Install app (or Add to Home screen).','iPhone: open the link in Safari, tap Share › Add to Home Screen.'],['Install app on this phone','installapp']],
+ ['Photos are missing in the shared Sheet',['Photos stay on the phone that took them. The shared Sheet only receives the dip rows. Use the full backup to move photos to another phone.']],
+ ['The screen goes dark during a dip',['Open Permissions & tests and test “Keep screen on”.','Battery saver can switch it off. Turn battery saver off or allow the app to stay active.'],['Open Permissions & tests','perm']],
+ ['No beeps or spoken cues',['Check the phone volume and silent mode.','Beeps and speech can be switched on in Dip defaults.','Tap once in the app before the dip: phones only play sound after a tap.'],['Open Dip defaults & voice','dips']],
+ ['The shared Sheet does not sync',['Use the Test and Sync buttons in Shared Sheet. The script link must be the “Web app” link and its access must be “Anyone”.','Dips that could not be sent are kept and sent next time.'],['Open Shared Sheet','sheet']],
+ ['Statistics differ between phones',['“This phone” shows only dips recorded on this phone. “Whole club (Sheet)” shows everybody’s dips from the shared Sheet.']],
+ ['How do I change the language?',['Open Language in Settings. “Automatic” follows your phone. The app offers to switch the voice language and stop words together with it.'],['Open Language','lang']],
+ ['Staying safe',['Never swim alone. Get out when you feel cold, numb or start to shiver a lot.','The suggested times are a rule of thumb, not medical advice.']]
+];
+function faqHtml(){return `<h2 style="margin:22px 4px 8px">Help & FAQ</h2>`+FAQ.map(([q,ps,b])=>`<details class="faq"><summary>${q}</summary>${ps.map(t=>`<p>${t}</p>`).join('')}${b?`<button class="ghost" style="margin:2px 0 4px" data-a="${b[1]==='installapp'?'installapp':'sub'}" data-v="${b[1]}">${b[0]}</button>`:''}</details>`).join('')}
 function settingsHtml(){
   const s=S.settings;
-  if(!sub)return [['club','flame','Club name & logo'],['spot','map-pin','Swimming spot'],['members','users','Members'],['dips','snowflake','Dip defaults & voice'],['sheet','cloud-upload','Shared Sheet'],['look','palette','Appearance'],['water','thermometer','Water temperature source'],['perm','microphone','Permissions & tests'],['install','download','Install app on this phone'],['diag','refresh','Test connection'],['backup','upload','Backup & data'],['about','info-circle','About, license & changelog']]
-   .map(([k,i,l])=>`<button class="mi" data-a="${k==='install'?'installapp':'sub'}" data-v="${k}">${ic(i)}<span>${l}</span><span style="flex:none;transform:scaleX(-1);display:inline-block">${ic('arrow-left')}</span></button>`).join('');
+  if(!sub)return [['club','flame','Club name & logo'],['spot','map-pin','Swimming spot'],['members','users','Members'],['dips','snowflake','Dip defaults & voice'],['sheet','cloud-upload','Shared Sheet'],['look','palette','Appearance'],['lang','world','Language'],['water','thermometer','Water temperature source'],['perm','microphone','Permissions & tests'],['install','download','Install app on this phone'],['diag','refresh','Test connection'],['backup','upload','Backup & data'],['about','info-circle','About, license & changelog']]
+   .map(([k,i,l])=>`<button class="mi" data-a="${k==='install'?'installapp':'sub'}" data-v="${k}">${ic(i)}<span>${l}</span><span style="flex:none;transform:scaleX(-1);display:inline-block">${ic('arrow-left')}</span></button>`).join('')+faqHtml();
   if(sub==='club')return `<div class="card"><label style="margin-top:0">Club name</label><input id="c_name" value="${esc(s.club.name)}" maxlength="40">
    <label>Logo</label><div class="row"><img class="logo-lg" id="c_logo" ${s.club.logo?`src="${s.club.logo}"`:'style="visibility:hidden"'} alt=""><div><label class="btn" style="margin:0;color:var(--ink)">${ic('photo')} Choose picture<input id="c_logofile" type="file" accept="image/*" hidden></label><br><button class="ghost" style="margin-top:8px" data-a="rmlogo">Remove logo</button></div></div></div>`;
   if(sub==='spot')return `<div class="card">${spotHtml()}</div>`;
@@ -661,17 +724,18 @@ function settingsHtml(){
    ${s.targetMode==='fixed'?`<label>Fixed target (mm:ss)</label><input id="s_target" value="${fmt(s.targetSec)}">`:''}
    <label class="row"><input type="checkbox" id="s_voice" ${s.voice?'checked':''}> Spoken cues</label><label class="row"><input type="checkbox" id="s_beep" ${s.beep?'checked':''}> Beeps</label>
    <label>Stop keyword(s), comma separated</label><input id="s_kw" value="${esc(s.keywords)}">
-   <label>Voice language</label><select id="s_lang">${[['en-US','English'],['de-CH','Deutsch (CH)'],['de-DE','Deutsch (DE)']].map(([v,l])=>`<option value="${v}" ${s.lang===v?'selected':''}>${l}</option>`).join('')}</select>
+   <label>Voice language</label><select id="s_lang">${VOICE_OPTS.map(([v,l])=>`<option value="${v}" ${s.lang===v?'selected':''}>${l}</option>`).join('')}</select>
    <button style="margin-top:12px" data-a="testvoice">${ic('microphone')} Test keyword</button><div class="sub" id="vtest" style="margin-top:6px"></div></div>`;
   if(sub==='sheet')return `<div class="card"><div class="sub">Everyone in the club can read and write the same Google Sheet. Each phone keeps its own copy and uploads to the sheet. Photos stay on the phone.</div>
    <label>Web app URL (Apps Script)</label><input id="s_sheet" value="${esc(s.sheetUrl)}" placeholder="https://script.google.com/macros/s/…/exec">
    <button class="pri" style="margin-top:10px" data-a="sync">${ic('refresh')} Sync now</button>
    <div class="sub" style="margin-top:6px">${s.lastSync?'Last sync '+ago(s.lastSync):'Never synced'} · ${S.dips.filter(d=>!d.synced).length} dip(s) waiting</div></div>
-   <div class="card"><h2>One-time setup</h2><ol class="sub" style="padding-left:18px"><li>Create a Google Sheet, open <b>Extensions › Apps Script</b>.</li><li>Replace the code with the script below, save.</li><li><b>Deploy › New deployment › Web app</b>: Execute as <b>Me</b>, access <b>Anyone with the link</b>; copy the URL.</li><li>Paste the URL above, on every member’s phone.</li></ol>
+   <div class="card"><h2>One-time setup</h2><ol class="sub" style="padding-left:18px"><li>Create a Google Sheet and open Extensions › Apps Script.</li><li>Replace the code with the script below, save.</li><li>Choose Deploy › New deployment › Web app. Set “Execute as” to Me and access to Anyone with the link, then copy the URL.</li><li>Paste the URL above, on every member’s phone.</li></ol>
    <button data-a="copyscript">Copy script</button><pre>${esc(APPS_SCRIPT)}</pre><div class="warn">Anyone with the URL can read and add rows – share it only inside the club.</div></div>`;
   if(sub==='look')return `<div class="card"><h2>Colour</h2><div class="row wrap">${THEMES.map(([k,c])=>`<button class="sw ${s.theme===k?'on':''}" style="background:${c}" data-a="theme" data-v="${k}" aria-label="${k}"></button>`).join('')}</div>
    <label>Mode</label><div class="seg">${['auto','light','dark'].map(m=>`<button class="${s.mode===m?'on':''}" data-a="mode" data-v="${m}">${m[0].toUpperCase()+m.slice(1)}</button>`).join('')}</div>
    <label>Icon style</label><div class="seg">${[['icons','Icons'],['emoji','Emoji']].map(([k,l])=>`<button class="${s.iconStyle===k?'on':''}" data-a="iconstyle" data-v="${k}">${l}</button>`).join('')}</div></div>`;
+  if(sub==='lang')return `<div class="card"><div class="sub" style="margin-bottom:8px">Language of the app. “Automatic” follows the language of your phone.</div>${APPLANGS.map(([k,l])=>`<button class="pick ${(s.appLang||'auto')===k?'on':''}" data-a="applang" data-v="${k}"><b>${l}</b></button>`).join('')}<div class="sub" style="margin-top:8px">The voice language and the stop words are set in Dip defaults. When you change the app language, the app offers to switch them too.</div></div>`;
   if(sub==='water'){const R=waterReadings();return `<div class="card"><div class="sub">Choose which source feeds the water temperature shown in the app and saved with each dip. A value you type on Conditions always wins for 6 hours (always, in “by hand only”).</div>
    ${WSRC.map(([k,t,d])=>`<button class="pick ${s.waterSource===k?'on':''}" data-a="wsrc" data-v="${k}"><b>${t}</b><br><span class="sub">${d}</span></button>`).join('')}</div>
    <div class="card"><h2>Current readings</h2><table><tr><th>Source</th><th>°C</th><th>Age</th></tr>${[['Lake model',R.model],['Measuring station',R.station],['Typed by hand',R.manual]].map(([n,r])=>`<tr><td>${n}</td><td>${r?r.v.toFixed(1):'–'}</td><td>${r?ago(r.t):'–'}</td></tr>`).join('')}</table>
@@ -679,7 +743,7 @@ function settingsHtml(){
   if(sub==='perm')return `<div class="card"><div class="sub">Everything the app may ask your phone for. Tap Allow (the phone shows its own question), then Test. Location and notifications are not used.</div><button class="pri" style="margin-top:10px" data-a="permall">Request all</button></div><div id="perm_list">${permHtml()}</div>`;
   if(sub==='diag')return `<div class="card"><div class="sub">Calls every data source live from this phone and shows the exact answer or error. Tap Run, then Copy and send the text if something does not work.</div>
    <div class="row" style="margin-top:10px"><button class="pri" data-a="rundiag">${ic('refresh')} Run test</button><button data-a="copydiag">Copy result</button></div><pre id="diagout" style="max-height:none;margin-top:10px">Not run yet.</pre></div>`;
-  if(sub==='backup')return `<div class="card"><h2>Full backup</h2><div class="sub" style="margin-bottom:8px">One file with all dips, members, settings, club logo and photos. Use it to move the app to a new phone: install the app there, then choose <b>Restore backup</b> (also offered on the first screen).</div><div class="row wrap"><button class="pri" data-a="fulljson">${ic('download')} Full backup (with photos)</button><button data-a="import">${ic('upload')} Restore backup</button></div><input type="file" id="impfile" accept="application/json,.json" hidden><div class="sub" id="bk_msg" style="margin-top:8px"></div></div>
+  if(sub==='backup')return `<div class="card"><h2>Full backup</h2><div class="sub" style="margin-bottom:8px">One file with all dips, members, settings, club logo and photos. Use it to move the app to a new phone: install the app there, then choose Restore backup (also offered on the first screen).</div><div class="row wrap"><button class="pri" data-a="fulljson">${ic('download')} Full backup (with photos)</button><button data-a="import">${ic('upload')} Restore backup</button></div><input type="file" id="impfile" accept="application/json,.json" hidden><div class="sub" id="bk_msg" style="margin-top:8px"></div></div>
   <div class="card"><h2>Other exports</h2><div class="row wrap"><button data-a="csv">${ic('download')} Export CSV</button><button data-a="json">${ic('download')} Backup JSON</button></div><div class="sub" style="margin-top:8px">Backup JSON is small: dips, members and settings, but no photos.</div></div>
    <div class="card"><h2>Erase</h2><button class="danger" data-a="erase">${ic('trash')} Erase all data on this phone</button></div>`;
   if(sub==='about')return `<div class="card" style="text-align:center"><img class="logo-lg" src="icons/icon-192.png" alt=""><h1>${APP_NAME}</h1><div class="sub">Version ${APP_VERSION}${newer?' · v'+esc(newer.version)+' available':''}</div>
@@ -732,7 +796,7 @@ async function checkUpdate(manual){
 }
 async function updatePop(){
   if(!newer)return;const notes=newer.notes&&newer.notes.length?`<ul>${newer.notes.map(n=>`<li>${esc(n)}</li>`).join('')}</ul>`:'';
-  const v=await dlg({title:'Update available',body:`<p>Version <b>${esc(newer.version)}</b> is ready (you have ${APP_VERSION}).</p>${notes}<p class="sub">Your dips and settings stay untouched.</p>`,actions:[{label:'Later',v:false,cls:'ghost'},{label:'Update now',v:true,cls:'pri'}]});
+  const v=await dlg({title:'Update available',body:`<p>${esc(T('Version {0} is ready (you have {1}).',newer.version,APP_VERSION))}</p>${notes}<p class="sub">Your dips and settings stay untouched.</p>`,actions:[{label:'Later',v:false,cls:'ghost'},{label:'Update now',v:true,cls:'pri'}]});
   if(v)updateNow();
 }
 async function updateNow(){
@@ -752,8 +816,8 @@ async function sync(){
   try{toast('Syncing…');const rows=sheetRows();
     if(rows.length){const r=await fetch(u,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({rows})});const j=await r.json();if(!j.ok)throw new Error('upload failed');S.dips.forEach(d=>d.synced=true)}
     const j=await (await fetch(u)).json();if(!j.ok)throw new Error('download failed');
-    S.club=j.rows;S.settings.lastSync=Date.now();save();render();toast(`Synced · ${new Set(j.rows.map(r=>r.dipId)).size} dip(s) in the club sheet`,3500);
-  }catch(e){toast('Sync failed: '+e.message+' (check URL & deployment access)',4500)}
+    S.club=j.rows;S.settings.lastSync=Date.now();save();render();toast(T('Synced · {0} dip(s) in the club sheet',new Set(j.rows.map(r=>r.dipId)).size),3500);
+  }catch(e){toast(T('Sync failed: {0} (check URL & deployment access)',e.message),4500)}
 }
 const csvEsc=v=>{v=String(v??'');return /[",\n;]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v};
 
@@ -768,16 +832,16 @@ async function fullBackup(){
     parts.push('}}');
     const blob=new Blob(parts,{type:'application/json'});
     download('ice-bath-log-full-backup-'+new Date().toLocaleDateString('en-CA')+'.json',blob,'application/json');
-    const t='✓ Full backup created: '+S.dips.length+' dips, '+n+' photos, '+(blob.size/1048576).toFixed(1)+' MB. Find it in your Downloads and keep a copy somewhere safe (Drive, e-mail to yourself).';
+    const t=T('✓ Full backup created: {0} dips, {1} photos, {2} MB. Find it in your Downloads and keep a copy somewhere safe (Drive, e-mail to yourself).',S.dips.length,n,(blob.size/1048576).toFixed(1));
     if(msg)msg.textContent=t;toast('Backup created');
-  }catch(e){if(msg)msg.textContent='⚠️ Backup failed: '+(e&&e.message||e)}
+  }catch(e){if(msg)msg.textContent=T('⚠️ Backup failed: {0}',e&&e.message||e)}
 }
 async function restoreBackup(f,wiz){
   const msg=$(wiz?'#rest_msg':'#bk_msg'),say=t=>{if(msg)msg.textContent=t;toast(t.length>60?t.slice(0,57)+'…':t)};
   let j;try{j=JSON.parse(await f.text())}catch{say('This is not a valid backup file.');return}
   if(!j||!Array.isArray(j.dips)){say('This is not an Ice Bath Log backup.');return}
   const full=j.format==='ice-bath-log-full'&&j.settings&&typeof j.settings==='object',photos=j.photos||{},np=Object.keys(photos).length,have=new Set(S.dips.map(d=>d.id)),nd=j.dips.filter(d=>!have.has(d.id)).length;
-  if(!wiz&&!await confirmD('Restore backup?','This adds '+nd+' dip'+(nd===1?'':'s')+(np?' and up to '+np+' photo'+(np===1?'':'s'):'')+' from the backup. Dips already on this phone are kept.'+(full?' Settings, members and club logo from the backup replace the current ones.':' Settings are not part of this backup type and stay as they are.'),'Restore','Cancel'))return;
+  if(!wiz&&!await confirmD('Restore backup?',esc(T('This adds {0} dip(s) and up to {1} photo(s) from the backup. Dips already on this phone are kept.',nd,np))+'</p><p>'+esc(T(full?'Settings, members and club logo from the backup replace the current ones.':'Settings are not part of this backup type and stay as they are.')),'Restore','Cancel'))return;
   try{
     say('Restoring…');
     j.dips.forEach(d=>{if(!have.has(d.id))S.dips.push(d)});
@@ -787,16 +851,16 @@ async function restoreBackup(f,wiz){
     if(full){const st=Object.assign({},DEF,j.settings);st.club=Object.assign({},DEF.club,j.settings.club);st.lastSeen=APP_VERSION;st.setupDone=true;S.settings=st}
     save();
     if(wiz&&full){W=null;SP=null;go('home');refreshData();toast('Restored: '+nd+' dips, '+pn+' photos');return}
-    if(wiz){say('Restored '+nd+' dips, but this file has no settings. Please answer the questions.');return}
+    if(wiz){say(T('Restored {0} dip(s), but this file has no settings. Please answer the questions.',nd));return}
     render();toast('Restored '+nd+' dips, '+pn+' photos');
-  }catch(e){say('⚠️ Restore failed: '+(e&&e.message||e))}
+  }catch(e){say(T('⚠️ Restore failed: {0}',e&&e.message||e))}
 }
 function download(name,text,type){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
 
 /* ====== audio / voice ====== */
 let ac;
 function beep(f=880,d=.15){if(!S.settings.beep)return;try{ac=ac||new (window.AudioContext||window.webkitAudioContext)();const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;o.connect(g);g.connect(ac.destination);g.gain.setValueAtTime(.001,ac.currentTime);g.gain.exponentialRampToValueAtTime(.6,ac.currentTime+.01);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.start();o.stop(ac.currentTime+d+.02)}catch{}}
-function say(t){if(!S.settings.voice||!window.speechSynthesis)return;try{const u=new SpeechSynthesisUtterance(t);u.lang=S.settings.lang;speechSynthesis.speak(u)}catch{}}
+function say(t){if(!S.settings.voice||!window.speechSynthesis)return;try{const u=new SpeechSynthesisUtterance(tr(t));u.lang=S.settings.lang;speechSynthesis.speak(u)}catch{}}
 let recog=null,listening=false,onHeard=null;
 const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
 const kwList=()=>S.settings.keywords.toLowerCase().split(',').map(s=>s.trim()).filter(Boolean);
@@ -926,6 +990,7 @@ document.addEventListener('click',async ev=>{
     case'menu':menuOpen=!menuOpen;renderTop();break;
     case'go':go(v);break;
     case'sub':go('settings',v);break;
+    case'applang':setAppLang(v);break;
     case'gospot':go('settings','spot');break;
     case'savepage':savePage();break;
     case'refresh':refreshData();break;
@@ -935,8 +1000,8 @@ document.addEventListener('click',async ev=>{
     case'chkupd':checkUpdate(true);break;
     case'install':if(deferredInstall){deferredInstall.prompt();deferredInstall=null;render()}break;
     case'changelog':infoD('Changelog',changelogHtml(CHANGELOG));break;
-    case'license':infoD('License',`<p><b>${APP_NAME}</b> is free software under the <b>GNU General Public License v3.0</b>.</p><p class="sub">You may use, study, share and modify it. If you distribute it or a modified version, you must keep it under the same license and make the source code available. There is no warranty. The full license text is in the LICENSE file of the project and at gnu.org/licenses/gpl-3.0.</p>`);break;
-    case'privacy':infoD('Privacy & data sources',`<p>All dips, members, photos and settings stay on this phone. There are no accounts, ads or tracking.</p><p>Only if you set it up: dips (names, times, temperatures, notes – not photos) are sent to <b>your own</b> Google Sheet.</p><p class="sub">Services contacted: Open-Meteo (place search and weather), Alplakes by EPFL/Eawag (lake model temperature), existenz.ch (BAFU measuring stations), and Google Apps Script for your sheet. They receive your city’s coordinates, not your name. Voice recognition is done by Chrome’s speech service.</p>`);break;
+    case'license':infoD('License',`<p>${APP_NAME} is free software under the GNU General Public License v3.0.</p><p class="sub">You may use, study, share and modify it. If you distribute it or a modified version, you must keep it under the same license and make the source code available. There is no warranty. The full license text is in the LICENSE file of the project and at gnu.org/licenses/gpl-3.0.</p>`);break;
+    case'privacy':infoD('Privacy & data sources',`<p>All dips, members, photos and settings stay on this phone. There are no accounts, ads or tracking.</p><p>Only if you set it up: dips (names, times, temperatures, notes – not photos) are sent to your own Google Sheet.</p><p class="sub">Services contacted: Open-Meteo (place search and weather), Alplakes by EPFL/Eawag (lake model temperature), existenz.ch (BAFU measuring stations), and Google Apps Script for your sheet. They receive your city’s coordinates, not your name. Voice recognition is done by Chrome’s speech service.</p>`);break;
     case'credits':infoD('Credits',`<ul><li>Icons: Tabler Icons (MIT)</li><li>Map: Leaflet (BSD-2) with © OpenStreetMap contributors</li><li>Weather and place search: Open-Meteo</li><li>Lake temperature: Alplakes (EPFL, Eawag), simulated data, republished hourly by the repo’s GitHub job</li><li>Measuring stations: BAFU via existenz.ch</li></ul>`);break;
     /* wizard & spot */
     case'wback':wizRead();if(W.step>0){W.step--;render()}break;
@@ -966,7 +1031,7 @@ document.addEventListener('click',async ev=>{
     case'installapp':{
       if(matchMedia('(display-mode: standalone)').matches||navigator.standalone){infoD('Already installed','This app is already installed on your phone.');break}
       if(deferredInstall){deferredInstall.prompt();try{await deferredInstall.userChoice}catch{}deferredInstall=null;render();break}
-      infoD('Install on this phone','<ol><li>Open this page in Chrome.</li><li>Tap the ⋮ menu at the top right.</li><li>Choose <b>Install app</b> (or <b>Add to Home screen</b>).</li></ol><p class="sub">Chrome shows its own install button only after the page has been open for a short while; if you dismissed it before, the menu always works.</p>');break}
+      infoD('Install on this phone','<ol><li>Open this page in Chrome.</li><li>Tap the ⋮ menu at the top right.</li><li>Choose Install app (or Add to Home screen).</li></ol><p class="sub">Chrome shows its own install button only after the page has been open for a short while; if you dismissed it before, the menu always works.</p>');break}
     case'sync':s.sheetUrl=$('#s_sheet').value.trim();save();sync();break;
     case'copyscript':try{await navigator.clipboard.writeText(APPS_SCRIPT);toast('Script copied')}catch{toast('Select the text and copy manually')}break;
     case'csv':{const h=['dipId','date','time','name','seconds','style','waterC','airC','feeling'];download('ice-bath-log.csv',[h.join(',')].concat(allRows('club').map(r=>[r.dipId,new Date(r.ts).toLocaleDateString('en-CA'),fmtTime(r.ts),r.name,r.sec,r.style,r.water??'',r.air??'',r.feeling??''].map(csvEsc).join(','))).join('\n'),'text/csv');break}
@@ -999,6 +1064,7 @@ document.addEventListener('click',async ev=>{
 document.addEventListener('input',e=>{if(page==='settings'&&sub&&['club','dips','sheet'].includes(sub)&&e.target.closest('#main'))dirty=true;if(e.target.id==='sp_q')SP.q=e.target.value});
 document.addEventListener('change',async ev=>{
   const id=ev.target.id;
+  if(id==='w_lang'){wizRead();setAppLang(ev.target.value,true);return}
   if(id==='w_photo'){const f=ev.target.files[0];if(!f)return;keepWrap();try{R.photo=await shrink(f);R.photoUrl=URL.createObjectURL(R.photo);renderRec()}catch{toast('Could not read photo')}}
   if(id==='w_logofile'||id==='c_logofile'){const f=ev.target.files[0];if(!f)return;try{const url=await blobToUrl(await shrink(f,192,'image/png'));if(id==='w_logofile'){wizRead();W.logo=url;render()}else{S.settings.club.logo=url;const n=$('#c_name').value;dirty=true;render();$('#c_name').value=n}}catch{toast('Could not read picture')}}
   if(id==='restfile'){const f=ev.target.files[0];ev.target.value='';if(f)restoreBackup(f,true);return}
@@ -1012,6 +1078,7 @@ window.addEventListener('online',()=>checkUpdate());
 /* ====== boot ====== */
 if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('sw.js').catch(()=>{});
 if(!S.settings.mig16){const sp=S.settings.spot;if(sp&&sp.manualNone&&!sp.lake)delete sp.manualNone;S.settings.mig16=true;save()}
+startLangObs();
 if(!S.settings.setupDone){initWiz();page='setup'}
 render();
 if(S.settings.setupDone){if(!S.cache.fetched||Date.now()-S.cache.fetched>10*60e3)refreshData()}

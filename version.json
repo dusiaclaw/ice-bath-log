@@ -1,9 +1,9 @@
 {
-  "version": "2.1",
+  "version": "2.2",
   "date": "2026-11-08",
   "notes": [
-    "Settings › Backup: new full backup (dips, members, settings, club logo and all photos in one file) and Restore backup, to move the app to a new phone.",
-    "First-time setup now offers Restore backup, so a new phone can skip the questions.",
-    "Fixed: results in Settings › Permissions & tests (Allow and Test) now stay on screen instead of disappearing."
+    "New: app language in Settings › Language – Automatic (follows your phone), English, Deutsch, Français or Italiano. The app offers to switch the voice language and stop words with it.",
+    "New: Help & FAQ at the bottom of Settings – microphone problems, stop word, water temperature, new phone, install and more, with shortcuts to the right page.",
+    "The first-time setup also follows your phone’s language."
   ]
 }
