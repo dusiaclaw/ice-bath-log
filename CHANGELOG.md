@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.1 (2026-11-08)
+- Settings › Backup: new full backup (dips, members, settings, club logo and all photos in one file) and Restore backup, to move the app to a new phone.
+- First-time setup now offers Restore backup, so a new phone can skip the questions.
+- Fixed: results in Settings › Permissions & tests (Allow and Test) now stay on screen instead of disappearing.
+
 ## v2.0 (2026-11-08)
 - Settings › Water temperature source: choose Automatic, lake model, measuring station, average of both, or typed by hand, with the current readings side by side.
 - Advanced conditions (button on Conditions): 48-hour water, air and wind curves, readings of all sources, whole-lake coldest/average/warmest, temperature by depth, sunrise, sunset, UV and rain.
