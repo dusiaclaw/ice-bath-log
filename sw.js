@@ -1,5 +1,5 @@
 /* Ice Bath Log service worker – cache name is bumped by make-version.py */
-const CACHE='ice-bath-log-1.9';
+const CACHE='ice-bath-log-2.0';
 const SHELL=['./','index.html','manifest.webmanifest','lib/leaflet.js','lib/leaflet.css','icons/icon-192.png','icons/icon-512.png','icons/icon-maskable-512.png','icons/apple-touch-icon.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(SHELL.map(u=>new Request(u,{cache:'reload'})))).then(()=>self.skipWaiting()))});
 self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});

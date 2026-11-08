@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.0 (2026-11-08)
+- Settings › Water temperature source: choose Automatic, lake model, measuring station, average of both, or typed by hand, with the current readings side by side.
+- Advanced conditions (button on Conditions): 48-hour water, air and wind curves, readings of all sources, whole-lake coldest/average/warmest, temperature by depth, sunrise, sunset, UV and rain.
+- Settings › Permissions & tests: allow and test microphone, voice recognition, sound, screen-on and camera. Offered once after first-time setup.
+- Measuring stations are now read through the data feed (the direct call was blocked by browsers).
+- Fixed: the dip wrap-up screen no longer jumps back to the top when you tap a feeling or Standing/Swimming.
+- Fixed: voice keyword now asks for microphone access first, so Chrome shows the permission prompt.
+
 ## v1.9 (2026-11-08)
 - Water temperature now works for every lake of the Alplakes service, not only Lake Zurich: the hourly data job publishes all lakes and the app picks the ones near your swimming spot. Lakes outside the service can still be used with hand-entered temperatures.
 

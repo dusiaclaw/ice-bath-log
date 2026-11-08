@@ -7,6 +7,8 @@ GitHub Actions - fetches the whole-lake surface grid of EVERY 3D lake the servic
 
   OUT/index.json         one entry per lake: key, model, name, centre, bounding box
   OUT/lakes/<key>.json   thinned grid + temperatures for now and the next 48 h
+  OUT/lakes/<key>-depth.json  temperature at 1/2/5/10/20 m for now (coarse grid)
+  OUT/stations.json      BAFU lake stations that report a water temperature (via existenz.ch)
   OUT/water.json         Lake Zurich only, for app versions before 1.9
 
 Usage: python3 tools/fetch_water.py OUT_DIR"""
@@ -20,6 +22,9 @@ OFFSETS_H = [0, 3, 6, 12, 24, 36, 48]
 BASE_TRIES_H = [0, -1, -3, -6]     # newest hour that exists becomes "now"
 MAX_CELLS = 6000                   # thin big lakes so every file stays small
 MODELS = ('delft3d-flow', 'mitgcm')
+DEPTHS = [1, 2, 5, 10, 20]
+DEPTH_CELLS = 1500
+EXIST = 'https://api.existenz.ch/apiv1'
 FALLBACK = {'delft3d-flow': 'zurich geneva lugano biel murten greifensee hallwil ageri joux stmoritz garda caldonazzo annecy bourget'.split(),
             'mitgcm': 'neuchatel lucerne zug'.split()}
 NAMES = {'ageri': 'Ägeri', 'stmoritz': 'St. Moritz', 'neuchatel': 'Neuchâtel', 'biel': 'Biel / Bienne',
@@ -100,13 +105,64 @@ def lake_data(key, model):
     la = [r(lat[i], 4) for i in keep]; ln = [r(lng[i], 4) for i in keep]
     return {'model': model, 'times': times, 'lat': la, 'lng': ln, 't': [[r(s[i], 1) for i in keep] for s in temps]}
 
+def depth_data(key, model, base_ms_hint=None):
+    now = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
+    for b in BASE_TRIES_H:
+        t = now + timedelta(hours=b); layers = []; lat = lng = None
+        try:
+            for d in DEPTHS:
+                try:
+                    j = get(BASE + f'/simulations/layer/{model}/{key}/{t.strftime("%Y%m%d%H%M")}/{d}?variables=temperature', tries=2)
+                except Exception:
+                    continue
+                la, ln, te = flat(j['lat']), flat(j['lng']), flat(j['variables']['temperature']['data'])
+                if lat is None: lat, lng = la, ln
+                if len(la) == len(lat): layers.append((d, te))
+        except Exception:
+            layers = []
+        if layers: break
+    if not layers: return None
+    keep = [i for i in range(len(lat)) if lat[i] is not None and lng[i] is not None and layers[0][1][i] is not None]
+    keep = keep[::max(1, -(-len(keep) // DEPTH_CELLS))]
+    r = lambda v, n: None if v is None else round(v, n)
+    return {'depths': [d for d, _ in layers], 'lat': [r(lat[i], 4) for i in keep], 'lng': [r(lng[i], 4) for i in keep],
+            't': [[r(te[i], 1) for i in keep] for _, te in layers]}
+
+def stations():
+    """Lake stations of the BAFU network that currently report a water temperature."""
+    try:
+        loc = get(EXIST + '/hydro/locations')['payload']
+        lakes = {}
+        for k, v in loc.items():
+            d = v.get('details') or {}
+            if d.get('water-body-type') == 'lake' and d.get('lat') is not None:
+                lakes[str(d.get('id', k))] = d
+        ids = list(lakes); out = []
+        for i in range(0, len(ids), 15):
+            j = get(EXIST + '/hydro/latest?locations=' + ','.join(ids[i:i + 15]) + '&parameters=temperature&app=ice-bath-log&version=1.0')
+            best = {}
+            for p in j.get('payload') or []:
+                if p.get('par') == 'temperature' and p.get('val') is not None:
+                    if p['loc'] not in best or p['timestamp'] > best[p['loc']]['timestamp']: best[p['loc']] = p
+            for loc_id, p in best.items():
+                d = lakes.get(str(loc_id))
+                if d: out.append({'id': str(loc_id), 'name': d.get('name'), 'water': d.get('water-body-name'),
+                                  'lat': float(d['lat']), 'lng': float(d['lon']), 'v': round(float(p['val']), 1), 't': int(p['timestamp']) * 1000})
+        print(f'{len(out)} stations with temperature')
+        return out
+    except Exception as e:
+        print('stations failed:', e, file=sys.stderr); return []
+
 def one(item):
     key, model = item
     try:
         d = lake_data(key, model)
     except Exception as e:
         print(f'{key}: failed ({e})', file=sys.stderr); return key, None
-    if d: print(f'{key}: {len(d["lat"])} cells, {len(d["times"])} times')
+    if d:
+        try: d['_depth'] = depth_data(key, model)
+        except Exception as e: print(f'{key}: depth failed ({e})', file=sys.stderr)
+        print(f'{key}: {len(d["lat"])} cells, {len(d["times"])} times, depth {"yes" if d.get("_depth") else "no"}')
     else: print(f'{key}: no data', file=sys.stderr)
     return key, d
 
@@ -120,6 +176,8 @@ def main():
     stamp = int(time.time() * 1000); index = []
     for key, d in results:
         if not d: continue
+        dp = d.pop('_depth', None)
+        if dp: (out / 'lakes' / f'{key}-depth.json').write_text(json.dumps(dp, separators=(',', ':')))
         d['name'] = 'Lake ' + NAMES.get(key, key.capitalize()); d['updated'] = stamp
         (out / 'lakes' / f'{key}.json').write_text(json.dumps(d, separators=(',', ':'), ensure_ascii=False))
         la, ln = d['lat'], d['lng']
@@ -129,6 +187,7 @@ def main():
             (out / 'water.json').write_text(json.dumps({'updated': stamp, 'lakes': {'zurich': d}}, separators=(',', ':'), ensure_ascii=False))
     if not index:
         sys.exit('no lake data fetched')
+    (out / 'stations.json').write_text(json.dumps({'updated': stamp, 'source': 'BAFU via existenz.ch', 'stations': stations()}, separators=(',', ':'), ensure_ascii=False))
     (out / 'index.json').write_text(json.dumps({'updated': stamp, 'source': 'Alplakes (EPFL, Eawag), simulated surface temperature', 'lakes': index}, separators=(',', ':'), ensure_ascii=False))
 
 if __name__ == '__main__':
