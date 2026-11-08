@@ -1,7 +1,7 @@
 {
-  "version": "1.2",
+  "version": "1.3",
   "date": "2026-11-08",
   "notes": [
-    "Swimming spot: a map with a draggable pin (or tap the map) to place your exact spot; weather and lake data follow the pin."
+    "Water temperature: the lake model is now linked reliably (the app uses the nearest model point and tells you how far it is); a spot saved without a lake is repaired automatically; measuring stations without temperature data are no longer used."
   ]
 }

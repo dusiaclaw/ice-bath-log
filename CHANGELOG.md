@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.3 (2026-11-08)
+- Water temperature: the lake model is now linked reliably (the app uses the nearest model point and tells you how far it is); a spot saved without a lake is repaired automatically; measuring stations without temperature data are no longer used.
+
 ## v1.2 (2026-11-08)
 - Swimming spot: a map with a draggable pin (or tap the map) to place your exact spot; weather and lake data follow the pin.
 
